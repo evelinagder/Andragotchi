@@ -16,7 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoadingActivity" />
-        <activity android:name=".PetChoiceActivity"></activity>
+        <activity android:name=".PetChoiceActivity" />
+        <activity android:name=".NameActivity" />
+        <activity android:name=".DfficultyActivity"></activity>
     </application>
 
 </manifest>

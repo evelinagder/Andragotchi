@@ -17,21 +17,23 @@
         android:layout_alignParentBottom="true" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:id="@+id/dino_welcome"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/tamagochi"
-        android:layout_above="@+id/button_sign"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logo" />
-
-    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/logo_height"
+        android:layout_height="300dp"
+        android:id="@+id/dino_welcome"
+        android:background="@drawable/all_pets"
+        android:layout_above="@+id/button_sign"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ANDRAGOCHI"
+        android:fontFamily="casual"
+        android:textSize="50sp"
         android:id="@+id/logo"
-        android:background="@drawable/logo"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/dino_welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="46dp" />
 
 
 </RelativeLayout>

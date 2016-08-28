@@ -8,13 +8,21 @@
     tools:context=".NameActivity">
 
 
-    <ImageButton
-        android:layout_width="@dimen/big_button_width"
-        android:layout_height="@dimen/big_button_height"
-        android:background="@drawable/confirm"
-        android:id="@+id/button_confirm"
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:id="@+id/Button"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true" />
+        android:src="@drawable/confirm"
+        android:fontFamily="casual"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:text="CONFIRM"
+        android:background="@drawable/confirm"
+
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,18 +31,31 @@
         android:text="Name your pet:"
         android:fontFamily="casual"
         android:textScaleX="2"
-        android:id="@+id/textView"
+        android:id="@+id/name"
         android:paddingBottom="@dimen/text_bottom_padding"
         android:paddingTop="@dimen/text_top_padding"
-        android:layout_above="@+id/editText"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="81dp" />
+        android:layout_marginTop="38dp" />
 
     <EditText
         android:layout_width="@dimen/big_button_width"
         android:layout_height="wrap_content"
         android:id="@+id/editText"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView2"
+        android:layout_gravity="center"
+        android:background="@drawable/tamagochi"
+        android:layout_weight="8"
+        android:layout_below="@+id/editText"
+        android:layout_alignEnd="@+id/name"
+        android:layout_alignStart="@+id/name"
+        android:layout_above="@+id/Button" />
 
 </RelativeLayout>

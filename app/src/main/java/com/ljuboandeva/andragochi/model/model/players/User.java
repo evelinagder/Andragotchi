@@ -1,6 +1,6 @@
 package com.ljuboandeva.andragochi.model.model.players;
 
-import com.ljuboandeva.andragochi.model.model.pet.Dino;
+import com.ljuboandeva.andragochi.model.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.model.shop.Food;
 import com.ljuboandeva.andragochi.model.model.shop.Medicine;
 
@@ -16,7 +16,7 @@ public class User {
         private String name;
         private int money;
         private int difficultyLevel;
-        Dino dragon;
+        Pet pet;
 
         // ot google profile
     //inventory collection link to shop inventory
@@ -25,6 +25,16 @@ public class User {
             this.username=username;
             this.password=password;
 
+        }
+
+        public void setPet(Pet pet){
+            this.pet=pet;
+        }
+        public String getUsername(){
+            return username;
+        }
+        public String getPassword(){
+            return password;
         }
         public void addMoney(int money){
             this.money += money;

@@ -16,11 +16,13 @@ public class PetChoiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pet_choice);
 
         confirmPet= (Button)findViewById(R.id.Button_confirmPet);
+        // how to choose a pet?
 
         confirmPet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intеnt= new Intent(PetChoiceActivity.this, NameActivity.class);
+               // User.setPet(new Pet(petType));
+                Intent intеnt = new Intent(PetChoiceActivity.this, NameActivity.class);
                     startActivity(intеnt);
             }
         });

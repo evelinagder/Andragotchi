@@ -17,11 +17,11 @@
         </activity>
         <activity android:name=".LoadingActivity" />
         <activity android:name=".PetChoiceActivity" />
-        <activity android:name=".NameActivity" />
         <activity android:name=".DfficultyActivity" />
         <activity android:name=".ExitActivity" />
         <activity android:name=".OutChoiceActivity" />
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".PlaygroundActivity"></activity>
     </application>
 
 </manifest>

@@ -11,19 +11,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="90dp"
-        android:id="@+id/button"
-        android:src="@drawable/confirm"
-        android:fontFamily="casual"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        android:text="CONFIRM"
-        android:background="@drawable/confirm"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="90dp"
         android:id="@+id/button2"
         android:src="@drawable/confirm"
         android:fontFamily="casual"
@@ -31,9 +18,9 @@
         android:textSize="40sp"
         android:text="EASY"
         android:background="@drawable/confirm"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="136dp" />
+        android:layout_marginTop="44dp" />
 
     <Button
         android:layout_width="match_parent"
@@ -45,7 +32,8 @@
         android:textSize="40sp"
         android:text="MEDIUM"
         android:background="@drawable/confirm"
-        android:layout_centerVertical="true" />
+        android:layout_below="@+id/button2"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -58,7 +46,7 @@
         android:text="HARD"
         android:background="@drawable/confirm"
         android:layout_below="@+id/button3"
-        android:layout_alignStart="@+id/button" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,7 +58,7 @@
         android:id="@+id/textView3"
         android:paddingBottom="@dimen/text_bottom_padding"
         android:paddingTop="@dimen/text_top_padding"
+        android:layout_marginTop="72dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

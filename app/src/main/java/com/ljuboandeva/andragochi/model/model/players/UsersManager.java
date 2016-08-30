@@ -7,8 +7,27 @@ import java.util.HashMap;
  */
 public class UsersManager {
 
-    HashMap<String, User> allUsers=new HashMap<String,User>();
-    //tuk da se paziat vs. potrebiteli po username?
-    // practice
+
+    HashMap<String,User> users= new HashMap<>();
+
+    public void registerUser(User user){
+        if(!users.containsKey(user.getUsername())) {
+            users.put(user.getUsername(), user);
+
+        }
+    }
+    public boolean validateLogin(String username, String password) {
+        if( users.containsKey(username)){
+            User user=users.get(username);
+            if(user.getPassword().equals(password)){
+                return true;
+            }
+        }
+        return false;
+
+    }
+    public void unregister(User user){
+        users.remove(user.getUsername());
+    }
 
 }

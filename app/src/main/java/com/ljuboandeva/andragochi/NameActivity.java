@@ -7,29 +7,31 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.ljuboandeva.andragochi.model.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.model.players.User;
 
 public class NameActivity extends AppCompatActivity {
     Button confirmName;
     EditText typeName;
+    //kak da predavame Usera suzdadden ot predishite activity?
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name);
-        confirmName=(Button)findViewById(R.id.Button_confirmName);
-        typeName=(EditText)findViewById(R.id.editText_name);
+        confirmName = (Button) findViewById(R.id.Button_confirmName);
+        typeName = (EditText) findViewById(R.id.editText_name);
 
-       String petName= typeName.getText().toString();
-       // User.pet.setPet( new Pet(petName)); create setPet!!!
+        final String petName = typeName.getText().toString();
+
 
         confirmName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(NameActivity.this, HomeActivity.class);
+                // User.pet.setName(petName);
+                Intent intent = new Intent(NameActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
-
     }
 }

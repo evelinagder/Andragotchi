@@ -1,8 +1,12 @@
 package com.ljuboandeva.andragochi.model.model.players;
 
-import com.ljuboandeva.andragochi.model.model.pet.Dino;
+import com.ljuboandeva.andragochi.model.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.model.shop.Food;
+import com.ljuboandeva.andragochi.model.model.shop.Food.Name;
 import com.ljuboandeva.andragochi.model.model.shop.Medicine;
+import com.ljuboandeva.andragochi.model.model.shop.Toy;
+
+import java.util.HashMap;
 
 /**
  * Created by Evelina on 8/25/2016.
@@ -16,7 +20,10 @@ public class User {
         private String name;
         private int money;
         private int difficultyLevel;
-        Dino dragon;
+        Pet pet;
+    HashMap<Food.Name,Food> foods;
+    HashMap<Medicine.Type,Medicine> meds;
+    HashMap<Toy.Type,Toy> toys;
 
         // ot google profile
     //inventory collection link to shop inventory
@@ -24,7 +31,20 @@ public class User {
         User(String username, String password){
             this.username=username;
             this.password=password;
+            foods=new HashMap<>();
+            meds=new HashMap<>();
+            toys= new HashMap<>();
 
+        }
+
+        public void setPet(Pet pet){
+            this.pet=pet;
+        }
+        public String getUsername(){
+            return username;
+        }
+        public String getPassword(){
+            return password;
         }
         public void addMoney(int money){
             this.money += money;
@@ -46,4 +66,21 @@ public class User {
         public void giveMedicine(Medicine meds){
             //TODO
         }
+        // izpulniavat se pri select na item ot shop! v method buy
+        public void addFood(Food food,int quantity){
+            Food f= new Food(food.getName(),food.getCalories(),food.getPrice());
+            f.setCount(quantity);
+            foods.put(f.getName(),f);
+
+        }
+        public void addMedicine(Medicine medicine, int quantity){
+            Medicine m= new Medicine(medicine.getType(),medicine.getPrice());
+            m.setCount(quantity);
+            meds.put(m.getType(),m);
+        }
+        public void addToy(Toy toy,int quantity){
+            Toy t= new Toy(toy.getToyType(),toy.getPrice());
+            toys.put(t.getToyType(),t);
+        }
+
 }

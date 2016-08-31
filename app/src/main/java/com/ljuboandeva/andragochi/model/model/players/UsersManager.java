@@ -6,6 +6,14 @@ import java.util.HashMap;
  * Created by Evelina on 8/26/2016.
  */
 public class UsersManager {
+    private static UsersManager ourInstance = new UsersManager();
+
+    public static UsersManager getInstance() {
+        return ourInstance;
+    }
+
+    private UsersManager() {
+    }
 
 
     HashMap<String,User> users= new HashMap<>();

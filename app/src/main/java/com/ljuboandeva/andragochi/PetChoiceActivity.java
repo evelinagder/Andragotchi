@@ -22,7 +22,7 @@ public class PetChoiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                // User.setPet(new Pet(petType));
-                Intent intеnt = new Intent(PetChoiceActivity.this, NameActivity.class);
+                Intent intеnt = new Intent(PetChoiceActivity.this, HomeActivity.class);
                     startActivity(intеnt);
             }
         });

@@ -11,6 +11,6 @@ public class Shop {
     HashMap<Food.Name,Food> foods;
     HashMap<Medicine.Type,Medicine> medicines;
     HashMap<String,Toy> toys;
-    //da napravia li i TOY s enum???
+
 
 }

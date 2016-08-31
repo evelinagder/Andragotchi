@@ -21,9 +21,12 @@ public class User {
         private int money;
         private int difficultyLevel;
         Pet pet;
+<<<<<<< HEAD
     HashMap<Food.Name,Food> foods;
     HashMap<Medicine.Type,Medicine> meds;
     HashMap<Toy.Type,Toy> toys;
+=======
+>>>>>>> a15e7dcd274427b96f0c9fa93b1008efb8edaa1b
 
         // ot google profile
     //inventory collection link to shop inventory
@@ -35,6 +38,16 @@ public class User {
             meds=new HashMap<>();
             toys= new HashMap<>();
 
+        }
+
+        public void setPet(Pet pet){
+            this.pet=pet;
+        }
+        public String getUsername(){
+            return username;
+        }
+        public String getPassword(){
+            return password;
         }
 
         public void setPet(Pet pet){

@@ -24,12 +24,22 @@ public class NameActivity extends AppCompatActivity {
 
         final String petName = typeName.getText().toString();
 
+<<<<<<< HEAD
+=======
+       final String petName= typeName.getText().toString();
+
+>>>>>>> a15e7dcd274427b96f0c9fa93b1008efb8edaa1b
 
         confirmName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
                 // User.pet.setName(petName);
                 Intent intent = new Intent(NameActivity.this, HomeActivity.class);
+=======
+               // User.pet.setName(petName);
+                Intent intent= new Intent(NameActivity.this, HomeActivity.class);
+>>>>>>> a15e7dcd274427b96f0c9fa93b1008efb8edaa1b
                 startActivity(intent);
             }
         });

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/general_background"
+    tools:context="com.ljuboandeva.andragochi.RegisterActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:textSize="30dp"
+            android:fontFamily="casual"
+            android:id="@+id/editText_usernameR" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:ems="10"
+            android:textSize="30dp"
+            android:fontFamily="casual"
+            android:id="@+id/editText_passwordR" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Confirm Password"
+            android:ems="10"
+            android:textSize="30dp"
+            android:fontFamily="casual"
+            android:id="@+id/editText_confirmPassR" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="e-mail"
+            android:ems="10"
+            android:textSize="30dp"
+            android:fontFamily="casual"
+            android:id="@+id/editText_email" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_margin="70dp"
+            android:text="Register"
+            android:textSize="30dp"
+            android:fontFamily="casual"
+            android:background="@drawable/confirm"
+            android:id="@+id/button_registerR" />
+    </LinearLayout>
+
+</RelativeLayout>

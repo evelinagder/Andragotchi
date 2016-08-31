@@ -17,37 +17,29 @@ public class User {
        private final String username;
         private int age;
         private String password;
+        private String email;
         private String name;
         private int money;
         private int difficultyLevel;
         Pet pet;
-<<<<<<< HEAD
+
     HashMap<Food.Name,Food> foods;
     HashMap<Medicine.Type,Medicine> meds;
     HashMap<Toy.Type,Toy> toys;
-=======
->>>>>>> a15e7dcd274427b96f0c9fa93b1008efb8edaa1b
+
 
         // ot google profile
     //inventory collection link to shop inventory
 
-        User(String username, String password){
+        public User(String username, String password,String email){
             this.username=username;
             this.password=password;
+            this.email=email;
+            this.money=START_MONEY;
             foods=new HashMap<>();
             meds=new HashMap<>();
             toys= new HashMap<>();
 
-        }
-
-        public void setPet(Pet pet){
-            this.pet=pet;
-        }
-        public String getUsername(){
-            return username;
-        }
-        public String getPassword(){
-            return password;
         }
 
         public void setPet(Pet pet){

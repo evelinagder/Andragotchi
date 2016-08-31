@@ -22,8 +22,8 @@
         android:id="@+id/linearLayout">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="90dp"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:id="@+id/button9"
             android:src="@drawable/confirm"
             android:fontFamily="casual"
@@ -33,11 +33,11 @@
             android:background="@drawable/confirm"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="90dp"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:id="@+id/button10"
             android:src="@drawable/confirm"
             android:fontFamily="casual"
@@ -48,7 +48,7 @@
             android:layout_alignParentEnd="true"
             android:layout_above="@+id/button9"
             android:layout_alignParentLeft="true"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <ImageView
@@ -56,34 +56,26 @@
         android:layout_height="50dp"
         android:id="@+id/imageView5"
         android:background="@drawable/heart"
-        android:layout_below="@+id/linearLayout"
-        android:layout_toEndOf="@+id/imageView4" />
+        android:layout_alignTop="@+id/imageView8"
+        android:layout_toEndOf="@+id/button11"
+        android:layout_alignStart="@+id/textView8" />
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/imageView6"
         android:background="@drawable/food"
-        android:layout_below="@+id/linearLayout"
-        android:layout_toStartOf="@+id/imageView4" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/imageView7"
-        android:background="@drawable/broom"
-        android:layout_marginTop="43dp"
-        android:layout_alignTop="@+id/imageView4"
-        android:layout_toStartOf="@+id/imageView4" />
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/imageView4" />
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/imageView8"
         android:background="@drawable/play"
-        android:layout_alignBottom="@+id/imageView4"
-        android:layout_alignEnd="@+id/imageView6"
-        android:layout_marginBottom="50dp" />
+        android:layout_above="@+id/textView6"
+        android:layout_toStartOf="@+id/imageView4" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,8 +85,8 @@
         android:layout_centerHorizontal="true">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:id="@+id/button7"
             android:src="@drawable/confirm"
             android:fontFamily="casual"
@@ -107,8 +99,8 @@
             android:layout_alignParentStart="true" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:id="@+id/button8"
             android:src="@drawable/confirm"
             android:fontFamily="casual"
@@ -124,7 +116,7 @@
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="90dp"
+        android:layout_height="70dp"
         android:id="@+id/button11"
         android:src="@drawable/confirm"
         android:fontFamily="casual"
@@ -134,9 +126,7 @@
         android:background="@drawable/confirm"
         android:layout_weight="1"
         android:layout_below="@+id/imageView4"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/imageView5"
-        android:layout_above="@+id/linearLayout2" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -145,8 +135,8 @@
         android:textSize="35sp"
         android:text="100"
         android:id="@+id/textView5"
-        android:layout_below="@+id/imageView6"
-        android:layout_alignStart="@+id/imageView6" />
+        android:layout_below="@+id/imageView5"
+        android:layout_alignEnd="@+id/imageView6" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -155,8 +145,8 @@
         android:textSize="35sp"
         android:text="100"
         android:id="@+id/textView6"
-        android:layout_below="@+id/imageView7"
-        android:layout_alignStart="@+id/imageView7" />
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -178,16 +168,6 @@
         android:layout_above="@+id/button11"
         android:layout_toEndOf="@+id/imageView4" />
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="220dp"
-        android:id="@+id/imageView9"
-        android:background="@drawable/health_demo"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/imageView4"
-        android:layout_above="@+id/textView8"
-        android:layout_toEndOf="@+id/imageView4" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -195,8 +175,55 @@
         android:textSize="35sp"
         android:text="Drago"
         android:id="@+id/textView9"
-        android:layout_above="@+id/imageView7"
+        android:layout_above="@+id/imageView4"
         android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView7"
+        android:background="@drawable/broom"
+        android:layout_above="@+id/textView7"
+        android:layout_alignEnd="@+id/textView6" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linearLayout"
+        android:id="@+id/linearLayout3">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:foregroundGravity="left"
+            android:paddingLeft="1dp"
+            android:scaleType="centerCrop"
+            android:background="@android:color/transparent"
+            android:src="@drawable/inventory"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="10"
+            android:foregroundGravity="right"
+            android:scaleType="centerCrop"
+            android:background="@android:color/transparent"
+            android:src="@drawable/settings"/>
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>

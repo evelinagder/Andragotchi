@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.ljuboandeva.andragochi.model.players.UsersManager;
+import com.ljuboandeva.andragochi.model.model.players.UsersManager;
 
 public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_REG_USER = 10;
@@ -48,11 +48,14 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+
                 Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
-                intent.putExtra("loggedUser", usernameString);
+                intent.putExtra("loggedUser",UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
+                //Send user object in next Activity;" loggedUser"
                 startActivity(intent);
             }
         });
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override

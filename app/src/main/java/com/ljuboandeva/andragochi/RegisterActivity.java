@@ -59,6 +59,13 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                if( !emailU.matches(emailPattern)){
+                    emailR.setError("Invalid email");
+                    emailR.requestFocus();
+                    return;
+                }
+
+
                 if (!(passU.equals(confirmU))){
                     passR.setError("Passwords mismatch");
                     passR.setText("");

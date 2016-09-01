@@ -5,12 +5,13 @@ import com.ljuboandeva.andragochi.model.shop.Food;
 import com.ljuboandeva.andragochi.model.shop.Medicine;
 import com.ljuboandeva.andragochi.model.shop.Toy;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * Created by Evelina on 8/25/2016.
  */
-public class User {
+public class User implements Serializable{
         private static final int START_MONEY=100;
     //start money?
        private final String username;

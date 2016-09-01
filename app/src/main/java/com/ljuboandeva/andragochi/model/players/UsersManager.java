@@ -90,6 +90,9 @@ public class UsersManager {
         return true;
     }
 
+    public User getUser(String username){
+        return users.get(username);
+    }
     public void unregister(User user){
         users.remove(user.getUsername());
     }

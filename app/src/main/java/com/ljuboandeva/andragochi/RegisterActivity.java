@@ -19,53 +19,83 @@ public class RegisterActivity extends AppCompatActivity {
     EditText confirmPassR;
     EditText emailR;
     Button registerR;
+    public static final int RESULT_REG_SUCCESSFUL = 10;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        usernameR= (EditText)findViewById(R.id.editText_usernameR);
-        passR=(EditText)findViewById(R.id.editText_passwordR);
-        confirmPassR=(EditText)findViewById(R.id.editText_confirmPassR);
-        emailR=(EditText)findViewById(R.id.editText_email);
-        registerR=(Button)findViewById(R.id.button_registerR);
+        usernameR = (EditText) findViewById(R.id.editText_usernameR);
+        passR = (EditText) findViewById(R.id.editText_passwordR);
+        confirmPassR = (EditText) findViewById(R.id.editText_confirmPassR);
+        emailR = (EditText) findViewById(R.id.editText_email);
+        registerR = (Button) findViewById(R.id.button_registerR);
 
-        final String usernameU=usernameR.getText().toString();
-        final String passU = passR.getText().toString();
-        final String confirmU= confirmPassR.getText().toString();
-        final String emailU = emailR.getText().toString();
-        final String emailPattern = "^[A-Za-z][A-Za-z0-9]*([._-]?[A-Za-z0-9]+)@[A-Za-z].[A-Za-z]{0,3}?.[A-Za-z]{0,2}$";
-
-
-        final View activityRootView = findViewById(R.id.activtyRoot);
-        activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-
-                if(usernameU.equals("") || passU.equals("")|| confirmU.equals("")|| emailU.equals("")){
-                    registerR.setEnabled(false);
-                }
-                if(!(confirmU.equals(passU))){
-                    confirmPassR.setError("Passwords don`t match. Try again!");
-                    registerR.setEnabled(false);
-                }
-                if (!(emailU.matches(emailPattern))) {
-                    emailR.setError("Invalid e-mail address");
-                    registerR.setEnabled(false);
-                }
-
-            }
-        });
 
         registerR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UsersManager.getInstance().registerUser(new User(usernameU,passU,emailU));
-                Intent intent= new Intent(RegisterActivity.this,LoginActivity.class);
-                startActivity(intent);
+                String usernameU = usernameR.getText().toString();
+                String passU = passR.getText().toString();
+                String confirmU = confirmPassR.getText().toString();
+                String emailU = emailR.getText().toString();
+                String emailPattern = "^[A-Za-z][A-Za-z0-9]*([._-]?[A-Za-z0-9]+)@[A-Za-z].[A-Za-z]{0,3}?.[A-Za-z]{0,2}$";
+
+                if (usernameU.isEmpty()) {
+                    usernameR.setError("Username is compulsory");
+                   usernameR.requestFocus();
+                   return;
+                }
+                if (passU.length() == 0) {
+                    passR.setError("Password is compulsory");
+                    passR.requestFocus();
+                    return;
+                }
+                if (confirmU.length() == 0) {
+                    confirmPassR.setError("Second password is compulsory");
+                    confirmPassR.requestFocus();
+                    return;
+                }
+                if (emailU.isEmpty()) {
+                    emailR.setError("Email is compulsory");
+                    emailR.requestFocus();
+                    return;
+                }
+
+                if (!(passU.equals(confirmU))){
+                    passR.setError("Passwords mismatch");
+                    passR.setText("");
+                    confirmPassR.setText("");
+                    confirmPassR.requestFocus();
+                    return;
+                }
+
+                if (UsersManager.getInstance(RegisterActivity.this).existsUser(usernameU)) {
+                    usernameR.setError("User already exists");
+                    usernameR.setText("");
+                    usernameR.requestFocus();
+                    return;
+                }
+
+                UsersManager.getInstance(RegisterActivity.this).registerUser(RegisterActivity.this, usernameU, passU, emailU);
+
+
+                Intent intent = new Intent();
+                intent.putExtra("username", usernameR.getText().toString());
+                intent.putExtra("password", passR.getText().toString());
+                setResult(RESULT_REG_SUCCESSFUL, intent);
+                finish();
             }
         });
-
-
     }
+
 }
+
+
+
+
+
+
+
+

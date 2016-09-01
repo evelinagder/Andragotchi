@@ -10,6 +10,7 @@ import android.widget.EditText;
 import com.ljuboandeva.andragochi.model.model.players.UsersManager;
 
 public class LoginActivity extends AppCompatActivity {
+    private static final int REQUEST_REG_USER = 10;
     Button login;
     Button register;
     EditText username;
@@ -23,27 +24,42 @@ public class LoginActivity extends AppCompatActivity {
         register = (Button) findViewById(R.id.button_registerL);
         username = (EditText) findViewById(R.id.textView_usernameL);
         password = (EditText) findViewById(R.id.textView_passwordL);
-        final String usernameText = username.getText().toString();
-        final String passwordText = password.getText().toString();
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (UsersManager.getInstance().validateLogin(usernameText, passwordText)) {
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                } else {
-                    register.setError("Invalid Login.");
+                String usernameString = username.getText().toString();
+                String passwordString = password.getText().toString();
+                if(usernameString.isEmpty()){
+                    username.setError("Username is compulsory");
+                    username.requestFocus();
+                    return;
+                }
+                if(passwordString.length() == 0){
+                    password.setError("Password is compulsory");
+                    password.requestFocus();
+                    return;
+                }
+                if(!UsersManager.getInstance(LoginActivity.this).validalteLogin(usernameString, passwordString)){
+                    username.setError("Invalid credentials");
+                    username.setText("");
+                    password.setText("");
+                    username.requestFocus();
+                    return;
                 }
 
+                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                intent.putExtra("loggedUser", usernameString);
+                startActivity(intent);
             }
         });
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-                //TODO class 33
+            public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
+                username.setError(null);
+                startActivityForResult(intent, REQUEST_REG_USER);
             }
         });
     }

@@ -39,7 +39,9 @@
             android:name=".PlaygroundActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".ShopActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,162 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.FoodFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="Skull"
+                android:gravity="center"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="$1"
+                android:gravity="center"
+                android:textSize="30sp"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/skull"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/button_buy_skull"
+                android:src="@drawable/confirm"
+                android:fontFamily="casual"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:text="buy"
+                android:layout_weight="1"
+                android:background="@drawable/confirm"
+                android:layout_above="@+id/button2"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center_vertical" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="Bone"
+                android:gravity="center"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="$2"
+                android:gravity="center"
+                android:textSize="30sp"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/bone"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/button_buy_bone"
+                android:src="@drawable/confirm"
+                android:fontFamily="casual"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:text="buy"
+                android:layout_weight="1"
+                android:background="@drawable/confirm"
+                android:layout_above="@+id/button2"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center_vertical" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="Flesh"
+                android:gravity="center"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="$3"
+                android:gravity="center"
+                android:textSize="30sp"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/flesh"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/button"
+                android:src="@drawable/confirm"
+                android:fontFamily="casual"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:text="buy"
+                android:layout_weight="1"
+                android:background="@drawable/confirm"
+                android:layout_above="@+id/button_buy_flesh"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center_vertical" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"/>
+
+
+    </LinearLayout>
+
+</FrameLayout>

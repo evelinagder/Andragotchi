@@ -1,6 +1,9 @@
-package com.ljuboandeva.andragochi.playersAndPet;
+package com.ljuboandeva.andragochi.model.pet;
 
-import com.ljuboandeva.andragochi.shop.Food;
+import android.webkit.WebView;
+
+import com.ljuboandeva.andragochi.model.shop.Food;
+import com.ljuboandeva.andragochi.model.shop.Toy;
 
 /**
  * Created by Evelina on 8/26/2016.
@@ -25,6 +28,11 @@ public class Dino {
     private int happiness;
     private int fill;
     private int cleanliness;
+    private WebView petPicDefault;
+    private WebView petPicEat;
+    private WebView petPicHappy;
+    private WebView petPicUnhappy;
+
 
     Dino(String name, String type){
         this.name=name;
@@ -36,10 +44,8 @@ public class Dino {
         this.cleanliness=MAX_CLEANLINESS;
 
     }
-    public void dinoSleep(){
-        //TODO
-    }
-    public void dinoEat(Food food){
+
+    public void eat(Food food){
         //TODO
     }
     public void getBored(){
@@ -51,10 +57,10 @@ public class Dino {
     public void generateMoney(){
         //TODO
     }
-    public void dinoPlay(Toy toy){
+    public void play(Toy toy){
         //TODO
     }
-    public void dinoDie(){
+    public void die(){
         //TODO
     }
     public void getDirty(){

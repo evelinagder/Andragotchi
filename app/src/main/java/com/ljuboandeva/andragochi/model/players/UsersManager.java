@@ -1,4 +1,4 @@
-package com.ljuboandeva.andragochi.model.model.players;
+package com.ljuboandeva.andragochi.model.players;
 
 import android.app.Activity;
 import android.content.Context;

@@ -1,9 +1,9 @@
-package com.ljuboandeva.andragochi.model.model.pet;
+package com.ljuboandeva.andragochi.model.pet;
 
 import android.webkit.WebView;
 
-import com.ljuboandeva.andragochi.model.model.shop.Food;
-import com.ljuboandeva.andragochi.model.model.shop.Toy;
+import com.ljuboandeva.andragochi.model.shop.Food;
+import com.ljuboandeva.andragochi.model.shop.Toy;
 
 /**
  * Created by Evelina on 8/26/2016.

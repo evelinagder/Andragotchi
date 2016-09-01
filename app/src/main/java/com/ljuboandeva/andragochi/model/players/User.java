@@ -1,10 +1,9 @@
-package com.ljuboandeva.andragochi.model.model.players;
+package com.ljuboandeva.andragochi.model.players;
 
-import com.ljuboandeva.andragochi.model.model.pet.Pet;
-import com.ljuboandeva.andragochi.model.model.shop.Food;
-import com.ljuboandeva.andragochi.model.model.shop.Food.Name;
-import com.ljuboandeva.andragochi.model.model.shop.Medicine;
-import com.ljuboandeva.andragochi.model.model.shop.Toy;
+import com.ljuboandeva.andragochi.model.pet.Pet;
+import com.ljuboandeva.andragochi.model.shop.Food;
+import com.ljuboandeva.andragochi.model.shop.Medicine;
+import com.ljuboandeva.andragochi.model.shop.Toy;
 
 import java.util.HashMap;
 

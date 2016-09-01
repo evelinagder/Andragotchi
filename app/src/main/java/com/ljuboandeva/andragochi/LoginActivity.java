@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.ljuboandeva.andragochi.model.model.players.UsersManager;
+import com.ljuboandeva.andragochi.model.players.UsersManager;
 
 public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_REG_USER = 10;

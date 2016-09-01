@@ -1,4 +1,4 @@
-package com.ljuboandeva.andragochi.model.model.shop;
+package com.ljuboandeva.andragochi.model.shop;
 
 import java.util.HashMap;
 

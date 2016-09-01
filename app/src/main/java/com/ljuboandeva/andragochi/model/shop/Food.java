@@ -1,4 +1,4 @@
-package com.ljuboandeva.andragochi.model.model.shop;
+package com.ljuboandeva.andragochi.model.shop;
 
 /**
  * Created by Evelina on 8/26/2016.

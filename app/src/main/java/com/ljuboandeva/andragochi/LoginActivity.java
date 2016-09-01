@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
 
-                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                Intent intent = new Intent(LoginActivity.this,DifficultyActivity.class);
                 intent.putExtra("loggedUser",UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
                 //Send user object in next Activity;" loggedUser"
                 startActivity(intent);

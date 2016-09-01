@@ -96,5 +96,8 @@ public class UsersManager {
     public void unregister(User user){
         users.remove(user.getUsername());
     }
-
+    //public void setUserDifficultyLevel()
+    public static void setUserDifficulty(User user, String difficultyChoice){
+        user.setDifficultyLevel(difficultyChoice);
+    }
 }

@@ -24,7 +24,7 @@
             android:name=".PetChoiceActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DfficultyActivity"
+            android:name=".DifficultyActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ExitActivity"

@@ -20,7 +20,7 @@ public class User implements Serializable{
         private String email;
         private String name;
         private int money;
-        private int difficultyLevel;
+        private String difficultyLevel;
         Pet pet;
 
     HashMap<Food.Name,Food> foods;
@@ -87,5 +87,8 @@ public class User implements Serializable{
             Toy t= new Toy(toy.getToyType(),toy.getPrice());
             toys.put(t.getToyType(),t);
         }
+    public void setDifficultyLevel(String difficultyLevel){
+        this.difficultyLevel=difficultyLevel;
+    }
 
 }

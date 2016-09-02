@@ -8,9 +8,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.ljuboandeva.andragochi.fragments.FoodFragment;
-import com.ljuboandeva.andragochi.fragments.MedsFragment;
-import com.ljuboandeva.andragochi.fragments.ToysFragment;
+import com.ljuboandeva.andragochi.fragments_inventory.FoodFragment;
+import com.ljuboandeva.andragochi.fragments_inventory.MedsFragment;
+import com.ljuboandeva.andragochi.fragments_inventory.ToysFragment;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;

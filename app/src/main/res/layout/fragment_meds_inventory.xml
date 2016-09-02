@@ -29,7 +29,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="$2"
+                android:text="1"
                 android:gravity="center"
                 android:textSize="30sp"/>
 
@@ -38,21 +38,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/pill"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:id="@+id/button_buy_bone"
-                android:src="@drawable/confirm"
-                android:fontFamily="casual"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:text="buy"
-                android:layout_weight="1"
-                android:background="@drawable/confirm"
-                android:layout_above="@+id/button2"
-                android:layout_alignParentLeft="true"
-                android:layout_gravity="center_vertical" />
 
 
         </LinearLayout>
@@ -76,7 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="$3"
+                android:text="2"
                 android:gravity="center"
                 android:textSize="30sp"/>
 
@@ -85,21 +70,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/vaccine"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:id="@+id/button"
-                android:src="@drawable/confirm"
-                android:fontFamily="casual"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:text="buy"
-                android:layout_weight="1"
-                android:background="@drawable/confirm"
-                android:layout_above="@+id/button_buy_flesh"
-                android:layout_alignParentLeft="true"
-                android:layout_gravity="center_vertical" />
 
 
         </LinearLayout>

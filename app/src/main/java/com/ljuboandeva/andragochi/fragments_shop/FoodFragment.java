@@ -1,4 +1,4 @@
-package com.ljuboandeva.andragochi.fragments;
+package com.ljuboandeva.andragochi.fragments_shop;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,16 +10,15 @@ import android.view.ViewGroup;
 
 import com.ljuboandeva.andragochi.R;
 
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ToysFragment.OnFragmentInteractionListener} interface
+ * {@link FoodFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ToysFragment#newInstance} factory method to
+ * Use the {@link FoodFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ToysFragment extends Fragment {
+public class FoodFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,7 +30,7 @@ public class ToysFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ToysFragment() {
+    public FoodFragment() {
         // Required empty public constructor
     }
 
@@ -41,11 +40,11 @@ public class ToysFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ToysFragment.
+     * @return A new instance of fragment FoodFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ToysFragment newInstance(String param1, String param2) {
-        ToysFragment fragment = new ToysFragment();
+    public static FoodFragment newInstance(String param1, String param2) {
+        FoodFragment fragment = new FoodFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,7 +65,7 @@ public class ToysFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_toys_shop, container, false);
+        return inflater.inflate(R.layout.fragment_food_shop, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

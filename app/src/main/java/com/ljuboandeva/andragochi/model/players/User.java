@@ -42,20 +42,11 @@ public class User implements Serializable{
 
         }
 
-        public void setPet(Pet pet){
-            this.pet=pet;
-        }
-        public String getUsername(){
-            return username;
-        }
-        public String getPassword(){
-            return password;
-        }
+
         public void addMoney(int money){
             this.money += money;
         }
 
-        //default setter and getters
         public void clean(){
             //TODO
         }
@@ -90,11 +81,24 @@ public class User implements Serializable{
     public void setDifficultyLevel(String difficultyLevel){
         this.difficultyLevel=difficultyLevel;
     }
-<<<<<<< HEAD
+
     public String getDifficultyLevel(){
         return this.difficultyLevel;
     }
-=======
+    public Pet getPet() {
+        return this.pet;
+    }
 
->>>>>>> 7691d5eea1f77770154635b34b26dc8abfef691c
+    public String getEmail() {
+        return email;
+    }
+    public void setPet(Pet pet){
+        this.pet=pet;
+    }
+    public String getUsername(){
+        return username;
+    }
+    public String getPassword(){
+        return password;
+    }
 }

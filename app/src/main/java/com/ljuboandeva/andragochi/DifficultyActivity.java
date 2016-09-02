@@ -11,6 +11,7 @@ import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
 public class DifficultyActivity extends AppCompatActivity {
+    //SAVE CHOICE IN SHARED PREFS??
 
     Button easy;
     Button medium;

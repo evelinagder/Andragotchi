@@ -16,6 +16,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText username;
     EditText password;
 
+    // E if user exists- intent to homepage
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,14 +50,16 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+//                if(UsersManager.getInstance(LoginActivity.this).existsUser(usernameString) && UsersManager.getInstance(LoginActivity.this).getUser(usernameString).getP{
+//                    Intent intent =new Intent(LoginActivity.this, HomeActivity.class);
+//                    intent.putExtra("loggedUser", UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
+//                    //Send user object in next Activity;" loggedUser" to HomeActivity if USER HAS LOGGED ONCE AND CHOSE PET?DOFF
+//                    startActivity(intent);
+//               }
 
-<<<<<<< HEAD
                 Intent intent = new Intent(LoginActivity.this, DifficultyActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
-=======
-                Intent intent = new Intent(LoginActivity.this,DifficultyActivity.class);
-                intent.putExtra("loggedUser",UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
->>>>>>> 7691d5eea1f77770154635b34b26dc8abfef691c
+
                 //Send user object in next Activity;" loggedUser"
                 startActivity(intent);
             }

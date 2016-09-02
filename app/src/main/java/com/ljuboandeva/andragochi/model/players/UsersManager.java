@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.ljuboandeva.andragochi.model.pet.Pet;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,6 +16,7 @@ import java.util.HashMap;
 /**
  * Created by Evelina on 8/26/2016.
  */
+// NE ZAPAZVA VS USER DANNI!!!!! TODO
 public class UsersManager {
 
     private static UsersManager ourInstance;
@@ -67,6 +70,7 @@ public class UsersManager {
                 JSONObject jobj = new JSONObject();
                 jobj.put("username", u.getUsername());
                 jobj.put("password", u.getPassword());
+                jobj.put("email",u.getEmail());
                 jsonUsers.put(jobj);
             }
         }
@@ -97,8 +101,11 @@ public class UsersManager {
     public void unregister(User user){
         users.remove(user.getUsername());
     }
-    //public void setUserDifficultyLevel()
+
     public static void setUserDifficulty(User user, String difficultyChoice){
         user.setDifficultyLevel(difficultyChoice);
+    }
+    public Pet getUserPet(String username){
+        return users.get(username).getPet();
     }
 }

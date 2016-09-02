@@ -34,7 +34,7 @@ public class Pet {
     private WebView petPicUnhappy;
 
 
-    Pet(String type){
+    public Pet(String type){
 
         this.type=type;
         this.age=START_AGE;

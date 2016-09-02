@@ -52,7 +52,7 @@
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:id="@+id/imageButton"
+            android:id="@+id/button_left"
             android:layout_gravity="center"
             android:background="@drawable/arrow_left"
             android:layout_weight="1" />
@@ -72,17 +72,8 @@
                     android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:id="@+id/pet_picture"
                     android:background="@drawable/tamagochi"/>
-                <ImageView
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/tamagochi"/>
-                <ImageView
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/tamagochi"/>
 
             </LinearLayout>
 
@@ -95,7 +86,7 @@
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:id="@+id/imageButton2"
+            android:id="@+id/button_right"
             android:background="@drawable/arrow_right"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"

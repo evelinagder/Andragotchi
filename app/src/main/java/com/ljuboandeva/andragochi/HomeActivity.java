@@ -9,6 +9,12 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        //get user
+        //threads that change the state
+        //sync time  with GMT
+        //save on stop() with shared pfres
+        // intent to shop
+        //
 
     }
 }

@@ -30,17 +30,17 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String usernameString = username.getText().toString();
                 String passwordString = password.getText().toString();
-                if(usernameString.isEmpty()){
+                if (usernameString.isEmpty()) {
                     username.setError("Username is compulsory");
                     username.requestFocus();
                     return;
                 }
-                if(passwordString.length() == 0){
+                if (passwordString.length() == 0) {
                     password.setError("Password is compulsory");
                     password.requestFocus();
                     return;
                 }
-                if(!UsersManager.getInstance(LoginActivity.this).validalteLogin(usernameString, passwordString)){
+                if (!UsersManager.getInstance(LoginActivity.this).validalteLogin(usernameString, passwordString)) {
                     username.setError("Invalid credentials");
                     username.setText("");
                     password.setText("");
@@ -49,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
 
-                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
-                intent.putExtra("loggedUser",UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
+                Intent intent = new Intent(LoginActivity.this, DifficultyActivity.class);
+                intent.putExtra("loggedUser", UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
                 //Send user object in next Activity;" loggedUser"
                 startActivity(intent);
             }
@@ -65,5 +65,21 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_REG_USER);
             }
         });
+    }
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            if(requestCode == REQUEST_REG_USER){
+                if(resultCode == RegisterActivity.RESULT_REG_SUCCESSFUL){
+                    String user = data.getStringExtra("username");
+                    String pass = data.getStringExtra("password");
+                    username.setText(user);
+                    password.setText(pass);
+                }
+            }
+        }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 }

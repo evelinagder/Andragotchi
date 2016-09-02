@@ -40,6 +40,7 @@ public class UsersManager {
                         obj.getString("password"),
                         obj.getString("email"));
                users.put(user.getUsername(), user);
+                Log.e("USER",users.toString());
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -96,5 +97,8 @@ public class UsersManager {
     public void unregister(User user){
         users.remove(user.getUsername());
     }
-
+    //public void setUserDifficultyLevel()
+    public static void setUserDifficulty(User user, String difficultyChoice){
+        user.setDifficultyLevel(difficultyChoice);
+    }
 }

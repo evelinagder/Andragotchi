@@ -49,8 +49,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
 
+<<<<<<< HEAD
                 Intent intent = new Intent(LoginActivity.this, DifficultyActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
+=======
+                Intent intent = new Intent(LoginActivity.this,DifficultyActivity.class);
+                intent.putExtra("loggedUser",UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
+>>>>>>> 7691d5eea1f77770154635b34b26dc8abfef691c
                 //Send user object in next Activity;" loggedUser"
                 startActivity(intent);
             }

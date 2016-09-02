@@ -90,7 +90,11 @@ public class User implements Serializable{
     public void setDifficultyLevel(String difficultyLevel){
         this.difficultyLevel=difficultyLevel;
     }
+<<<<<<< HEAD
     public String getDifficultyLevel(){
         return this.difficultyLevel;
     }
+=======
+
+>>>>>>> 7691d5eea1f77770154635b34b26dc8abfef691c
 }

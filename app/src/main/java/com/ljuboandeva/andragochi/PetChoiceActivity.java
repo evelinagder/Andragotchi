@@ -77,29 +77,27 @@ public class PetChoiceActivity extends AppCompatActivity {
                     return;
                 }
 
-                Intent intеnt = new Intent(PetChoiceActivity.this, HomeActivity.class);
-                intеnt.putExtra("loggedUser", UsersManager.getInstance(PetChoiceActivity.this).getUser(user.getUsername()));
+                Intent intent = new Intent(PetChoiceActivity.this, HomeActivity.class);
+                intent.putExtra("loggedUser", UsersManager.getInstance(PetChoiceActivity.this).getUser(user.getUsername()));
 
                 // PetManager.setUserPet(user, pet); SAVE PET TO USER IN SHARED PREFS TODO
-
-                startActivity(intеnt);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }
         });
     }
         private void changePet(int counter){
         switch(counter){
             case 0:
-                petType="Dino";
+                petType="Drago";
                 petPic.setImageResource(R.drawable.drago);break;
-
             case 1:
-                petType="Rex";
+                petType="Rhina";
                 petPic.setImageResource(R.drawable.rhina);break;
-            //change ID TODO
             case 2:
                 petType="Rex";
                 petPic.setImageResource(R.drawable.rex);break;
-            //change ID TODO
         }
     }
 }

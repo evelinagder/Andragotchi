@@ -31,12 +31,12 @@ public class DifficultyActivity extends AppCompatActivity {
         easy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("USER",user.getUsername());
                 UsersManager.setUserDifficulty(user,"easy");
-                Log.e("DIF",user.getDifficultyLevel());
                 Intent intent= new Intent(DifficultyActivity.this,PetChoiceActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(DifficultyActivity.this).getUser(user.getUsername()));
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
         medium.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +46,9 @@ public class DifficultyActivity extends AppCompatActivity {
                 UsersManager.setUserDifficulty(user,difficultyChoice);
                 Intent intent= new Intent(DifficultyActivity.this,PetChoiceActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(DifficultyActivity.this).getUser(user.getUsername()));
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
         hard.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +58,9 @@ public class DifficultyActivity extends AppCompatActivity {
                 UsersManager.setUserDifficulty(user,difficultyChoice);
                 Intent intent = new Intent(DifficultyActivity.this, PetChoiceActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(DifficultyActivity.this).getUser(user.getUsername()));
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
     }

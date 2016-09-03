@@ -16,6 +16,7 @@
         android:layout_alignParentTop="true"
         android:background="#FF870D"
         android:elevation="6dp"
+        android:text="Inventory"
         android:gravity="center"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"

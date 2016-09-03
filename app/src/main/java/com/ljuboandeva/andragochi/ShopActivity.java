@@ -9,28 +9,27 @@ import android.support.v7.widget.Toolbar;
 
 import com.ljuboandeva.andragochi.fragments_shop.*;
 
-public class ShopActivity extends AppCompatActivity implements
-        com.ljuboandeva.andragochi.fragments_shop.FoodFragment.OnFragmentInteractionListener,
-        com.ljuboandeva.andragochi.fragments_shop.ToysFragment.OnFragmentInteractionListener,
-        com.ljuboandeva.andragochi.fragments_shop.MedsFragment.OnFragmentInteractionListener{
+
+public class ShopActivity extends AppCompatActivity implements FoodFragment.OnFragmentInteractionListener,
+            ToysFragment.OnFragmentInteractionListener,MedsFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_shop);
         setSupportActionBar(toolbar);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout_shop);
         tabLayout.addTab(tabLayout.newTab().setText("FOOD"));
         tabLayout.addTab(tabLayout.newTab().setText("TOYS"));
         tabLayout.addTab(tabLayout.newTab().setText("MEDS"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final PagerAdapter adapter = new PagerAdapter
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager_shop);
+        final ShopPagerAdapter adapter_shop = new ShopPagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
+        viewPager.setAdapter(adapter_shop);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

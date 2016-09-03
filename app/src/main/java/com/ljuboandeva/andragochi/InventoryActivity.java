@@ -8,13 +8,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.ljuboandeva.andragochi.fragments_inventory.*;
-import com.ljuboandeva.andragochi.fragments_shop.*;
-import com.ljuboandeva.andragochi.fragments_shop.FoodFragment;
-import com.ljuboandeva.andragochi.fragments_shop.MedsFragment;
-import com.ljuboandeva.andragochi.fragments_shop.ToysFragment;
 
-public class InventoryActivity extends AppCompatActivity implements com.ljuboandeva.andragochi.fragments_inventory.FoodFragment.OnFragmentInteractionListener,
-        com.ljuboandeva.andragochi.fragments_inventory.ToysFragment.OnFragmentInteractionListener, com.ljuboandeva.andragochi.fragments_inventory.MedsFragment.OnFragmentInteractionListener{
+
+public class InventoryActivity extends AppCompatActivity implements FoodFragment.OnFragmentInteractionListener,
+        ToysFragment.OnFragmentInteractionListener,MedsFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +28,7 @@ public class InventoryActivity extends AppCompatActivity implements com.ljuboand
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager_inventory);
-        final PagerAdapter adapter = new PagerAdapter
+        final InventoryPagerAdapter adapter = new InventoryPagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

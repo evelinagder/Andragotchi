@@ -24,7 +24,10 @@
             android:hint="Username"
             android:textSize="30dp"
             android:fontFamily="casual"
-            android:id="@+id/editText_usernameR" />
+            android:id="@+id/editText_usernameR"
+            android:singleLine="true"
+            android:lines="1"
+            android:maxLines="1"/>
 
 
         <EditText
@@ -35,7 +38,10 @@
             android:ems="10"
             android:textSize="30dp"
             android:fontFamily="casual"
-            android:id="@+id/editText_passwordR" />
+            android:id="@+id/editText_passwordR"
+            android:singleLine="true"
+            android:lines="1"
+            android:maxLines="1"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -45,7 +51,10 @@
             android:ems="10"
             android:textSize="30dp"
             android:fontFamily="casual"
-            android:id="@+id/editText_confirmPassR" />
+            android:id="@+id/editText_confirmPassR"
+            android:singleLine="true"
+            android:lines="1"
+            android:maxLines="1"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -55,7 +64,10 @@
             android:ems="10"
             android:textSize="30dp"
             android:fontFamily="casual"
-            android:id="@+id/editText_email" />
+            android:id="@+id/editText_email"
+            android:singleLine="true"
+            android:lines="1"
+            android:maxLines="1"/>
 
         <Button
             android:layout_width="match_parent"

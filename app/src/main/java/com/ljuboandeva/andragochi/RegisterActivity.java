@@ -36,12 +36,12 @@ public class RegisterActivity extends AppCompatActivity {
                 String passU = passR.getText().toString();
                 String confirmU = confirmPassR.getText().toString();
                 String emailU = emailR.getText().toString();
-                String emailPattern = "^[A-Za-z][A-Za-z0-9]*([._-]?[A-Za-z0-9]+)@[A-Za-z].[A-Za-z]{0,3}?.[A-Za-z]{0,2}$";
+                String emailPattern = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
 
                 if (usernameU.isEmpty()) {
                     usernameR.setError("Username is compulsory");
-                   usernameR.requestFocus();
-                   return;
+                    usernameR.requestFocus();
+                    return;
                 }
                 if (passU.length() == 0) {
                     passR.setError("Password is compulsory");
@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                     passR.setError("Passwords mismatch");
                     passR.setText("");
                     confirmPassR.setText("");
-                    confirmPassR.requestFocus();
+                    passR.requestFocus();
                     return;
                 }
 

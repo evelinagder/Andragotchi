@@ -56,7 +56,7 @@ public class User implements Serializable{
         public void takeHome(){
             //TODO
         }
-        public void Feed(Food food){
+        public void feed(Food food){
             //TODO
         }
         public void giveMedicine(Medicine meds){
@@ -88,7 +88,7 @@ public class User implements Serializable{
     public Pet getPet() {
         return this.pet;
     }
-
+    public boolean petExists(){return pet!=null;}
     public String getEmail() {
         return email;
     }

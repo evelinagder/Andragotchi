@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
 public class LoginActivity extends AppCompatActivity {
@@ -50,18 +49,19 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-//                if(UsersManager.getInstance(LoginActivity.this).existsUser(usernameString) && UsersManager.getInstance(LoginActivity.this).getUser(usernameString).getP{
-//                    Intent intent =new Intent(LoginActivity.this, HomeActivity.class);
-//                    intent.putExtra("loggedUser", UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
-//                    //Send user object in next Activity;" loggedUser" to HomeActivity if USER HAS LOGGED ONCE AND CHOSE PET?DOFF
-//                    startActivity(intent);
-//               }
+                if(UsersManager.getInstance(LoginActivity.this).getUser(usernameString).petExists()){
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    intent.putExtra("loggedUser", UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
 
                 Intent intent = new Intent(LoginActivity.this, DifficultyActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
-
-                //Send user object in next Activity;" loggedUser"
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -87,8 +87,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
 }

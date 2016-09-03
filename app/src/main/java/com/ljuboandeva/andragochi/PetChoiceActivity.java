@@ -1,24 +1,17 @@
 package com.ljuboandeva.andragochi;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.ljuboandeva.andragochi.model.pet.Pet;
-import com.ljuboandeva.andragochi.model.pet.PetManager;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
-
-import com.ljuboandeva.andragochi.model.pet.PetManager;
-import com.ljuboandeva.andragochi.model.players.User;
 
 public class PetChoiceActivity extends AppCompatActivity {
 
@@ -44,14 +37,14 @@ public class PetChoiceActivity extends AppCompatActivity {
         left = (ImageButton) findViewById(R.id.button_left);
         petPic = (ImageView) findViewById(R.id.pet_picture);
         user = (User) getIntent().getExtras().get("loggedUser");
+        changePet(counter);
 
         right.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View view) {
-                if (counter <= 2) {
-                  changePet(counter);
-                    counter++;
+                if (counter < 2) {
+                  changePet(++counter);
 
                 }
             }
@@ -60,8 +53,7 @@ public class PetChoiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (counter > 0) {
-                    changePet(counter);
-                    counter--;
+                    changePet(--counter);
                 }
             }
         });
@@ -80,7 +72,9 @@ public class PetChoiceActivity extends AppCompatActivity {
                     user.setPet(userPet);
                 }
                 else{
-                    confirmPet.setError("Pet name is empty!");
+                    namePet.setError("Pet name is empty!");
+                    namePet.requestFocus();
+                    return;
                 }
 
                 Intent intеnt = new Intent(PetChoiceActivity.this, HomeActivity.class);
@@ -96,15 +90,15 @@ public class PetChoiceActivity extends AppCompatActivity {
         switch(counter){
             case 0:
                 petType="Dino";
-                petPic.setImageResource(R.drawable.tamagochi);break;
+                petPic.setImageResource(R.drawable.drago);break;
 
             case 1:
                 petType="Rex";
-                petPic.setImageResource(R.drawable.tamagochi);break;
+                petPic.setImageResource(R.drawable.rhina);break;
             //change ID TODO
             case 2:
                 petType="Rex";
-                petPic.setImageResource(R.drawable.tamagochi);break;
+                petPic.setImageResource(R.drawable.rex);break;
             //change ID TODO
         }
     }

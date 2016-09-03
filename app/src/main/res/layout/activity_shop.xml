@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/general_background"
+    android:background="@drawable/background_default_pale"
     tools:context="com.ljuboandeva.andragochi.ShopActivity">
 
     <android.support.v7.widget.Toolbar

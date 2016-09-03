@@ -72,8 +72,7 @@
                     android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:id="@+id/pet_picture"
-                    android:background="@drawable/tamagochi"/>
+                    android:id="@+id/pet_picture"/>
 
             </LinearLayout>
 

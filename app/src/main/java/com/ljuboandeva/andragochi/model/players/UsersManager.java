@@ -16,7 +16,7 @@ import java.util.HashMap;
 /**
  * Created by Evelina on 8/26/2016.
  */
-// NE ZAPAZVA VS USER DANNI!!!!! TODO
+
 public class UsersManager {
 
     private static UsersManager ourInstance;
@@ -33,8 +33,6 @@ public class UsersManager {
 
         users = new HashMap<>();
         String json = activity.getSharedPreferences("Andragochi", Context.MODE_PRIVATE).getString("registeredUsers", "no users");
-        Log.e("LOADED USERS", json);
-
         try {
             JSONArray arr = new JSONArray(json);
             for(int i = 0; i < arr.length(); i++){
@@ -108,8 +106,8 @@ public class UsersManager {
         return users.get(username).getPet();
     }
 
-    private void saveUsers(Activity activity){
-        SharedPreferences prefs = activity.getSharedPreferences("Andragochi",Context.MODE_PRIVATE);
+    private void saveUsers(Activity activity) {
+        SharedPreferences prefs = activity.getSharedPreferences("Andragochi", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         String key = "registeredUsers";
         String value;
@@ -119,9 +117,9 @@ public class UsersManager {
                 JSONObject jobj = new JSONObject();
                 jobj.put("username", u.getUsername());
                 jobj.put("password", u.getPassword());
-                jobj.put("email",u.getEmail());
-                jobj.put("difficulty",u.getDifficultyLevel());
-                if(u.getPet()!=null) {
+                jobj.put("email", u.getEmail());
+                jobj.put("difficulty", u.getDifficultyLevel());
+                if (u.getPet() != null) {
                     jobj.put("petName", u.getPet().getName());
                     jobj.put("petType", u.getPet().getType());
                     jobj.put("petAge", u.getPet().getAge());
@@ -132,13 +130,20 @@ public class UsersManager {
                 }
                 jsonUsers.put(jobj);
             }
-        }
-        catch(JSONException e){
+        } catch (JSONException e) {
             Log.e("JSON", e.getMessage());
         }
         value = jsonUsers.toString();
         Log.e("JSON", value);
         editor.putString(key, value);
         editor.commit();
+    }
+
+    //creates a new file with shared prefs, that stores the boolean value logged_in!
+    public void createPrefsLogin(Context activity){
+        SharedPreferences prefs = activity.getSharedPreferences("Andragochi",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        String key = "logged_in";
+        boolean value = false;
     }
 }

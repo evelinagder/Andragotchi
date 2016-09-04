@@ -64,23 +64,16 @@ public class PetChoiceActivity extends AppCompatActivity {
             public void onClick(View view) {
                 changePet(counter);
                 String petName=namePet.getText().toString();
-
-                if(!petName.isEmpty()) {
-                    confirmPet.setError(null);
-                    Pet userPet = new Pet(petType);
-                    userPet.setName(petName);
-                    user.setPet(userPet);
-                }
-                else{
+                if(petName.isEmpty()){
                     namePet.setError("Pet name is empty!");
                     namePet.requestFocus();
                     return;
                 }
-
+                confirmPet.setError(null);
+                Pet userPet = new Pet(petType, petName);
+                UsersManager.getInstance(PetChoiceActivity.this).setUserPet(PetChoiceActivity.this,user,userPet);
                 Intent intent = new Intent(PetChoiceActivity.this, HomeActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(PetChoiceActivity.this).getUser(user.getUsername()));
-
-                // PetManager.setUserPet(user, pet); SAVE PET TO USER IN SHARED PREFS TODO
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();

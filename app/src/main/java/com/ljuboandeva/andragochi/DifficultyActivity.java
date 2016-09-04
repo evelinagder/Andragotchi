@@ -3,7 +3,6 @@ package com.ljuboandeva.andragochi;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -27,41 +26,32 @@ public class DifficultyActivity extends AppCompatActivity {
         hard=(Button)findViewById(R.id.button_hard);
         user= (User) getIntent().getExtras().get("loggedUser");
 
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String difficultyChoice=null;
+                switch (view.getId()){
+                    case R.id.button_easy:
+                        difficultyChoice="easy";
+                        break;
+                    case R.id.button_medium:
+                        difficultyChoice="medium";
+                        break;
+                    case R.id.button_hard:
+                        difficultyChoice="hard";
+                        break;
+                }
+                UsersManager.getInstance(DifficultyActivity.this).setUserDifficulty(DifficultyActivity.this,user,difficultyChoice);
+                Intent intent= new Intent(DifficultyActivity.this,PetChoiceActivity.class);
+                intent.putExtra("loggedUser", UsersManager.getInstance(DifficultyActivity.this).getUser(user.getUsername()));
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        };
 
-        easy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UsersManager.setUserDifficulty(user,"easy");
-                Intent intent= new Intent(DifficultyActivity.this,PetChoiceActivity.class);
-                intent.putExtra("loggedUser", UsersManager.getInstance(DifficultyActivity.this).getUser(user.getUsername()));
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
-            }
-        });
-        medium.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String difficultyChoice="medium";
-                UsersManager.setUserDifficulty(user,difficultyChoice);
-                Intent intent= new Intent(DifficultyActivity.this,PetChoiceActivity.class);
-                intent.putExtra("loggedUser", UsersManager.getInstance(DifficultyActivity.this).getUser(user.getUsername()));
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
-            }
-        });
-        hard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String difficultyChoice = "hard";
-                UsersManager.setUserDifficulty(user,difficultyChoice);
-                Intent intent = new Intent(DifficultyActivity.this, PetChoiceActivity.class);
-                intent.putExtra("loggedUser", UsersManager.getInstance(DifficultyActivity.this).getUser(user.getUsername()));
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
-            }
-        });
+        easy.setOnClickListener(onClickListener);
+        medium.setOnClickListener(onClickListener);
+        hard.setOnClickListener(onClickListener);
     }
 }

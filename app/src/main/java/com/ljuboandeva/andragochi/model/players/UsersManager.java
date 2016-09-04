@@ -32,17 +32,23 @@ public class UsersManager {
     private UsersManager(Activity activity) {
 
         users = new HashMap<>();
-        String json = activity.getSharedPreferences("Library", Context.MODE_PRIVATE).getString("registerredUsers", "no users");
+        String json = activity.getSharedPreferences("Andragochi", Context.MODE_PRIVATE).getString("registeredUsers", "no users");
         Log.e("LOADED USERS", json);
 
         try {
             JSONArray arr = new JSONArray(json);
             for(int i = 0; i < arr.length(); i++){
                 JSONObject obj = arr.getJSONObject(i);
-                User user = new User(obj.getString("username"),
-                        obj.getString("password"),
-                        obj.getString("email"));
-               users.put(user.getUsername(), user);
+                User user = new User(obj.getString("username"), obj.getString("password"), obj.getString("email"));
+                user.setDifficultyLevel(obj.getString("difficulty"));
+                Pet pet = new Pet(obj.getString("petType"), obj.getString("petName"));
+                pet.setAge(obj.getInt("petAge"));
+                pet.setHealth(obj.getInt("petHealth"));
+                pet.setCleanliness(obj.getInt("petCleanliness"));
+                pet.setHappiness(obj.getInt("petHappiness"));
+                pet.setFill(obj.getInt("petFill"));
+                user.setPet(pet);
+                users.put(user.getUsername(), user);
                 Log.e("USER",users.toString());
             }
         } catch (JSONException e) {
@@ -58,29 +64,7 @@ public class UsersManager {
     public void registerUser(Activity activity, String username, String pass1, String email) {
         User user = new User(username, pass1,email);
         users.put(username, user);
-
-
-        SharedPreferences prefs = activity.getSharedPreferences("Library",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        String key = "registerredUsers";
-        String value = "...";//JSON format containing all users from the collection
-        JSONArray jsonUsers = new JSONArray();
-        try {
-            for (User u : users.values()) {
-                JSONObject jobj = new JSONObject();
-                jobj.put("username", u.getUsername());
-                jobj.put("password", u.getPassword());
-                jobj.put("email",u.getEmail());
-                jsonUsers.put(jobj);
-            }
-        }
-        catch(JSONException e){
-            Log.e("JSON", e.getMessage());
-        }
-        value = jsonUsers.toString();
-        Log.e("JSON", value);
-        editor.putString(key, value);
-        editor.commit();
+        saveUsers(activity);
     }
 
     public boolean validalteLogin(String username, String password) {
@@ -95,17 +79,66 @@ public class UsersManager {
         return true;
     }
 
+
     public User getUser(String username){
         return users.get(username);
     }
-    public void unregister(User user){
+    public void unregister(Activity activity,User user){
         users.remove(user.getUsername());
+        saveUsers(activity);
     }
 
-    public static void setUserDifficulty(User user, String difficultyChoice){
+    public void setUserDifficulty(Activity activity, User user, String difficultyChoice){
         user.setDifficultyLevel(difficultyChoice);
+        User tempUser = user;
+        users.remove(user);
+        users.put(tempUser.getUsername(),tempUser);
+        saveUsers(activity);
     }
+
+    public void setUserPet(Activity activity, User user, Pet pet){
+        user.setPet(pet);
+        User tempUser = user;
+        users.remove(user);
+        users.put(tempUser.getUsername(),tempUser);
+        saveUsers(activity);
+    }
+
     public Pet getUserPet(String username){
         return users.get(username).getPet();
+    }
+
+    private void saveUsers(Activity activity){
+        SharedPreferences prefs = activity.getSharedPreferences("Andragochi",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        String key = "registeredUsers";
+        String value;
+        JSONArray jsonUsers = new JSONArray();
+        try {
+            for (User u : users.values()) {
+                JSONObject jobj = new JSONObject();
+                jobj.put("username", u.getUsername());
+                jobj.put("password", u.getPassword());
+                jobj.put("email",u.getEmail());
+                jobj.put("difficulty",u.getDifficultyLevel());
+                if(u.getPet()!=null) {
+                    jobj.put("petName", u.getPet().getName());
+                    jobj.put("petType", u.getPet().getType());
+                    jobj.put("petAge", u.getPet().getAge());
+                    jobj.put("petHealth", u.getPet().getHealth());
+                    jobj.put("petCleanliness", u.getPet().getCleanliness());
+                    jobj.put("petHappiness", u.getPet().getHappiness());
+                    jobj.put("petFill", u.getPet().getFill());
+                }
+                jsonUsers.put(jobj);
+            }
+        }
+        catch(JSONException e){
+            Log.e("JSON", e.getMessage());
+        }
+        value = jsonUsers.toString();
+        Log.e("JSON", value);
+        editor.putString(key, value);
+        editor.commit();
     }
 }

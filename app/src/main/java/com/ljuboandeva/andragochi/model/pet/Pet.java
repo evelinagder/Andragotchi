@@ -5,10 +5,12 @@ import android.webkit.WebView;
 import com.ljuboandeva.andragochi.model.shop.Food;
 import com.ljuboandeva.andragochi.model.shop.Toy;
 
+import java.io.Serializable;
+
 /**
  * Created by Evelina on 8/26/2016.
  */
-public class Pet {
+public class Pet implements Serializable {
 
     private static final int START_AGE=0;
     private static final int MIN_FILL=0;
@@ -33,8 +35,7 @@ public class Pet {
     private WebView petPicHappy;
     private WebView petPicUnhappy;
 
-
-    public Pet(String type){
+    public Pet(String type, String name){
 
         this.type=type;
         this.age=START_AGE;
@@ -42,11 +43,65 @@ public class Pet {
         this.happiness=MAX_HAPPINESS;
         this.fill=MAX_FILL;
         this.cleanliness=MAX_CLEANLINESS;
-
+        this.name=name;
     }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name){
         this.name=name;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getHappiness() {
+        return happiness;
+    }
+
+    public void setHappiness(int happiness) {
+        this.happiness = happiness;
+    }
+
+    public int getFill() {
+        return fill;
+    }
+
+    public void setFill(int fill) {
+        this.fill = fill;
+    }
+
+    public int getCleanliness() {
+        return cleanliness;
+    }
+
+    public void setCleanliness(int cleanliness) {
+        this.cleanliness = cleanliness;
+    }
+
     public void eat(Food food){
         //TODO
     }
@@ -71,4 +126,5 @@ public class Pet {
     public void poop(){
         //TODO
     }
+
 }

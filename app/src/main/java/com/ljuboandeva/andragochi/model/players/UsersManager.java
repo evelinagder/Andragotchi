@@ -47,7 +47,6 @@ public class UsersManager {
                 pet.setFill(obj.getInt("petFill"));
                 user.setPet(pet);
                 users.put(user.getUsername(), user);
-                Log.e("USER",users.toString());
             }
         } catch (JSONException e) {
             e.printStackTrace();

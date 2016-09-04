@@ -53,6 +53,13 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+                SharedPreferences prefs = LoginActivity.this.getSharedPreferences("Andragochi", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("logged_in", true);
+                editor.putString("currentUser",usernameString);
+                editor.commit();
+                Toast.makeText(LoginActivity.this,"Logged in",Toast.LENGTH_LONG).show();
+
                 if(UsersManager.getInstance(LoginActivity.this).getUser(usernameString).petExists()){
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     intent.putExtra("loggedUser", UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
@@ -60,19 +67,13 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-                //after successful login -change the default value saved in shared prefs to TRUE!
-                SharedPreferences prefs = LoginActivity.this.getSharedPreferences("Login", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putBoolean("logged_in", true);
-                editor.putString("currentUser",usernameString);
-                editor.commit();
-                Toast.makeText(LoginActivity.this,"Logged in",Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(LoginActivity.this, DifficultyActivity.class);
-                intent.putExtra("loggedUser", UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
+                else {
+                    Intent intent = new Intent(LoginActivity.this, DifficultyActivity.class);
+                    intent.putExtra("loggedUser", UsersManager.getInstance(LoginActivity.this).getUser(usernameString));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 

@@ -34,26 +34,19 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-<<<<<<< HEAD
         user=(User) getIntent().getExtras().get("loggedUser");
-=======
-       // user=(User) getIntent().getExtras().get("loggedUser");//???
->>>>>>> a09ee51d036be01ce6556e9e9ffe9034b618066a
-
         feed = (Button)findViewById(R.id.button_feed);
         clean= (Button)findViewById(R.id.button_clean);
         medicine= (Button)findViewById(R.id.button_medicine);
         shop=(Button)findViewById(R.id.button_shop);
         tempLogOut= (Button) findViewById(R.id.button_tempLogOut);
         petName= (TextView) findViewById(R.id.textView_name) ;
-
         happiness=(TextView)findViewById(R.id.textView_play) ;
         health=(TextView)findViewById(R.id.textView_health) ;
         fill=(TextView)findViewById(R.id.textView_food);
         cleanliness=(TextView)findViewById(R.id.textView_clean) ;
 
         petName.setText(user.getPet().getName());
-
 
         tempLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,13 +56,10 @@ public class HomeActivity extends AppCompatActivity {
                 editor.putBoolean("logged_in", false);
                 editor.commit();
                 Toast.makeText(HomeActivity.this,"Logged out",Toast.LENGTH_LONG).show();
-
                 Intent intent= new Intent(HomeActivity.this,LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
-
-
             }
         });
 

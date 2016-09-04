@@ -9,9 +9,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.ljuboandeva.andragochi.model.players.User;
+import com.ljuboandeva.andragochi.model.players.UsersManager;
+
 public class WelcomeActivity extends AppCompatActivity {
 
     ImageButton signIn;
+   // User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +27,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 maintainLogin(WelcomeActivity.this);
-
+               // user= (User) getIntent().getExtras().get("loggedUser");
 
             }
         });
@@ -30,12 +35,13 @@ public class WelcomeActivity extends AppCompatActivity {
     }
     //gets the boolean value from file "Users", and checks if true-user is logged in, if false -to login activity
     public void maintainLogin(Context activity){
-        boolean logged_in=activity.getSharedPreferences("Users", Context.MODE_PRIVATE).getBoolean("logged_in", false);
+        boolean logged_in=activity.getSharedPreferences("Andragochi", Context.MODE_PRIVATE).getBoolean("logged_in", false);
 
         if (logged_in) {
             Toast.makeText(WelcomeActivity.this,"Going to Home",Toast.LENGTH_SHORT).show();
             Intent intent= new Intent(WelcomeActivity.this, HomeActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+           // intent.putExtra("loggedUser", UsersManager.getInstance(WelcomeActivity.this).getUser(user.getUsername()));
                startActivity(intent);
                finish();
 

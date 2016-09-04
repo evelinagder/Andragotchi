@@ -61,9 +61,10 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 }
                 //after successful login -change the default value saved in shared prefs to TRUE!
-                SharedPreferences prefs = LoginActivity.this.getSharedPreferences("Users", Context.MODE_PRIVATE);
+                SharedPreferences prefs = LoginActivity.this.getSharedPreferences("Login", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putBoolean("logged_in", true);
+                editor.putString("currentUser",usernameString);
                 editor.commit();
                 Toast.makeText(LoginActivity.this,"Logged in",Toast.LENGTH_LONG).show();
 

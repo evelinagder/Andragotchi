@@ -141,7 +141,7 @@ public class UsersManager {
 
     //creates a new file with shared prefs, that stores the boolean value logged_in!
     public void createPrefsLogin(Context activity){
-        SharedPreferences prefs = activity.getSharedPreferences("Andragochi",Context.MODE_PRIVATE);
+        SharedPreferences prefs = activity.getSharedPreferences("Login",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         String key = "logged_in";
         boolean value = false;

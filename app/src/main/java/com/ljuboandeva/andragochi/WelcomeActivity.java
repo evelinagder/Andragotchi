@@ -16,7 +16,11 @@ import com.ljuboandeva.andragochi.model.players.UsersManager;
 public class WelcomeActivity extends AppCompatActivity {
 
     ImageButton signIn;
+<<<<<<< HEAD
    User user;
+=======
+   // User user;
+>>>>>>> a09ee51d036be01ce6556e9e9ffe9034b618066a
 
 
     @Override
@@ -29,6 +33,10 @@ public class WelcomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 user=getCurrentUser(WelcomeActivity.this);
                 maintainLogin(WelcomeActivity.this);
+<<<<<<< HEAD
+=======
+               // user= (User) getIntent().getExtras().get("loggedUser");
+>>>>>>> a09ee51d036be01ce6556e9e9ffe9034b618066a
 
             }
         });
@@ -36,13 +44,21 @@ public class WelcomeActivity extends AppCompatActivity {
     }
     //gets the boolean value from file "Users", and checks if true-user is logged in, if false -to login activity
     public void maintainLogin(Context activity){
+<<<<<<< HEAD
         boolean logged_in=activity.getSharedPreferences("Login", Context.MODE_PRIVATE).getBoolean("logged_in", false);
+=======
+        boolean logged_in=activity.getSharedPreferences("Andragochi", Context.MODE_PRIVATE).getBoolean("logged_in", false);
+>>>>>>> a09ee51d036be01ce6556e9e9ffe9034b618066a
 
         if (logged_in) {
             Toast.makeText(WelcomeActivity.this,"Going to Home",Toast.LENGTH_SHORT).show();
             Intent intent= new Intent(WelcomeActivity.this, HomeActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+<<<<<<< HEAD
             intent.putExtra("loggedUser", UsersManager.getInstance(WelcomeActivity.this).getUser(user.getUsername()));
+=======
+           // intent.putExtra("loggedUser", UsersManager.getInstance(WelcomeActivity.this).getUser(user.getUsername()));
+>>>>>>> a09ee51d036be01ce6556e9e9ffe9034b618066a
                startActivity(intent);
                finish();
 

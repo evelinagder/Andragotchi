@@ -34,7 +34,11 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+<<<<<<< HEAD
         user=(User) getIntent().getExtras().get("loggedUser");
+=======
+       // user=(User) getIntent().getExtras().get("loggedUser");//???
+>>>>>>> a09ee51d036be01ce6556e9e9ffe9034b618066a
 
         feed = (Button)findViewById(R.id.button_feed);
         clean= (Button)findViewById(R.id.button_clean);

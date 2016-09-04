@@ -60,7 +60,7 @@ public class UsersManager {
         users.put(username, user);
 
 
-        SharedPreferences prefs = activity.getSharedPreferences("Library",Context.MODE_PRIVATE);
+        SharedPreferences prefs = activity.getSharedPreferences("USERS",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         String key = "registerredUsers";
         String value = "...";//JSON format containing all users from the collection
@@ -107,5 +107,15 @@ public class UsersManager {
     }
     public Pet getUserPet(String username){
         return users.get(username).getPet();
+    }
+
+
+    //creates a new file with shared prefs, that stores the boolean value logged_in!
+    public void createPrefsLogin(Context activity){
+        SharedPreferences prefs = activity.getSharedPreferences("Users",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        String key = "logged_in";
+        boolean value = false;
+
     }
 }

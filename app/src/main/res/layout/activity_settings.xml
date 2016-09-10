@@ -55,10 +55,22 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"/>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/name_settings"
+        android:singleLine="true"
+        android:lines="1"
+        android:maxLines="1"
+        android:textSize="30dp"
+        android:fontFamily="casual"
+        android:textColor="#000000"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:id="@+id/button3"
+        android:id="@+id/button_changeName"
         android:src="@drawable/confirm"
         android:fontFamily="casual"
         android:textAlignment="center"

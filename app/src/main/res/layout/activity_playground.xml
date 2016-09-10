@@ -25,7 +25,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:id="@+id/button_shop"
+            android:id="@+id/button_shop_playground"
             android:src="@drawable/confirm"
             android:fontFamily="casual"
             android:textAlignment="center"
@@ -39,7 +39,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:id="@+id/button10"
+            android:id="@+id/button_home"
             android:src="@drawable/confirm"
             android:fontFamily="casual"
             android:textAlignment="center"
@@ -161,6 +161,7 @@
             android:layout_weight="10"
             android:foregroundGravity="left"
             android:paddingLeft="1dp"
+            android:id="@+id/button_inventory_playground"
             android:scaleType="centerCrop"
             android:background="@android:color/transparent"
             android:src="@drawable/inventory"/>
@@ -176,6 +177,7 @@
             android:layout_weight="10"
             android:foregroundGravity="right"
             android:scaleType="centerCrop"
+            android:id="@+id/button_settings_playground"
             android:background="@android:color/transparent"
             android:src="@drawable/settings"/>
 

@@ -19,48 +19,39 @@
         android:id="@+id/textView3"
         android:paddingBottom="@dimen/text_bottom_padding"
         android:paddingTop="@dimen/text_top_padding"
-        android:textAlignment="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:textAlignment="center" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="90dp"
-        android:id="@+id/button2"
+        android:id="@+id/button_park"
         android:src="@drawable/confirm"
         android:fontFamily="casual"
         android:textAlignment="center"
         android:textSize="40sp"
         android:text="Park"
-        android:background="@drawable/confirm"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/button3"
-        android:layout_alignParentLeft="true" />
+        android:background="@drawable/confirm"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:id="@+id/button3"
+        android:id="@+id/button_sandbox"
         android:src="@drawable/confirm"
         android:fontFamily="casual"
         android:textAlignment="center"
         android:textSize="40sp"
         android:text="Sandbox"
-        android:background="@drawable/confirm"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:background="@drawable/confirm" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="90dp"
-        android:id="@+id/button4"
+        android:id="@+id/button_pool"
         android:src="@drawable/confirm"
         android:fontFamily="casual"
         android:textAlignment="center"
         android:textSize="40sp"
         android:text="pool"
-        android:background="@drawable/confirm"
-        android:layout_above="@+id/button2"
-        android:layout_alignParentLeft="true" />
+        android:background="@drawable/confirm"/>
 
 </LinearLayout>

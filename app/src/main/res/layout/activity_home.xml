@@ -38,7 +38,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:id="@+id/button_tempLogOut"
+            android:id="@+id/button_go_out"
             android:src="@drawable/confirm"
             android:fontFamily="casual"
             android:textAlignment="center"
@@ -205,6 +205,7 @@
             android:foregroundGravity="left"
             android:paddingLeft="1dp"
             android:scaleType="centerCrop"
+            android:id="@+id/button_inventory"
             android:background="@android:color/transparent"
             android:src="@drawable/inventory"/>
 
@@ -219,6 +220,7 @@
             android:layout_weight="10"
             android:foregroundGravity="right"
             android:scaleType="centerCrop"
+            android:id="@+id/button_settings"
             android:background="@android:color/transparent"
             android:src="@drawable/settings"/>
 

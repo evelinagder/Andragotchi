@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +20,9 @@ public class HomeActivity extends AppCompatActivity {
     Button clean;
     Button medicine;
     Button shop;
-    Button tempLogOut; // go out!
+    ImageButton inventory;
+    ImageButton settings;
+    Button goOut;
     TextView petName;
 
     TextView happiness;
@@ -39,7 +42,9 @@ public class HomeActivity extends AppCompatActivity {
         clean= (Button)findViewById(R.id.button_clean);
         medicine= (Button)findViewById(R.id.button_medicine);
         shop=(Button)findViewById(R.id.button_shop);
-        tempLogOut= (Button) findViewById(R.id.button_tempLogOut);
+        inventory= (ImageButton) findViewById(R.id.button_inventory);
+        settings= (ImageButton) findViewById(R.id.button_settings);
+        goOut= (Button) findViewById(R.id.button_go_out);
         petName= (TextView) findViewById(R.id.textView_name) ;
         happiness=(TextView)findViewById(R.id.textView_play) ;
         health=(TextView)findViewById(R.id.textView_health) ;
@@ -48,18 +53,12 @@ public class HomeActivity extends AppCompatActivity {
 
         petName.setText(user.getPet().getName());
 
-        tempLogOut.setOnClickListener(new View.OnClickListener() {
+        goOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences prefs = HomeActivity.this.getSharedPreferences("Andragochi", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putBoolean("logged_in", false);
-                editor.commit();
-                Toast.makeText(HomeActivity.this,"Logged out",Toast.LENGTH_LONG).show();
-                Intent intent= new Intent(HomeActivity.this,LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent intent= new Intent(HomeActivity.this, OutChoiceActivity.class);
+                intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -68,9 +67,25 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(HomeActivity.this, ShopActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-                finish();
+            }
+        });
+
+        inventory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(HomeActivity.this, InventoryActivity.class);
+                intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
+                startActivity(intent);
+            }
+        });
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(HomeActivity.this, SettingsActivity.class);
+                intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
+                startActivity(intent);
             }
         });
         feed.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +94,7 @@ public class HomeActivity extends AppCompatActivity {
                 //TODO fill.setText...
             }
         });
+
         clean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

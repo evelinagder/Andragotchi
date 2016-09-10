@@ -71,7 +71,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="90dp"
-        android:id="@+id/button4"
+        android:id="@+id/button_logout"
         android:src="@drawable/confirm"
         android:fontFamily="casual"
         android:textAlignment="center"

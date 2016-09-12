@@ -64,7 +64,7 @@
         android:layout_height="300dp"
         android:id="@+id/imageView3"
         android:layout_gravity="center"
-        android:background="@drawable/drago"
+        android:background="@drawable/drago_home"
         android:layout_weight="8"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />

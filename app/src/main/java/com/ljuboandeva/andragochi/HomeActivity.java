@@ -1,21 +1,21 @@
 package com.ljuboandeva.andragochi;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
 public class HomeActivity extends AppCompatActivity {
     User user;
+    Pet pet;
     Button feed;
     Button clean;
     Button medicine;
@@ -24,11 +24,12 @@ public class HomeActivity extends AppCompatActivity {
     ImageButton settings;
     Button goOut;
     TextView petName;
-
     TextView happiness;
     TextView health;
     TextView fill;
     TextView cleanliness;
+    ImageView petImage;
+
     // TODO threads that change the state
     //TODO sync time  with GMT
     //TODO save on stop() with shared pfres
@@ -38,6 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         user=(User) getIntent().getExtras().get("loggedUser");
+        pet = user.getPet();
         feed = (Button)findViewById(R.id.button_feed);
         clean= (Button)findViewById(R.id.button_clean);
         medicine= (Button)findViewById(R.id.button_medicine);
@@ -50,8 +52,15 @@ public class HomeActivity extends AppCompatActivity {
         health=(TextView)findViewById(R.id.textView_health) ;
         fill=(TextView)findViewById(R.id.textView_food);
         cleanliness=(TextView)findViewById(R.id.textView_clean) ;
-
-        petName.setText(user.getPet().getName());
+        petImage = (ImageView) findViewById(R.id.pet_image_home);
+        switch (pet.getType()){
+            case "Drago":
+                petImage.setBackgroundResource(R.drawable.drago_home); break;
+            case "Rhina":
+                petImage.setBackgroundResource(R.drawable.rhina_home); break;
+            case "Rex":
+                petImage.setBackgroundResource(R.drawable.rex_home); break;
+        }
 
         goOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +95,7 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent= new Intent(HomeActivity.this, SettingsActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
                 startActivity(intent);
+                finish();
             }
         });
         feed.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +104,6 @@ public class HomeActivity extends AppCompatActivity {
                 //TODO fill.setText...
             }
         });
-
         clean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,6 +116,15 @@ public class HomeActivity extends AppCompatActivity {
                 //TODO health.setText..
             }
         });
-        //TODO change tempLogOut to GoOut!
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        petName.setText(pet.getName());
+        happiness.setText(String.valueOf(pet.getHappiness()));
+        cleanliness.setText(String.valueOf(pet.getCleanliness()));
+        fill.setText(String.valueOf(pet.getFill()));
+        health.setText(String.valueOf(pet.getHealth()));
     }
 }

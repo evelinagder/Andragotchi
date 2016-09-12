@@ -84,13 +84,13 @@ public class PetChoiceActivity extends AppCompatActivity {
         switch(counter){
             case 0:
                 petType="Drago";
-                petPic.setImageResource(R.drawable.drago);break;
+                petPic.setImageResource(R.drawable.drago_home);break;
             case 1:
                 petType="Rhina";
-                petPic.setImageResource(R.drawable.rhina);break;
+                petPic.setImageResource(R.drawable.rhina_home);break;
             case 2:
                 petType="Rex";
-                petPic.setImageResource(R.drawable.rex);break;
+                petPic.setImageResource(R.drawable.rex_home);break;
         }
     }
 }

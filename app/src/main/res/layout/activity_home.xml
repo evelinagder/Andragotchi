@@ -7,14 +7,6 @@
     android:background="@drawable/background_home"
     tools:context="com.ljuboandeva.andragochi.HomeActivity">
 
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:id="@+id/imageView4"
-        android:background="@drawable/drago"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,32 +42,6 @@
             android:layout_alignParentLeft="true"
             android:layout_weight="1"/>
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/imageView5"
-        android:background="@drawable/heart"
-        android:layout_alignTop="@+id/imageView8"
-        android:layout_toEndOf="@+id/button_feed"
-        android:layout_alignStart="@+id/textView_food" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/imageView6"
-        android:background="@drawable/food"
-        android:layout_below="@+id/textView_play"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/imageView4" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/imageView8"
-        android:background="@drawable/play"
-        android:layout_above="@+id/textView_play"
-        android:layout_toStartOf="@+id/imageView4" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -114,26 +80,11 @@
             android:layout_alignParentLeft="true" />
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:id="@+id/button_feed"
-        android:src="@drawable/confirm"
-        android:fontFamily="casual"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        android:text="Feed Me"
-        android:background="@drawable/confirm"
-        android:layout_weight="1"
-        android:layout_below="@+id/imageView4"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:textSize="35sp"
-        android:text="100"
         android:id="@+id/textView_health"
         android:layout_below="@+id/imageView5"
         android:layout_alignEnd="@+id/imageView6" />
@@ -143,48 +94,35 @@
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:textSize="35sp"
-        android:text="100"
         android:id="@+id/textView_play"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/imageView8"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:textSize="35sp"
-        android:text="100"
         android:id="@+id/textView_clean"
-        android:layout_above="@+id/button_feed"
-        android:layout_toStartOf="@+id/imageView4" />
+        android:layout_below="@+id/imageView6"
+        android:layout_alignLeft="@+id/imageView7"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:textSize="35sp"
-        android:text="100"
         android:id="@+id/textView_food"
-        android:layout_above="@+id/button_feed"
-        android:layout_toEndOf="@+id/imageView4" />
+        android:layout_below="@+id/imageView6"
+        android:layout_alignEnd="@+id/imageView6"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
-        android:textSize="35sp"
-        android:text="Drago"
+        android:textSize="60sp"
         android:id="@+id/textView_name"
-        android:layout_above="@+id/imageView4"
+        android:layout_above="@+id/pet_image_home"
         android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/imageView7"
-        android:background="@drawable/broom"
-        android:layout_above="@+id/textView_clean"
-        android:layout_alignEnd="@+id/textView_play" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -226,6 +164,61 @@
 
 
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:id="@+id/pet_image_home"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/drago_home"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:id="@+id/button_feed"
+        android:src="@drawable/confirm"
+        android:fontFamily="casual"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:text="Feed Me"
+        android:background="@drawable/confirm"
+        android:layout_weight="1"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/pet_image_home"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView5"
+        android:background="@drawable/heart"
+        android:layout_alignTop="@+id/pet_image_home"
+        android:layout_alignEnd="@+id/textView_health" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView7"
+        android:background="@drawable/broom"
+        android:layout_below="@+id/textView_play" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView8"
+        android:background="@drawable/play"
+        android:layout_marginTop="8dp"
+        android:layout_alignTop="@+id/pet_image_home"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView6"
+        android:background="@drawable/food"
+        android:layout_alignTop="@+id/imageView7"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>

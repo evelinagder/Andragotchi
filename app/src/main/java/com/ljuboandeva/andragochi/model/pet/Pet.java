@@ -1,11 +1,11 @@
 package com.ljuboandeva.andragochi.model.pet;
 
 import android.webkit.WebView;
-
+import android.widget.ImageView;
 import com.ljuboandeva.andragochi.model.shop.Food;
 import com.ljuboandeva.andragochi.model.shop.Toy;
-
 import java.io.Serializable;
+
 
 /**
  * Created by Evelina on 8/26/2016.
@@ -22,7 +22,6 @@ public class Pet implements Serializable {
     private static final int MAX_HAPPINESS=100;
     private static final int MAX_FILL=100;
     private static final int MAX_CLEANLINESS=100;
-    //private static final int MAX_AGE=10; max age?
     private String type;
     private String name;
     private int age;
@@ -30,7 +29,7 @@ public class Pet implements Serializable {
     private int happiness;
     private int fill;
     private int cleanliness;
-    private WebView petPicDefault;
+    private ImageView imageHome;
     private WebView petPicEat;
     private WebView petPicHappy;
     private WebView petPicUnhappy;
@@ -45,6 +44,8 @@ public class Pet implements Serializable {
         this.cleanliness=MAX_CLEANLINESS;
         this.name=name;
     }
+
+
 
     public void setType(String type) {
         this.type = type;

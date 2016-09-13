@@ -10,10 +10,13 @@ public class Toy implements Buyable{
     private int price;
     private Type toyType;
     private int count;
-    //in user no count -only one toy?
-    public Toy(Type toyType, int price){
+    private int fun;
+
+    public Toy(Type toyType, int price, int fun, int count){
         this.toyType=toyType;
         this.price=price;
+        this.fun=fun;
+        this.count=count;
     }
 
     public int getPrice() {
@@ -24,9 +27,7 @@ public class Toy implements Buyable{
         return toyType;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
+    public int getFun() {return fun;}
 
     @Override
     public void buy() {

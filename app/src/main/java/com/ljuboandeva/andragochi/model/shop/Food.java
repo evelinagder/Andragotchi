@@ -6,34 +6,35 @@ package com.ljuboandeva.andragochi.model.shop;
 public class Food implements Buyable{
 
 
-    public enum Name{
+    public enum Type{
             SKULL,BONE,FLESH
         }
-            final private Name name;
-            final private int calories;
-            final private int price;
-            private int count;
+    private Type foodType;
+    private int calories;
+    private int price;
+    private int count;
 
-    //final?
-  public  Food(Name name, int calories, int price){
-        this.name=name;
+    public  Food(Type foodType, int calories, int price,int count){
+        this.foodType=foodType;
         this.calories=calories;
         this.price=price;
+        this.count = count;
     }
-    public Name getName(){
-        return this.name;
+
+
+    public Type getType(){
+        return this.foodType;
     }
+
     public int getPrice(){
         return this.price;
 }
 
-    public int getCalories() {
-        return calories;
-    }
+    public int getCalories() {return calories;}
 
-    public void setCount(int count) {
-        this.count = count;
-    }
+    public int getCount() {return count;}
+
+    public void increaseCount(){this.count++;}
 
     @Override
     public void buy() {

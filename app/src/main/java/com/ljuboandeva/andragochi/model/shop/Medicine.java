@@ -8,11 +8,12 @@ public class Medicine implements Buyable{
         private Type type;
         private int price;
         private int count;
-
-        public Medicine(Type type, int price){
+        private int health;
+        public Medicine(Type type, int price,int health,int count){
                 this.type=type;
                 this.price=price;
-
+                this.count=count;
+                this.health=health;
         }
 
         public void setCount(int count) {
@@ -25,6 +26,8 @@ public class Medicine implements Buyable{
         public Type getType(){
                 return this.type;
         }
+        public int getHealth() {return this.health;}
+
         @Override
         public void buy() {
         //TODO

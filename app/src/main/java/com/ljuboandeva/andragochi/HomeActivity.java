@@ -80,14 +80,14 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        inventory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(HomeActivity.this, InventoryActivity.class);
-                intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
-                startActivity(intent);
-            }
-        });
+//        inventory.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent= new Intent(HomeActivity.this, InventoryActivity.class);
+//                intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
+//                startActivity(intent);
+//            }
+//        });
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

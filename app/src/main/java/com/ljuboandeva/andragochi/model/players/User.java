@@ -6,15 +6,14 @@ import com.ljuboandeva.andragochi.model.shop.Medicine;
 import com.ljuboandeva.andragochi.model.shop.Toy;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * Created by Evelina on 8/25/2016.
  */
 public class User implements Serializable{
         private static final int START_MONEY=100;
-    //start money?
-       private final String username;
+        private final String username;
         private int age;
         private String password;
         private String email;
@@ -23,9 +22,9 @@ public class User implements Serializable{
         private String difficultyLevel;
         Pet pet;
 
-    HashMap<Food.Name,Food> foods;
-    HashMap<Medicine.Type,Medicine> meds;
-    HashMap<Toy.Type,Toy> toys;
+    private ArrayList<Food> foods;
+    private ArrayList<Medicine> medicines;
+    private ArrayList<Toy> toys;
 
 
         // ot google profile
@@ -36,9 +35,17 @@ public class User implements Serializable{
             this.password=password;
             this.email=email;
             this.money=START_MONEY;
-            foods=new HashMap<>();
-            meds=new HashMap<>();
-            toys= new HashMap<>();
+            this.toys=new ArrayList<>();
+            toys.add(new Toy(Toy.Type.BALL,15,15,0));
+            toys.add(new Toy(Toy.Type.GIRDLE,25,25,0));
+            toys.add(new Toy(Toy.Type.SHOVEL,40,40,0));
+            this.medicines = new ArrayList<>();
+            medicines.add(new Medicine(Medicine.Type.TABLET,15,15,0));
+            medicines.add(new Medicine(Medicine.Type.NEEDLE,30,30,0));
+            this.foods = new ArrayList<>();
+            foods.add(new Food(Food.Type.BONE,5,5,0));
+            foods.add(new Food(Food.Type.FLESH,10,10,0));
+            foods.add(new Food(Food.Type.SKULL,15,15,0));
 
         }
 
@@ -62,26 +69,10 @@ public class User implements Serializable{
         public void giveMedicine(Medicine meds){
             //TODO
         }
-        // izpulniavat se pri select na item ot shop! v method buy
-        public void addFood(Food food,int quantity){
-            Food f= new Food(food.getName(),food.getCalories(),food.getPrice());
-            f.setCount(quantity);
-            foods.put(f.getName(),f);
 
-        }
-        public void addMedicine(Medicine medicine, int quantity){
-            Medicine m= new Medicine(medicine.getType(),medicine.getPrice());
-            m.setCount(quantity);
-            meds.put(m.getType(),m);
-        }
-        public void addToy(Toy toy,int quantity){
-            Toy t= new Toy(toy.getToyType(),toy.getPrice());
-            toys.put(t.getToyType(),t);
-        }
     public void setDifficultyLevel(String difficultyLevel){
         this.difficultyLevel=difficultyLevel;
     }
-
     public String getDifficultyLevel(){
         return this.difficultyLevel;
     }

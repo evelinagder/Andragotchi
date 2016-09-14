@@ -4,6 +4,7 @@ package com.ljuboandeva.andragochi.model.shop;
  * Created by Evelina on 8/26/2016.
  */
 public class Toy implements Buyable{
+
     public enum Type{
         BALL,GIRDLE,SHOVEL
     }
@@ -28,6 +29,17 @@ public class Toy implements Buyable{
     }
 
     public int getFun() {return fun;}
+
+    public void increaseCount(){this.count++;}
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
 
     @Override
     public void buy() {

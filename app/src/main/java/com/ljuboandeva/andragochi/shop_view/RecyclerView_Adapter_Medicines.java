@@ -1,4 +1,4 @@
-package com.ljuboandeva.andragochi.model.shop_view;
+package com.ljuboandeva.andragochi.shop_view;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,17 +6,17 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.ljuboandeva.andragochi.R;
-import com.ljuboandeva.andragochi.model.shop.Food;
+import com.ljuboandeva.andragochi.model.shop.Medicine;
 
 import java.util.ArrayList;
 
-public class RecyclerView_Adapter_Food extends
-        RecyclerView.Adapter<FoodViewHolder> {
-    private ArrayList<Food> arrayList;
+
+public class RecyclerView_Adapter_Medicines extends RecyclerView.Adapter<MedsViewHolder> {
+    private ArrayList<Medicine> arrayList;
     private Context context;
 
 
-    public RecyclerView_Adapter_Food(Context context, ArrayList<Food> arrayList) {
+    public RecyclerView_Adapter_Medicines(Context context, ArrayList<Medicine> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
 
@@ -30,20 +30,20 @@ public class RecyclerView_Adapter_Food extends
     }
 
     @Override
-    public void onBindViewHolder(FoodViewHolder holder, int position) {
+    public void onBindViewHolder(MedsViewHolder holder, int position) {
 
-        final FoodViewHolder mainHolder = holder;
+        final MedsViewHolder mainHolder = holder;
 //        mainHolder.title.setText();
 //        mainHolder.price.setText();
 
     }
 
     @Override
-    public FoodViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public MedsViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         LayoutInflater mInflater = LayoutInflater.from(viewGroup.getContext());
 
-        ViewGroup mainGroup = (ViewGroup) mInflater.inflate(R.layout.item_food_shop, viewGroup, false);
-        FoodViewHolder mainHolder = new FoodViewHolder(mainGroup) {
+        ViewGroup mainGroup = (ViewGroup) mInflater.inflate(R.layout.item_medicine_shop, viewGroup, false);
+        MedsViewHolder mainHolder = new MedsViewHolder(mainGroup) {
             @Override
             public String toString() {
                 return super.toString();

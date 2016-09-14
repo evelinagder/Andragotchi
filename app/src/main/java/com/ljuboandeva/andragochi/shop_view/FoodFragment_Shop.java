@@ -1,4 +1,4 @@
-package com.ljuboandeva.andragochi.model.shop_view;
+package com.ljuboandeva.andragochi.shop_view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;

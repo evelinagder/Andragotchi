@@ -10,9 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import com.ljuboandeva.andragochi.model.shop_view.FoodFragment_Shop;
-import com.ljuboandeva.andragochi.model.shop_view.MedsFragment_Shop;
-import com.ljuboandeva.andragochi.model.shop_view.ToysFragment_Shop;
+import com.ljuboandeva.andragochi.shop_view.FoodFragment_Shop;
+import com.ljuboandeva.andragochi.shop_view.MedsFragment_Shop;
+import com.ljuboandeva.andragochi.shop_view.ToysFragment_Shop;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,17 +41,7 @@ public class ShopActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());//setting current selected item over viewpager
-                switch (tab.getPosition()) {
-                    case 0:
-                        Log.e("TAG","TAB1");
-                        break;
-                    case 1:
-                        Log.e("TAG","TAB2");
-                        break;
-                    case 2:
-                        Log.e("TAG","TAB3");
-                        break;
-                }
+
             }
 
             @Override

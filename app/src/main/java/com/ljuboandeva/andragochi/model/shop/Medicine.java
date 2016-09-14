@@ -4,6 +4,7 @@ package com.ljuboandeva.andragochi.model.shop;
  * Created by Evelina on 8/26/2016.
  */
 public class Medicine implements Buyable{
+
         public enum Type{ TABLET,NEEDLE};
         private Type type;
         private int price;
@@ -27,6 +28,13 @@ public class Medicine implements Buyable{
                 return this.type;
         }
         public int getHealth() {return this.health;}
+
+        public void increaseCount(){this.count++;}
+
+        public int getCount() {
+                return count;
+        }
+
 
         @Override
         public void buy() {

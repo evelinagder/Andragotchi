@@ -1,4 +1,4 @@
-package com.ljuboandeva.andragochi.model.shop_view;
+package com.ljuboandeva.andragochi.shop_view;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +11,7 @@ import com.ljuboandeva.andragochi.model.shop.Toy;
 import java.util.ArrayList;
 
 public class RecyclerView_Adapter_Toys extends
-        RecyclerView.Adapter<FoodViewHolder> {
+        RecyclerView.Adapter<ToysViewHolder> {
     private ArrayList<Toy> arrayList;
     private Context context;
 
@@ -30,20 +30,20 @@ public class RecyclerView_Adapter_Toys extends
     }
 
     @Override
-    public void onBindViewHolder(FoodViewHolder holder, int position) {
+    public void onBindViewHolder(ToysViewHolder holder, int position) {
 
-        final FoodViewHolder mainHolder = holder;
+        final ToysViewHolder mainHolder = holder;
 //        mainHolder.title.setText();
 //        mainHolder.price.setText();
 
     }
 
     @Override
-    public FoodViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public ToysViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         LayoutInflater mInflater = LayoutInflater.from(viewGroup.getContext());
 
         ViewGroup mainGroup = (ViewGroup) mInflater.inflate(R.layout.item_toy_shop, viewGroup, false);
-        FoodViewHolder mainHolder = new FoodViewHolder(mainGroup) {
+        ToysViewHolder mainHolder = new ToysViewHolder(mainGroup) {
             @Override
             public String toString() {
                 return super.toString();

@@ -1,4 +1,4 @@
-package com.ljuboandeva.andragochi.model.shop_view;
+package com.ljuboandeva.andragochi.shop_view;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -8,7 +8,6 @@ import com.ljuboandeva.andragochi.R;
 
 
 public abstract class ToysViewHolder extends RecyclerView.ViewHolder {
-
 
     public TextView title;
     public TextView price;

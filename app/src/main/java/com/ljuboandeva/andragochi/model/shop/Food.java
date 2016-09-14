@@ -5,7 +5,6 @@ package com.ljuboandeva.andragochi.model.shop;
  */
 public class Food implements Buyable{
 
-
     public enum Type{
             SKULL,BONE,FLESH
         }
@@ -34,7 +33,11 @@ public class Food implements Buyable{
 
     public int getCount() {return count;}
 
-    public void increaseCount(){this.count++;}
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void increaseCount(){this.count+=1;}
 
     @Override
     public void buy() {

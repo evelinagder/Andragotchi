@@ -39,12 +39,22 @@ public class UsersManager {
                 JSONObject obj = arr.getJSONObject(i);
                 User user = new User(obj.getString("username"), obj.getString("password"), obj.getString("email"));
                 user.setDifficultyLevel(obj.getString("difficulty"));
+                user.setMoney(obj.getInt("money"));
                 Pet pet = new Pet(obj.getString("petType"), obj.getString("petName"));
                 pet.setAge(obj.getInt("petAge"));
                 pet.setHealth(obj.getInt("petHealth"));
                 pet.setCleanliness(obj.getInt("petCleanliness"));
                 pet.setHappiness(obj.getInt("petHappiness"));
                 pet.setFill(obj.getInt("petFill"));
+                for (int j=0;i<user.getFoods().size();i++) {
+                    user.getFoods().get(i).setCount(obj.getInt("food"+j));
+                }
+                for (int j=0;i<user.getToys().size();i++) {
+                    user.getToys().get(i).setCount(obj.getInt("toy"+j));
+                }
+                for (int j=0;i<user.getMeds().size();i++) {
+                    user.getMeds().get(i).setCount(obj.getInt("med"+j));
+                }
                 user.setPet(pet);
                 users.put(user.getUsername(), user);
             }
@@ -101,11 +111,20 @@ public class UsersManager {
         saveUsers(activity);
     }
 
-    public Pet getUserPet(String username){
+    public void buyFood (Activity activity, User user, int money, int position){
+        user.setMoney(money);
+        user.addFood(position);
+        User tempUser = user;
+        users.remove(user);
+        users.put(tempUser.getUsername(),tempUser);
+        saveUsers(activity);
+    }
+
+  public Pet getUserPet(String username){
         return users.get(username).getPet();
     }
 
-    private void saveUsers(Activity activity) {
+    public void saveUsers(Activity activity) {
         SharedPreferences prefs = activity.getSharedPreferences("Andragochi", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         String key = "registeredUsers";
@@ -118,6 +137,16 @@ public class UsersManager {
                 jobj.put("password", u.getPassword());
                 jobj.put("email", u.getEmail());
                 jobj.put("difficulty", u.getDifficultyLevel());
+                jobj.put("money",u.getMoney());
+                for (int i=0;i<u.getFoods().size();i++) {
+                    jobj.put("food"+i, u.getFoods().get(i).getCount());
+                }
+                for (int i=0;i<u.getToys().size();i++) {
+                    jobj.put("toy"+i, u.getToys().get(i).getCount());
+                }
+                for (int i=0;i<u.getMeds().size();i++) {
+                    jobj.put("med"+i, u.getMeds().get(i).getCount());
+                }
                 if (u.getPet() != null) {
                     jobj.put("petName", u.getPet().getName());
                     jobj.put("petType", u.getPet().getType());
@@ -135,7 +164,7 @@ public class UsersManager {
         value = jsonUsers.toString();
         Log.e("JSON", value);
         editor.putString(key, value);
-        editor.commit();
+        editor.apply();
     }
 
     //creates a new file with shared prefs, that stores the boolean value logged_in!

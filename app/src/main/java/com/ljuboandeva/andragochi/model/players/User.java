@@ -7,6 +7,7 @@ import com.ljuboandeva.andragochi.model.shop.Toy;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by Evelina on 8/25/2016.
@@ -73,9 +74,7 @@ public class User implements Serializable{
     public void setDifficultyLevel(String difficultyLevel){
         this.difficultyLevel=difficultyLevel;
     }
-    public String getDifficultyLevel(){
-        return this.difficultyLevel;
-    }
+    public String getDifficultyLevel(){ return this.difficultyLevel; }
     public Pet getPet() {
         return this.pet;
     }
@@ -91,5 +90,25 @@ public class User implements Serializable{
     }
     public String getPassword(){
         return password;
+    }
+    public void addFood(int position){foods.get(position).increaseCount(); }
+    public void addToy(int position){toys.get(position).increaseCount(); }
+    public void addMedicine(int position){medicines.get(position).increaseCount(); }
+    public boolean enoughMoney(int money){return this.money>money;}
+    public int getMoney(){return money;}
+    public void spendMoney(int money) {this.money -= money; }
+
+    public ArrayList<Food> getFoods() {
+        return foods;
+    }
+
+    public ArrayList<Toy> getToys() {
+        return toys;
+    }
+
+    public ArrayList<Medicine> getMeds() {return medicines;}
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 }

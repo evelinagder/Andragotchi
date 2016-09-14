@@ -26,7 +26,11 @@ public class HomeActivity extends AppCompatActivity {
     ImageButton settings;
     Button goOut;
     TextView petName;
+<<<<<<< HEAD
     static TextView happiness;
+=======
+    public static TextView happiness;
+>>>>>>> c94a6e212b800a4cdcaa62c3f6f0819ea2848011
     TextView health;
     TextView fill;
     TextView cleanliness;

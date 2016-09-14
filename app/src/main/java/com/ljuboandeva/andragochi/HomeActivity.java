@@ -1,5 +1,7 @@
 package com.ljuboandeva.andragochi;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     ImageButton settings;
     Button goOut;
     TextView petName;
-    TextView happiness;
+    public static TextView happiness;
     TextView health;
     TextView fill;
     TextView cleanliness;
@@ -53,6 +55,18 @@ public class HomeActivity extends AppCompatActivity {
         fill=(TextView)findViewById(R.id.textView_food);
         cleanliness=(TextView)findViewById(R.id.textView_clean) ;
         petImage = (ImageView) findViewById(R.id.pet_image_home);
+
+        int alarmType =AlarmManager.RTC;
+        long timeOrLengthofWait = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
+        int requestCode= (int) System.currentTimeMillis();
+        Intent myIntent = new Intent(HomeActivity.this, UpdateAlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(HomeActivity.this, requestCode, myIntent,0);
+        myIntent.putExtra("user",user);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        alarmManager.setInexactRepeating(alarmType, timeOrLengthofWait, timeOrLengthofWait, pendingIntent);
+
+
+
         switch (pet.getType()){
             case "Drago":
                 petImage.setBackgroundResource(R.drawable.drago_home); break;

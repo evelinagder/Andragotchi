@@ -52,5 +52,5 @@
             android:name=".ShopActivity"
             android:screenOrientation="portrait" />
     </application>
-
+    <receiver android:name=".UpdateAlarmReceiver"/>
 </manifest>

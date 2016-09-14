@@ -25,7 +25,7 @@ public class UpdateAlarmReceiver extends BroadcastReceiver {
        user.setMoney(user.getMoney()+BONUS_MONEY);
          }
 
-        HomeActivity.happiness.setText(String.valueOf(pet.getHappiness()));
+        HomeActivity.changeText(String.valueOf(pet.getHappiness()));
 
 
     }

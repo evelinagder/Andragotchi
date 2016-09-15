@@ -2,9 +2,14 @@ package com.ljuboandeva.andragochi;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -16,6 +21,8 @@ import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
 public class HomeActivity extends AppCompatActivity {
+    public static final int DECREASE_VALUE=5;
+    public static final int BONUS_MONEY=10;
     User user;
     Pet pet;
     Button feed;
@@ -26,11 +33,7 @@ public class HomeActivity extends AppCompatActivity {
     ImageButton settings;
     Button goOut;
     TextView petName;
-<<<<<<< HEAD
-    static TextView happiness;
-=======
-    public static TextView happiness;
->>>>>>> c94a6e212b800a4cdcaa62c3f6f0819ea2848011
+    TextView happiness;
     TextView health;
     TextView fill;
     TextView cleanliness;
@@ -63,9 +66,8 @@ public class HomeActivity extends AppCompatActivity {
         int alarmType =AlarmManager.RTC;
         long timeOrLengthofWait = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
         int requestCode= (int) System.currentTimeMillis();
-        Intent myIntent = new Intent(HomeActivity.this, UpdateAlarmReceiver.class);
+        Intent myIntent = new Intent("ALARM");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(HomeActivity.this, requestCode, myIntent,0);
-        myIntent.putExtra("user",user);
         AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
         alarmManager.setInexactRepeating(alarmType, timeOrLengthofWait, timeOrLengthofWait, pendingIntent);
 
@@ -139,13 +141,34 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(UpdateAlarmReceiver,new IntentFilter("ALARM"));
         petName.setText(pet.getName());
         happiness.setText(String.valueOf(pet.getHappiness()));
         cleanliness.setText(String.valueOf(pet.getCleanliness()));
         fill.setText(String.valueOf(pet.getFill()));
         health.setText(String.valueOf(pet.getHealth()));
     }
-    public static void changeText(String text){
-        happiness.setText(text);
-    }
+
+    private BroadcastReceiver UpdateAlarmReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Pet pet=(Pet) intent.getExtras().get("pet");
+            User user=(User) intent.getExtras().get("loggedUser");
+            Log.e("Update", "pet happiness-5");
+            pet.setHappiness(pet.getHappiness()-DECREASE_VALUE);
+            pet.setCleanliness(pet.getCleanliness()-DECREASE_VALUE);
+            pet.setHealth(pet.getHealth()-DECREASE_VALUE);
+            pet.setFill(pet.getFill()-DECREASE_VALUE);
+            happiness.setText(String.valueOf(pet.getHappiness()));
+            cleanliness.setText(String.valueOf(pet.getCleanliness()));
+            fill.setText(String.valueOf(pet.getFill()));
+            health.setText(String.valueOf(pet.getHealth()));
+            if(pet.getHappiness()>=50){
+                user.setMoney(user.getMoney()+BONUS_MONEY);
+            }
+
+
+        }
+    };
 }

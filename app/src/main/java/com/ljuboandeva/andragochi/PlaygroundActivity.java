@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
@@ -19,6 +20,7 @@ public class PlaygroundActivity extends AppCompatActivity {
     ImageButton inventory;
     ImageButton settings;
     User user;
+    TextView petName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,9 @@ public class PlaygroundActivity extends AppCompatActivity {
         shop=(Button)findViewById(R.id.button_shop_playground);
         inventory= (ImageButton) findViewById(R.id.button_inventory_playground);
         settings= (ImageButton) findViewById(R.id.button_settings_playground);
+        petName= (TextView)findViewById(R.id.textView9);
+
+        petName.setText(user.getPet().getName());
 
         outChoice = getIntent().getStringExtra("outChoice");
         switch (outChoice){

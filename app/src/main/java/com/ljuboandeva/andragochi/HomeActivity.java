@@ -23,6 +23,7 @@ import com.ljuboandeva.andragochi.model.players.UsersManager;
 public class HomeActivity extends AppCompatActivity {
     public static final int DECREASE_VALUE=5;
     public static final int BONUS_MONEY=10;
+
     User user;
     Pet pet;
     Button feed;
@@ -122,6 +123,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO fill.setText...
+                // open dialog fragment with card view representing food inventory
+                //choose food and update pet fill value with the food type calories
+                //decrease user money
             }
         });
         clean.setOnClickListener(new View.OnClickListener() {
@@ -153,8 +157,7 @@ public class HomeActivity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            Pet pet=(Pet) intent.getExtras().get("pet");
-            User user=(User) intent.getExtras().get("loggedUser");
+
             Log.e("Update", "pet happiness-5");
             pet.setHappiness(pet.getHappiness()-DECREASE_VALUE);
             pet.setCleanliness(pet.getCleanliness()-DECREASE_VALUE);

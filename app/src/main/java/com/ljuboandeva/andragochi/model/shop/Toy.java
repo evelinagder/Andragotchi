@@ -24,10 +24,6 @@ public class Toy implements Buyable{
         return price;
     }
 
-    public Type getToyType() {
-        return toyType;
-    }
-
     public int getFun() {return fun;}
 
     public void increaseCount(){this.count++;}
@@ -40,6 +36,7 @@ public class Toy implements Buyable{
         this.count = count;
     }
 
+    public Type getType(){ return this.toyType; }
 
     @Override
     public void buy() {

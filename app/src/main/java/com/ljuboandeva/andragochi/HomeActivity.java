@@ -23,6 +23,7 @@ import com.ljuboandeva.andragochi.model.players.UsersManager;
 public class HomeActivity extends AppCompatActivity {
     public static final int DECREASE_VALUE=5;
     public static final int BONUS_MONEY=10;
+
     User user;
     Pet pet;
     Button feed;
@@ -71,6 +72,15 @@ public class HomeActivity extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
         alarmManager.setInexactRepeating(alarmType, timeOrLengthofWait, timeOrLengthofWait, pendingIntent);
 
+        boolean alarmUp = (PendingIntent.getBroadcast(HomeActivity.this, 0,
+                new Intent("ALARM"),
+                PendingIntent.FLAG_NO_CREATE) != null);
+
+        if (alarmUp)
+        {
+            Log.d("myTag", "Alarm is already active");
+        }
+
 
 
         switch (pet.getType()){
@@ -103,7 +113,7 @@ public class HomeActivity extends AppCompatActivity {
 //        inventory.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Intent intent= new Intent(HomeActivity.this, InventoryActivity.class);
+//                Intent intent= new Intent(HomeActivity.this, .class);
 //                intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
 //                startActivity(intent);
 //            }
@@ -122,6 +132,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO fill.setText...
+                // open dialog fragment with card view representing food inventory
+                //choose food and update pet fill value with the food type calories
+                //decrease user money
             }
         });
         clean.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +155,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         LocalBroadcastManager.getInstance(this).registerReceiver(UpdateAlarmReceiver,new IntentFilter("ALARM"));
+        Log.e("myTag", "Resume and register Reciever");
         petName.setText(pet.getName());
         happiness.setText(String.valueOf(pet.getHappiness()));
         cleanliness.setText(String.valueOf(pet.getCleanliness()));
@@ -153,9 +167,8 @@ public class HomeActivity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            Pet pet=(Pet) intent.getExtras().get("pet");
-            User user=(User) intent.getExtras().get("loggedUser");
-            Log.e("Update", "pet happiness-5");
+
+            Log.e("myTag", "pet happiness-5");
             pet.setHappiness(pet.getHappiness()-DECREASE_VALUE);
             pet.setCleanliness(pet.getCleanliness()-DECREASE_VALUE);
             pet.setHealth(pet.getHealth()-DECREASE_VALUE);

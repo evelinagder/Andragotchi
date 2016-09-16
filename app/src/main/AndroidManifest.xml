@@ -52,7 +52,7 @@
             android:name=".ShopActivity"
             android:screenOrientation="portrait" />
     </application>
-    <receiver android:name=".UpdateAlarmReceiver">
+    <receiver android:name="receivers.UpdateAlarmReceiver">
         <intent-filter>
             <action android:name="ALARM" />
         </intent-filter>

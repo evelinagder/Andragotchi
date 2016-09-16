@@ -5,7 +5,8 @@ package com.ljuboandeva.andragochi.model.shop;
  */
 public class Medicine implements Buyable{
 
-        public enum Type{ TABLET,NEEDLE};
+        public enum Type{ TABLET,NEEDLE}
+
         private Type type;
         private int price;
         private int count;
@@ -17,23 +18,21 @@ public class Medicine implements Buyable{
                 this.health=health;
         }
 
-        public void setCount(int count) {
-                this.count = count;
-        }
+        public Type getType(){ return this.type; }
 
         public int getPrice(){
                 return this.price;
         }
-        public Type getType(){
-                return this.type;
-        }
-        public int getHealth() {return this.health;}
 
-        public void increaseCount(){this.count++;}
+        public int getHealth() {return health;}
 
-        public int getCount() {
-                return count;
+        public int getCount() {return count;}
+
+        public void setCount(int count) {
+                this.count = count;
         }
+
+        public void increaseCount(){this.count+=1;}
 
 
         @Override

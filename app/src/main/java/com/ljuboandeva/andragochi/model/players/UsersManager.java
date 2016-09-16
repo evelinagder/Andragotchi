@@ -20,7 +20,7 @@ import java.util.HashMap;
 public class UsersManager {
 
     private static UsersManager ourInstance;
-    HashMap<String, User> users;
+    private HashMap<String, User> users;
 
     public static UsersManager getInstance(Activity activity) {
         if(ourInstance == null){
@@ -63,7 +63,6 @@ public class UsersManager {
         }
     }
 
-
     public boolean existsUser(String username) {
         return users.containsKey(username);
     }
@@ -86,10 +85,10 @@ public class UsersManager {
         return true;
     }
 
-
     public User getUser(String username){
         return users.get(username);
     }
+
     public void unregister(Activity activity,User user){
         users.remove(user.getUsername());
         saveUsers(activity);
@@ -114,6 +113,24 @@ public class UsersManager {
     public void buyFood (Activity activity, User user, int money, int position){
         user.setMoney(money);
         user.addFood(position);
+        User tempUser = user;
+        users.remove(user);
+        users.put(tempUser.getUsername(),tempUser);
+        saveUsers(activity);
+    }
+
+    public void buyToy(Activity activity, User user, int money, int position) {
+        user.setMoney(money);
+        user.addToy(position);
+        User tempUser = user;
+        users.remove(user);
+        users.put(tempUser.getUsername(),tempUser);
+        saveUsers(activity);
+    }
+
+    public void buyMedicine(Activity activity, User user, int money, int position) {
+        user.setMoney(money);
+        user.addMedicine(position);
         User tempUser = user;
         users.remove(user);
         users.put(tempUser.getUsername(),tempUser);
@@ -166,6 +183,9 @@ public class UsersManager {
         editor.putString(key, value);
         editor.apply();
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 04ddba79f5501af6e49575d9165f24ce088828a9
 }

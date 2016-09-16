@@ -94,7 +94,7 @@ public class User implements Serializable{
     public void addFood(int position){foods.get(position).increaseCount(); }
     public void addToy(int position){toys.get(position).increaseCount(); }
     public void addMedicine(int position){medicines.get(position).increaseCount(); }
-    public boolean enoughMoney(int money){return this.money>money;}
+    public boolean enoughMoney(int money){return this.money>=money;}
     public int getMoney(){return money;}
     public void spendMoney(int money) {this.money -= money; }
 

@@ -21,9 +21,7 @@ public class Food implements Buyable{
     }
 
 
-    public Type getType(){
-        return this.foodType;
-    }
+    public Type getType(){ return this.foodType; }
 
     public int getPrice(){
         return this.price;

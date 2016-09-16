@@ -168,7 +168,11 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
 
+<<<<<<< HEAD
             Log.e("myTag", "pet happiness-5");
+=======
+            Log.e("Update", "pet happiness-5");
+>>>>>>> 04ddba79f5501af6e49575d9165f24ce088828a9
             pet.setHappiness(pet.getHappiness()-DECREASE_VALUE);
             pet.setCleanliness(pet.getCleanliness()-DECREASE_VALUE);
             pet.setHealth(pet.getHealth()-DECREASE_VALUE);

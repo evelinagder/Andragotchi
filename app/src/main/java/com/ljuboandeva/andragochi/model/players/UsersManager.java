@@ -183,9 +183,4 @@ public class UsersManager {
         editor.putString(key, value);
         editor.apply();
     }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 04ddba79f5501af6e49575d9165f24ce088828a9
 }

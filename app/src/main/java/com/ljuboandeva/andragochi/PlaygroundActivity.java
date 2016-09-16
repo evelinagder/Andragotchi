@@ -71,14 +71,14 @@ public class PlaygroundActivity extends AppCompatActivity {
             }
         });
 
-//        inventory.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent= new Intent(PlaygroundActivity.this, InventoryActivity.class);
-//                intent.putExtra("loggedUser", UsersManager.getInstance(PlaygroundActivity.this).getUser(user.getUsername()));
-//                startActivity(intent);
-//            }
-//        });
+        inventory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(PlaygroundActivity.this, InventoryActivity.class);
+                intent.putExtra("loggedUser", UsersManager.getInstance(PlaygroundActivity.this).getUser(user.getUsername()));
+                startActivity(intent);
+            }
+        });
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -3,7 +3,7 @@ package com.ljuboandeva.andragochi.model.shop;
 /**
  * Created by Evelina on 8/26/2016.
  */
-public class Toy implements Buyable{
+public class Toy extends Buyable{
 
     public enum Type{
         BALL,GIRDLE,SHOVEL
@@ -36,10 +36,8 @@ public class Toy implements Buyable{
         this.count = count;
     }
 
-    public Type getType(){ return this.toyType; }
+    public String getType(){ return this.toyType.toString(); }
 
     @Override
-    public void buy() {
-    //TODO
-    }
+    public int getBonus() { return fun; }
 }

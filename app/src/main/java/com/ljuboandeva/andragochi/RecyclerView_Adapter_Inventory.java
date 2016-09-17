@@ -45,6 +45,7 @@ public class RecyclerView_Adapter_Inventory extends RecyclerView.Adapter<Buyable
         else mainHolder.bonusType.setText("Health");
     }
 
+
     @Override
     public BuyableViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         LayoutInflater mInflater = LayoutInflater.from(viewGroup.getContext());

@@ -109,7 +109,7 @@
         android:fontFamily="casual"
         android:textSize="35sp"
         android:text="100"
-        android:id="@+id/textView5"
+        android:id="@+id/textView_healthp"
         android:layout_below="@+id/imageView5"
         android:layout_alignEnd="@+id/imageView6" />
 

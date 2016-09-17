@@ -54,4 +54,6 @@ public class DifficultyActivity extends AppCompatActivity {
         medium.setOnClickListener(onClickListener);
         hard.setOnClickListener(onClickListener);
     }
+
+
 }

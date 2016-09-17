@@ -41,14 +41,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".HomeActivity"
-            android:screenOrientation="portrait" >
-        <receiver android:name=".UpdateAlarmReceiver"
-            android:enabled="true">
-
-            <intent-filter>
-                <action android:name="ALARM" />
-            </intent-filter>
-        </receiver>
+            android:screenOrientation="portrait">
+            <receiver
+                android:name=".UpdateAlarmReceiver"
+                android:enabled="true">
+                <intent-filter>
+                    <action android:name="ALARM" />
+                </intent-filter>
+            </receiver>
         </activity>
         <activity
             android:name=".PlaygroundActivity"
@@ -65,13 +65,11 @@
         <activity
             android:name=".ShopActivity"
             android:screenOrientation="portrait" />
-<<<<<<< HEAD
-
-=======
         <activity
             android:name=".InventoryActivity"
             android:screenOrientation="portrait" />
->>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
+        <activity android:name=".DieActivity" />
+        <activity android:name=".CareActivity"></activity>
     </application>
 
 </manifest>

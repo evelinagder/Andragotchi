@@ -6,6 +6,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,11 +20,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ljuboandeva.andragochi.fragments_inventory.FoodFragment;
 import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
+import com.ljuboandeva.andragochi.takingCare.CareFragment;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements FoodFragment.OnFragmentInteractionListener {
     public static final int DECREASE_VALUE=5;
     public static final int BONUS_MONEY=10;
 
@@ -40,62 +46,65 @@ public class HomeActivity extends AppCompatActivity {
     TextView cleanliness;
     ImageView petImage;
 
-    // TODO threads that change the state
-    //TODO sync time  with GMT
-    //TODO save on stop() with shared pfres
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        user=(User) getIntent().getExtras().get("loggedUser");
+        user = (User) getIntent().getExtras().get("loggedUser");
         pet = user.getPet();
-        feed = (Button)findViewById(R.id.button_feed);
-        clean= (Button)findViewById(R.id.button_clean);
-        medicine= (Button)findViewById(R.id.button_medicine);
-        shop=(Button)findViewById(R.id.button_shop);
-        inventory= (ImageButton) findViewById(R.id.button_inventory);
-        settings= (ImageButton) findViewById(R.id.button_settings);
-        goOut= (Button) findViewById(R.id.button_go_out);
-        petName= (TextView) findViewById(R.id.textView_name) ;
-        happiness=(TextView)findViewById(R.id.textView_play) ;
-        health=(TextView)findViewById(R.id.textView_health) ;
-        fill=(TextView)findViewById(R.id.textView_food);
-        cleanliness=(TextView)findViewById(R.id.textView_clean) ;
+        feed = (Button) findViewById(R.id.button_feed);
+        clean = (Button) findViewById(R.id.button_clean);
+        medicine = (Button) findViewById(R.id.button_medicine);
+        shop = (Button) findViewById(R.id.button_shop);
+        inventory = (ImageButton) findViewById(R.id.button_inventory);
+        settings = (ImageButton) findViewById(R.id.button_settings);
+        goOut = (Button) findViewById(R.id.button_go_out);
+        petName = (TextView) findViewById(R.id.textView_name);
+        happiness = (TextView) findViewById(R.id.textView_play);
+        health = (TextView) findViewById(R.id.textView_health);
+        fill = (TextView) findViewById(R.id.textView_food);
+        cleanliness = (TextView) findViewById(R.id.textView_clean);
         petImage = (ImageView) findViewById(R.id.pet_image_home);
 
-        int alarmType =AlarmManager.ELAPSED_REALTIME_WAKEUP;
-        long timeOrLengthofWait = 30000;
-        int requestCode= (int) System.currentTimeMillis();
+
+
+        int alarmType = AlarmManager.ELAPSED_REALTIME_WAKEUP;
+        long timeOrLengthofWait = AlarmManager.INTERVAL_HOUR;
+        int requestCode = (int) System.currentTimeMillis();
         Intent myIntent = new Intent("ALARM");
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(HomeActivity.this, requestCode, myIntent,0);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(HomeActivity.this, requestCode, myIntent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setInexactRepeating(alarmType, timeOrLengthofWait, timeOrLengthofWait, pendingIntent);
 
         boolean alarmUp = (PendingIntent.getBroadcast(HomeActivity.this, 0,
                 new Intent("ALARM"),
                 PendingIntent.FLAG_NO_CREATE) != null);
 
-        if (alarmUp)
-        {
+        if (alarmUp) {
             Log.d("myTag", "Alarm is already active");
         }
 
 
-
-        switch (pet.getType()){
+        switch (pet.getType()) {
             case "Drago":
-                petImage.setBackgroundResource(R.drawable.drago_home); break;
+                petImage.setBackgroundResource(R.drawable.drago_home);
+                break;
             case "Rhina":
-                petImage.setBackgroundResource(R.drawable.rhina_home); break;
+                petImage.setBackgroundResource(R.drawable.rhina_home);
+                break;
             case "Rex":
-                petImage.setBackgroundResource(R.drawable.rex_home); break;
+                petImage.setBackgroundResource(R.drawable.rex_home);
+                break;
         }
 
         goOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(HomeActivity.this, OutChoiceActivity.class);
+                Intent intent = new Intent(HomeActivity.this, OutChoiceActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
                 startActivity(intent);
             }
@@ -104,36 +113,27 @@ public class HomeActivity extends AppCompatActivity {
         shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(HomeActivity.this, ShopActivity.class);
+                Intent intent = new Intent(HomeActivity.this, ShopActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
                 startActivity(intent);
             }
         });
 
-<<<<<<< HEAD
-//        inventory.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent= new Intent(HomeActivity.this, .class);
-//                intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
-//                startActivity(intent);
-//            }
-//        });
-=======
+
         inventory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(HomeActivity.this, InventoryActivity.class);
+                Intent intent = new Intent(HomeActivity.this, InventoryActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
                 startActivity(intent);
             }
         });
->>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
+
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(HomeActivity.this, SettingsActivity.class);
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
                 startActivity(intent);
                 finish();
@@ -142,22 +142,27 @@ public class HomeActivity extends AppCompatActivity {
         feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO fill.setText...
-                // open dialog fragment with card view representing food inventory
-                //choose food and update pet fill value with the food type calories
-                //decrease user money
+                Intent intent= new Intent(HomeActivity.this, CareActivity.class);
+                intent.putExtra("type", "FOOD");
+                startActivity(intent);
+
+
             }
         });
         clean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO cleanliness.setText..
+
+                //TODO cleanliness.setText.. remove poop
             }
         });
         medicine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO health.setText..
+                Intent intent= new Intent(HomeActivity.this, CareActivity.class);
+                intent.putExtra("type", "MEDICINE");
+                startActivity(intent);
+
             }
         });
     }
@@ -165,11 +170,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-<<<<<<< HEAD
         registerReceiver(UpdateAlarmReceiver, new IntentFilter("ALARM"));
-=======
-        LocalBroadcastManager.getInstance(this).registerReceiver(UpdateAlarmReceiver,new IntentFilter("ALARM"));
->>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
         Log.e("myTag", "Resume and register Reciever");
         petName.setText(pet.getName());
         happiness.setText(String.valueOf(pet.getHappiness()));
@@ -177,17 +178,24 @@ public class HomeActivity extends AppCompatActivity {
         fill.setText(String.valueOf(pet.getFill()));
         health.setText(String.valueOf(pet.getHealth()));
     }
+    @Override
+    protected void onPause() {
+        unregisterReceiver(UpdateAlarmReceiver);
+        super.onPause();
+    }
 
     private BroadcastReceiver UpdateAlarmReceiver = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
 
-<<<<<<< HEAD
             Log.e("myTag", "pet happiness-5");
-=======
-            Log.e("Update", "pet happiness-5");
->>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
+            if(pet.getHappiness()==0 || pet.getCleanliness()==0 || pet.getFill()==0 || pet.getHealth()==0){
+                Intent intentD = new Intent(HomeActivity.this, DieActivity.class);
+                intentD.putExtra("loggedUser",user);
+                startActivity(intentD);
+
+            }
             pet.setHappiness(pet.getHappiness()-DECREASE_VALUE);
             pet.setCleanliness(pet.getCleanliness()-DECREASE_VALUE);
             pet.setHealth(pet.getHealth()-DECREASE_VALUE);
@@ -199,8 +207,15 @@ public class HomeActivity extends AppCompatActivity {
             if(pet.getHappiness()>=50){
                 user.setMoney(user.getMoney()+BONUS_MONEY);
             }
+            UsersManager.getInstance(HomeActivity.this).setUserPet(HomeActivity.this,user,pet);
 
 
         }
     };
+
+    @Override
+    public void onFragmentInteraction(int selectedItem) {
+
+    }
+
 }

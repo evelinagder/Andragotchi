@@ -22,10 +22,10 @@ public class UpdateAlarmReceiver extends BroadcastReceiver {
         Log.e("Update", "pet happiness-5");
         pet.setHappiness(pet.getHappiness()-DECREASE_VALUE);
         if(pet.getHappiness()>=50){
-       user.setMoney(user.getMoney()+BONUS_MONEY);
-         }
+        user.setMoney(user.getMoney()+BONUS_MONEY);
+        }
 
-        HomeActivity.changeText(String.valueOf(pet.getHappiness()));
+//        HomeActivity.changeText(String.valueOf(pet.getHappiness()));
 
 
     }

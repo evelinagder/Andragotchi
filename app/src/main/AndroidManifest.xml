@@ -35,7 +35,15 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".HomeActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+        <receiver android:name=".UpdateAlarmReceiver"
+            android:enabled="true">
+
+            <intent-filter>
+                <action android:name="ALARM" />
+            </intent-filter>
+        </receiver>
+        </activity>
         <activity
             android:name=".PlaygroundActivity"
             android:screenOrientation="portrait" />
@@ -51,10 +59,7 @@
         <activity
             android:name=".ShopActivity"
             android:screenOrientation="portrait" />
+
     </application>
-    <receiver android:name=".UpdateAlarmReceiver">
-        <intent-filter>
-            <action android:name="ALARM" />
-        </intent-filter>
-    </receiver>
+
 </manifest>

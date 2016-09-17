@@ -47,9 +47,6 @@ public class HomeActivity extends AppCompatActivity implements FoodFragment.OnFr
     ImageView petImage;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,10 +68,9 @@ public class HomeActivity extends AppCompatActivity implements FoodFragment.OnFr
         petImage = (ImageView) findViewById(R.id.pet_image_home);
 
 
-
-        int alarmType = AlarmManager.ELAPSED_REALTIME_WAKEUP;
+         int alarmType =AlarmManager.ELAPSED_REALTIME_WAKEUP;
         long timeOrLengthofWait = AlarmManager.INTERVAL_HOUR;
-        int requestCode = (int) System.currentTimeMillis();
+        int requestCode= (int) System.currentTimeMillis();
         Intent myIntent = new Intent("ALARM");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(HomeActivity.this, requestCode, myIntent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);

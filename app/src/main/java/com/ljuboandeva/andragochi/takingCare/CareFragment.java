@@ -39,6 +39,7 @@ public class CareFragment extends Fragment {
 
 
     @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         String username=activity.getSharedPreferences("Andragochi", Context.MODE_PRIVATE).getString("currentUser", null);
@@ -51,7 +52,6 @@ public class CareFragment extends Fragment {
 
         return root;
     }
-
 
 
 }

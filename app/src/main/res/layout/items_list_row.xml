@@ -20,7 +20,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
+<<<<<<< HEAD
                 android:textSize="15sp"
+=======
+                android:textSize="10sp"
+>>>>>>> c3a0c164b03ffe9afcfb6d157dc518db7ba41e4b
                 android:text="Type"
                 android:id="@+id/type_TV" />
 
@@ -29,15 +33,24 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center"
+<<<<<<< HEAD
                 android:text="Count"
                 android:textSize="15sp"/>
+=======
+                android:text="count"
+                android:textSize="10sp"/>
+>>>>>>> c3a0c164b03ffe9afcfb6d157dc518db7ba41e4b
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center"
+<<<<<<< HEAD
                 android:textSize="15sp"
+=======
+                android:textSize="10sp"
+>>>>>>> c3a0c164b03ffe9afcfb6d157dc518db7ba41e4b
                 android:id="@+id/bonus_TV" />
 
             <TextView
@@ -56,9 +69,16 @@
         android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+<<<<<<< HEAD
         android:layout_weight="1"
         card_view:cardBackgroundColor="@android:color/transparent"
         card_view:cardElevation="0dp">
+=======
+      card_view:cardBackgroundColor="@android:color/transparent"
+        card_view:cardElevation="0dp">
+        android:layout_weight="1">
+
+>>>>>>> c3a0c164b03ffe9afcfb6d157dc518db7ba41e4b
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,7 +92,11 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:id="@+id/textView_type"
+<<<<<<< HEAD
                 android:textSize="20sp"/>
+=======
+                android:textSize="30sp"/>
+>>>>>>> c3a0c164b03ffe9afcfb6d157dc518db7ba41e4b
 
             <TextView
                 android:layout_width="0dp"
@@ -80,7 +104,11 @@
                 android:layout_weight="0.5"
                 android:gravity="center"
                 android:id="@+id/textView_count"
+<<<<<<< HEAD
                 android:textSize="20sp"/>
+=======
+                android:textSize="30sp"/>
+>>>>>>> c3a0c164b03ffe9afcfb6d157dc518db7ba41e4b
 
             <TextView
                 android:layout_width="0dp"
@@ -88,10 +116,17 @@
                 android:layout_weight="0.5"
                 android:gravity="center"
                 android:id="@+id/textView_calories"
+<<<<<<< HEAD
                 android:textSize="20sp"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_height="90dp"
+=======
+                android:textSize="30sp"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+>>>>>>> c3a0c164b03ffe9afcfb6d157dc518db7ba41e4b
                 android:layout_weight="1"
                 android:fontFamily="casual"
                 android:background="@drawable/confirm"

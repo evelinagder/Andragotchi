@@ -65,13 +65,10 @@
         <activity
             android:name=".ShopActivity"
             android:screenOrientation="portrait" />
-<<<<<<< HEAD
-
-=======
         <activity
             android:name=".InventoryActivity"
             android:screenOrientation="portrait" />
->>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
+
     </application>
 
 </manifest>

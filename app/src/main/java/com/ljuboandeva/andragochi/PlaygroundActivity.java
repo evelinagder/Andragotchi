@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
@@ -20,7 +21,12 @@ public class PlaygroundActivity extends AppCompatActivity {
     ImageButton inventory;
     ImageButton settings;
     User user;
+    Pet pet;
     TextView petName;
+    TextView happiness;
+    TextView fill;
+    TextView health;
+    TextView cleanliness;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +35,15 @@ public class PlaygroundActivity extends AppCompatActivity {
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.layout_playground);
         home = (Button) findViewById(R.id.button_home);
         user=(User) getIntent().getExtras().get("loggedUser");
+        pet=user.getPet();
         shop=(Button)findViewById(R.id.button_shop_playground);
         inventory= (ImageButton) findViewById(R.id.button_inventory_playground);
         settings= (ImageButton) findViewById(R.id.button_settings_playground);
         petName= (TextView)findViewById(R.id.textView9);
+        happiness= (TextView)findViewById(R.id.textView_play);
+        fill= (TextView)findViewById(R.id.textView_food) ;
+        cleanliness=(TextView)findViewById(R.id.textView_clean);
+        health= (TextView)findViewById(R.id.textView_healthp);
 
         petName.setText(user.getPet().getName());
 
@@ -88,5 +99,14 @@ public class PlaygroundActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        happiness.setText(String.valueOf(pet.getHappiness()));
+        cleanliness.setText(String.valueOf(pet.getCleanliness()));
+        fill.setText(String.valueOf(pet.getFill()));
+        health.setText(String.valueOf(pet.getHealth()));
     }
 }

@@ -40,9 +40,7 @@ public class HomeActivity extends AppCompatActivity {
     TextView cleanliness;
     ImageView petImage;
 
-    // TODO threads that change the state
-    //TODO sync time  with GMT
-    //TODO save on stop() with shared pfres
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
         petImage = (ImageView) findViewById(R.id.pet_image_home);
 
         int alarmType =AlarmManager.ELAPSED_REALTIME_WAKEUP;
-        long timeOrLengthofWait = 30000;
+        long timeOrLengthofWait = AlarmManager.INTERVAL_HOUR;
         int requestCode= (int) System.currentTimeMillis();
         Intent myIntent = new Intent("ALARM");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(HomeActivity.this, requestCode, myIntent,0);
@@ -110,16 +108,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
-//        inventory.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent= new Intent(HomeActivity.this, .class);
-//                intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
-//                startActivity(intent);
-//            }
-//        });
-=======
+
         inventory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,7 +117,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
->>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
+
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,11 +154,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-<<<<<<< HEAD
         registerReceiver(UpdateAlarmReceiver, new IntentFilter("ALARM"));
-=======
-        LocalBroadcastManager.getInstance(this).registerReceiver(UpdateAlarmReceiver,new IntentFilter("ALARM"));
->>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
         Log.e("myTag", "Resume and register Reciever");
         petName.setText(pet.getName());
         happiness.setText(String.valueOf(pet.getHappiness()));
@@ -177,17 +162,24 @@ public class HomeActivity extends AppCompatActivity {
         fill.setText(String.valueOf(pet.getFill()));
         health.setText(String.valueOf(pet.getHealth()));
     }
+    @Override
+    protected void onPause() {
+        unregisterReceiver(UpdateAlarmReceiver);
+        super.onPause();
+    }
 
     private BroadcastReceiver UpdateAlarmReceiver = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
 
-<<<<<<< HEAD
             Log.e("myTag", "pet happiness-5");
-=======
-            Log.e("Update", "pet happiness-5");
->>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
+            if(pet.getHappiness()==0 || pet.getCleanliness()==0 || pet.getFill()==0 || pet.getHealth()==0){
+                Intent intentD = new Intent(HomeActivity.this, DieActivity.class);
+                intentD.putExtra("loggedUser",user);
+                startActivity(intentD);
+
+            }
             pet.setHappiness(pet.getHappiness()-DECREASE_VALUE);
             pet.setCleanliness(pet.getCleanliness()-DECREASE_VALUE);
             pet.setHealth(pet.getHealth()-DECREASE_VALUE);
@@ -199,6 +191,7 @@ public class HomeActivity extends AppCompatActivity {
             if(pet.getHappiness()>=50){
                 user.setMoney(user.getMoney()+BONUS_MONEY);
             }
+            UsersManager.getInstance(HomeActivity.this).setUserPet(HomeActivity.this,user,pet);
 
 
         }

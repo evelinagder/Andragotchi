@@ -32,7 +32,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="90dp"
-            android:id="@+id/button6"
+            android:id="@+id/button_yes"
             android:src="@drawable/confirm"
             android:fontFamily="casual"
             android:textAlignment="center"
@@ -46,7 +46,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="90dp"
-            android:id="@+id/button5"
+            android:id="@+id/button_No"
             android:src="@drawable/confirm"
             android:fontFamily="casual"
             android:textAlignment="center"

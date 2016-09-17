@@ -169,12 +169,15 @@ public class HomeActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
 
             Log.e("myTag", "pet happiness-5");
+<<<<<<< HEAD
             if(pet.getHappiness()==0 || pet.getCleanliness()==0 || pet.getFill()==0 || pet.getHealth()==0){
                 Intent intentD = new Intent(HomeActivity.this, DieActivity.class);
                 intentD.putExtra("loggedUser",user);
                 startActivity(intentD);
 
             }
+=======
+>>>>>>> 071eb7c1e1cf0a51aa0163a912580b1e5dcaa3a6
             pet.setHappiness(pet.getHappiness()-DECREASE_VALUE);
             pet.setCleanliness(pet.getCleanliness()-DECREASE_VALUE);
             pet.setHealth(pet.getHealth()-DECREASE_VALUE);

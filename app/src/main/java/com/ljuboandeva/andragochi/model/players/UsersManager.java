@@ -23,7 +23,7 @@ public class UsersManager {
     private HashMap<String, User> users;
 
     public static UsersManager getInstance(Activity activity) {
-        if(ourInstance == null){
+        if (ourInstance == null) {
             ourInstance = new UsersManager(activity);
         }
         return ourInstance;
@@ -35,7 +35,7 @@ public class UsersManager {
         String json = activity.getSharedPreferences("Andragochi", Context.MODE_PRIVATE).getString("registeredUsers", "no users");
         try {
             JSONArray arr = new JSONArray(json);
-            for(int i = 0; i < arr.length(); i++){
+            for (int i = 0; i < arr.length(); i++) {
                 JSONObject obj = arr.getJSONObject(i);
                 User user = new User(obj.getString("username"), obj.getString("password"), obj.getString("email"));
                 user.setDifficultyLevel(obj.getString("difficulty"));
@@ -46,14 +46,14 @@ public class UsersManager {
                 pet.setCleanliness(obj.getInt("petCleanliness"));
                 pet.setHappiness(obj.getInt("petHappiness"));
                 pet.setFill(obj.getInt("petFill"));
-                for (int j=0;i<user.getFoods().size();i++) {
-                    user.getFoods().get(i).setCount(obj.getInt("food"+j));
+                for (int j = 0; i < user.getFoods().size(); i++) {
+                    user.getFoods().get(i).setCount(obj.getInt("food" + j));
                 }
-                for (int j=0;i<user.getToys().size();i++) {
-                    user.getToys().get(i).setCount(obj.getInt("toy"+j));
+                for (int j = 0; i < user.getToys().size(); i++) {
+                    user.getToys().get(i).setCount(obj.getInt("toy" + j));
                 }
-                for (int j=0;i<user.getMeds().size();i++) {
-                    user.getMeds().get(i).setCount(obj.getInt("med"+j));
+                for (int j = 0; i < user.getMeds().size(); i++) {
+                    user.getMeds().get(i).setCount(obj.getInt("med" + j));
                 }
                 user.setPet(pet);
                 users.put(user.getUsername(), user);
@@ -68,54 +68,55 @@ public class UsersManager {
     }
 
     public void registerUser(Activity activity, String username, String pass1, String email) {
-        User user = new User(username, pass1,email);
+        User user = new User(username, pass1, email);
         users.put(username, user);
         saveUsers(activity);
     }
 
     public boolean validalteLogin(String username, String password) {
-        if (!existsUser(username)){
+        if (!existsUser(username)) {
             Log.e("F", "user does not exist in map");
             return false;
         }
-        if(!users.get(username).getPassword().equals(password)){
-            Log.e("F","user pass is wrong");
+        if (!users.get(username).getPassword().equals(password)) {
+            Log.e("F", "user pass is wrong");
             return false;
         }
         return true;
     }
 
-    public User getUser(String username){
+    public User getUser(String username) {
         return users.get(username);
     }
 
-    public void unregister(Activity activity,User user){
+    public void unregister(Activity activity, User user) {
         users.remove(user.getUsername());
         saveUsers(activity);
     }
 
-    public void setUserDifficulty(Activity activity, User user, String difficultyChoice){
+    public void setUserDifficulty(Activity activity, User user, String difficultyChoice) {
         user.setDifficultyLevel(difficultyChoice);
         User tempUser = user;
         users.remove(user);
-        users.put(tempUser.getUsername(),tempUser);
+        users.put(tempUser.getUsername(), tempUser);
         saveUsers(activity);
     }
 
-    public void setUserPet(Activity activity, User user, Pet pet){
+    public void setUserPet(Activity activity, User user, Pet pet) {
         user.setPet(pet);
         User tempUser = user;
         users.remove(user);
-        users.put(tempUser.getUsername(),tempUser);
+        users.put(tempUser.getUsername(), tempUser);
         saveUsers(activity);
     }
 
-    public void buyFood (Activity activity, User user, int money, int position){
+
+    public void buyFood(Activity activity, User user, int money, int position) {
         user.setMoney(money);
         user.addFood(position);
         User tempUser = user;
         users.remove(user);
-        users.put(tempUser.getUsername(),tempUser);
+        users.put(tempUser.getUsername(), tempUser);
         saveUsers(activity);
     }
 
@@ -124,7 +125,7 @@ public class UsersManager {
         user.addToy(position);
         User tempUser = user;
         users.remove(user);
-        users.put(tempUser.getUsername(),tempUser);
+        users.put(tempUser.getUsername(), tempUser);
         saveUsers(activity);
     }
 
@@ -133,11 +134,11 @@ public class UsersManager {
         user.addMedicine(position);
         User tempUser = user;
         users.remove(user);
-        users.put(tempUser.getUsername(),tempUser);
+        users.put(tempUser.getUsername(), tempUser);
         saveUsers(activity);
     }
 
-  public Pet getUserPet(String username){
+    public Pet getUserPet(String username) {
         return users.get(username).getPet();
     }
 
@@ -154,15 +155,15 @@ public class UsersManager {
                 jobj.put("password", u.getPassword());
                 jobj.put("email", u.getEmail());
                 jobj.put("difficulty", u.getDifficultyLevel());
-                jobj.put("money",u.getMoney());
-                for (int i=0;i<u.getFoods().size();i++) {
-                    jobj.put("food"+i, u.getFoods().get(i).getCount());
+                jobj.put("money", u.getMoney());
+                for (int i = 0; i < u.getFoods().size(); i++) {
+                    jobj.put("food" + i, u.getFoods().get(i).getCount());
                 }
-                for (int i=0;i<u.getToys().size();i++) {
-                    jobj.put("toy"+i, u.getToys().get(i).getCount());
+                for (int i = 0; i < u.getToys().size(); i++) {
+                    jobj.put("toy" + i, u.getToys().get(i).getCount());
                 }
-                for (int i=0;i<u.getMeds().size();i++) {
-                    jobj.put("med"+i, u.getMeds().get(i).getCount());
+                for (int i = 0; i < u.getMeds().size(); i++) {
+                    jobj.put("med" + i, u.getMeds().get(i).getCount());
                 }
                 if (u.getPet() != null) {
                     jobj.put("petName", u.getPet().getName());
@@ -183,9 +184,4 @@ public class UsersManager {
         editor.putString(key, value);
         editor.apply();
     }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
 }

@@ -10,5 +10,6 @@ public abstract class Buyable implements Serializable{
     public abstract String getType();
     public abstract int getBonus();
     public abstract int getPrice();
+    public abstract void decreaseCount();
 
 }

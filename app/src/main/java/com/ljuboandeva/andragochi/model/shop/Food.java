@@ -38,4 +38,8 @@ public class Food extends Buyable{
     }
 
     public void increaseCount(){this.count+=1;}
+
+    public void decreaseCount(){
+        this.count--;
+    }
 }

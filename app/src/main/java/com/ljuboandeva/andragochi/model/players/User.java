@@ -1,6 +1,7 @@
 package com.ljuboandeva.andragochi.model.players;
 
 import com.ljuboandeva.andragochi.model.pet.Pet;
+import com.ljuboandeva.andragochi.model.shop.Buyable;
 import com.ljuboandeva.andragochi.model.shop.Food;
 import com.ljuboandeva.andragochi.model.shop.Medicine;
 import com.ljuboandeva.andragochi.model.shop.Toy;
@@ -8,6 +9,7 @@ import com.ljuboandeva.andragochi.model.shop.Toy;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Evelina on 8/25/2016.
@@ -111,4 +113,20 @@ public class User implements Serializable{
     public void setMoney(int money) {
         this.money = money;
     }
-}
+
+
+    public ArrayList<Buyable> getInventory(String type) {
+        ArrayList<Buyable> items = new ArrayList<>();
+        switch (type) {
+            case "FOOD":
+                items.addAll(foods);
+                break;
+            case "TOY":
+                items.addAll(toys);
+                break;
+            case "MEDICINE":
+                items.addAll(medicines);
+        }
+        return items;
+    }
+    }

@@ -39,19 +39,18 @@ public class CareFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        String username=activity.getSharedPreferences("Andragochi", Context.MODE_PRIVATE).getString("currentUser", null);
-        user= UsersManager.getInstance(activity).getUser(username);
-        View root=inflater.inflate(R.layout.fragment_care, container, false);
-        itemsList= (RecyclerView) root.findViewById(R.id.items_View);
-        String type= activity.getType();
-        itemsList.setAdapter(new CareRecyclerAdapter((CareActivity)getActivity(),user.getInventory(type)));
-        itemsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                         Bundle savedInstanceState) {
+    String username=activity.getSharedPreferences("Andragochi", Context.MODE_PRIVATE).getString("currentUser", null);
+    user= UsersManager.getInstance(activity).getUser(username);
+    View root=inflater.inflate(R.layout.fragment_care, container, false);
+    itemsList= (RecyclerView) root.findViewById(R.id.items_View);
+    String type= activity.getType();
+    itemsList.setAdapter(new CareRecyclerAdapter((CareActivity)getActivity(),user.getInventory(type)));
+    itemsList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        return root;
-    }
-
+    return root;
+}
 
 
 }

@@ -68,8 +68,10 @@
         <activity
             android:name=".InventoryActivity"
             android:screenOrientation="portrait" />
+
         <activity android:name=".DieActivity" />
-        <activity android:name=".CareActivity"></activity>
+       <activity android:name=".CareActivity"></activity>
+        <activity android:name=".DieActivity"></activity>
     </application>
 
 </manifest>

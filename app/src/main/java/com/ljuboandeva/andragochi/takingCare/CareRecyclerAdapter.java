@@ -21,8 +21,6 @@ import com.ljuboandeva.andragochi.model.shop.Toy;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.support.v4.view.PagerAdapter.POSITION_NONE;
-
 /**
  * Created by Evelina on 9/17/2016.
  */
@@ -109,6 +107,5 @@ public class CareRecyclerAdapter extends RecyclerView.Adapter<CareRecyclerAdapte
 
         }
     }
-
 }
 

@@ -21,7 +21,7 @@ public class FoodFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    TextView skull;
+
     private OnFragmentInteractionListener mListener;
 
     public FoodFragment() {
@@ -63,9 +63,9 @@ public class FoodFragment extends Fragment {
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(int itemSelected) {
+    public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(itemSelected);
+            mListener.onFragmentInteraction(uri);
         }
     }
 
@@ -98,6 +98,6 @@ public class FoodFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(int selectedItem);
+        void onFragmentInteraction(Uri uri);
     }
 }

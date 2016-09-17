@@ -7,28 +7,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.ljuboandeva.andragochi.R;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 import com.ljuboandeva.andragochi.model.shop.Food;
-
 import java.util.ArrayList;
 
-public class RecyclerView_Adapter_Food extends
-        RecyclerView.Adapter<FoodViewHolder> {
+public class RecyclerView_Adapter_Food extends RecyclerView.Adapter<FoodViewHolder> {
     private ArrayList<Food> arrayList;
     private Context context;
     private User user;
-
 
     public RecyclerView_Adapter_Food(Context context, ArrayList<Food> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
         this.user=UsersManager.getInstance((Activity) context).getUser(((User) ((Activity) context).getIntent().getExtras().get("loggedUser")).getUsername());
-
     }
-
 
     @Override
     public int getItemCount() {
@@ -43,7 +37,7 @@ public class RecyclerView_Adapter_Food extends
         final Food f= arrayList.get(position);
         mainHolder.title.setText(f.getType().toString());
         mainHolder.price.setText(Integer.toString(f.getPrice()));
-        mainHolder.calories.setText(Integer.toString(f.getPrice()));
+        mainHolder.calories.setText(Integer.toString(f.getCalories()));
         mainHolder.buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +52,6 @@ public class RecyclerView_Adapter_Food extends
                 }
             }
         });
-
     }
 
     @Override
@@ -72,9 +65,6 @@ public class RecyclerView_Adapter_Food extends
                 return super.toString();
             }
         };
-
-
         return mainHolder;
-
     }
 }

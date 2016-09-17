@@ -3,7 +3,7 @@ package com.ljuboandeva.andragochi.model.shop;
 /**
  * Created by Evelina on 8/26/2016.
  */
-public class Food implements Buyable{
+public class Food extends Buyable{
 
     public enum Type{
             SKULL,BONE,FLESH
@@ -20,10 +20,10 @@ public class Food implements Buyable{
         this.count = count;
     }
 
+    public String getType(){ return this.foodType.toString(); }
 
-    public Type getType(){
-        return this.foodType;
-    }
+    @Override
+    public int getBonus() { return calories; }
 
     public int getPrice(){
         return this.price;
@@ -38,9 +38,4 @@ public class Food implements Buyable{
     }
 
     public void increaseCount(){this.count+=1;}
-
-    @Override
-    public void buy() {
-    //TODO
-    }
 }

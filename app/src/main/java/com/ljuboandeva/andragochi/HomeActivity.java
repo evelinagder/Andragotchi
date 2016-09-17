@@ -110,6 +110,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
 //        inventory.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -118,6 +119,16 @@ public class HomeActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
+=======
+        inventory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(HomeActivity.this, InventoryActivity.class);
+                intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
+                startActivity(intent);
+            }
+        });
+>>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +165,11 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+<<<<<<< HEAD
         registerReceiver(UpdateAlarmReceiver, new IntentFilter("ALARM"));
+=======
+        LocalBroadcastManager.getInstance(this).registerReceiver(UpdateAlarmReceiver,new IntentFilter("ALARM"));
+>>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
         Log.e("myTag", "Resume and register Reciever");
         petName.setText(pet.getName());
         happiness.setText(String.valueOf(pet.getHappiness()));
@@ -168,7 +183,11 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
 
+<<<<<<< HEAD
             Log.e("myTag", "pet happiness-5");
+=======
+            Log.e("Update", "pet happiness-5");
+>>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
             pet.setHappiness(pet.getHappiness()-DECREASE_VALUE);
             pet.setCleanliness(pet.getCleanliness()-DECREASE_VALUE);
             pet.setHealth(pet.getHealth()-DECREASE_VALUE);

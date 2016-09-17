@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ljuboandeva.andragochi">
 
+    <receiver android:name="receivers.UpdateAlarmReceiver">
+        <intent-filter>
+            <action android:name="ALARM" />
+        </intent-filter>
+    </receiver>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -59,7 +65,13 @@
         <activity
             android:name=".ShopActivity"
             android:screenOrientation="portrait" />
+<<<<<<< HEAD
 
+=======
+        <activity
+            android:name=".InventoryActivity"
+            android:screenOrientation="portrait" />
+>>>>>>> fdb61254a614d960da2c234709978cb38bd2e532
     </application>
 
 </manifest>

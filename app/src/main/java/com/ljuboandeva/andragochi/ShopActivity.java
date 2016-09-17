@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import com.ljuboandeva.andragochi.model.shop.Shop;
 import com.ljuboandeva.andragochi.shop_view.FoodFragment_Shop;
 import com.ljuboandeva.andragochi.shop_view.MedsFragment_Shop;
 import com.ljuboandeva.andragochi.shop_view.ToysFragment_Shop;
@@ -29,6 +30,7 @@ public class ShopActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("SHOP");
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         setupViewPager(viewPager);

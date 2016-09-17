@@ -54,4 +54,6 @@ public class DifficultyActivity extends MusicActivity {
         medium.setOnClickListener(onClickListener);
         hard.setOnClickListener(onClickListener);
     }
+
+
 }

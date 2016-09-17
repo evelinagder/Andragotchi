@@ -40,4 +40,7 @@ public class Toy extends Buyable{
 
     @Override
     public int getBonus() { return fun; }
+    public void decreaseCount(){
+        this.count--;
+    }
 }

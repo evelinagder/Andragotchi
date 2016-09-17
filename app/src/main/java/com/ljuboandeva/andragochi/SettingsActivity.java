@@ -14,7 +14,7 @@ import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends MusicActivity {
 
     Button button_logout;
     Button changeName;
@@ -65,8 +65,15 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent= new Intent(SettingsActivity.this,HomeActivity.class);
-        intent.putExtra("loggedUser", user);
+        Intent intent;
+        if(getIntent().getStringExtra("caller").equalsIgnoreCase("home")) {
+            intent = new Intent(SettingsActivity.this, HomeActivity.class);
+        } else {
+            intent = new Intent(SettingsActivity.this, PlaygroundActivity.class);
+            intent.putExtra("outChoice", getIntent().getStringExtra("outChoice"));
+        }
+        User user=(User) getIntent().getExtras().get("loggedUser");
+        intent.putExtra("loggedUser", UsersManager.getInstance(SettingsActivity.this).getUser(user.getUsername()));
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

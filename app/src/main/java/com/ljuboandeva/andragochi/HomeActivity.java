@@ -20,7 +20,7 @@ import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends MusicActivity {
     public static final int DECREASE_VALUE=5;
     public static final int BONUS_MONEY=10;
 
@@ -64,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
 
         int alarmType =AlarmManager.ELAPSED_REALTIME_WAKEUP;
         long timeOrLengthofWait = AlarmManager.INTERVAL_HOUR;
-        int requestCode= (int) System.currentTimeMillis();
+        final int requestCode= (int) System.currentTimeMillis();
         Intent myIntent = new Intent("ALARM");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(HomeActivity.this, requestCode, myIntent,0);
         AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
@@ -104,6 +104,8 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(HomeActivity.this, ShopActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("caller", "home");
                 startActivity(intent);
             }
         });
@@ -114,6 +116,8 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(HomeActivity.this, InventoryActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("caller", "home");
                 startActivity(intent);
             }
         });
@@ -124,6 +128,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(HomeActivity.this, SettingsActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
+                intent.putExtra("caller", "home");
                 startActivity(intent);
                 finish();
             }

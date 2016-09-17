@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends MusicActivity {
     EditText usernameR;
     EditText passR;
     EditText confirmPassR;

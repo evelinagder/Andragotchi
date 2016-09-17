@@ -13,7 +13,7 @@ import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class PetChoiceActivity extends AppCompatActivity {
+public class PetChoiceActivity extends MusicActivity {
 
     Button confirmPet;
     EditText namePet;

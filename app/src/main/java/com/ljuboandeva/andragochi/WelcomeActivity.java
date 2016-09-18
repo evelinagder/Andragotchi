@@ -30,6 +30,7 @@ public class WelcomeActivity extends MusicActivity {
                     Log.e("USER", WelcomeActivity.this.getSharedPreferences("Andragochi", Context.MODE_PRIVATE).getString("currentUser", null));
                     Log.e("USER",getCurrentUser(WelcomeActivity.this).toString());
                     user = getCurrentUser(WelcomeActivity.this);
+                    Log.e("USER", user.getUsername());
                 }
                 maintainLogin(WelcomeActivity.this);
             }

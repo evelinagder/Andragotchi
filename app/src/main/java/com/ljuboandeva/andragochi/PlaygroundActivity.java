@@ -122,8 +122,8 @@ public class PlaygroundActivity extends MusicActivity {
                            } if(i==toys.size() &&counter==0){
                                Toast.makeText(PlaygroundActivity.this, "I don`t have a toy for this place!", Toast.LENGTH_SHORT).show();
                            }
-                           counter=0;
-                       }
+                           counter=0;   
+}                    
                         break;
                     case "pool":
                         for(int i =0;i<toys.size();i++) {

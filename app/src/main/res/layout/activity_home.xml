@@ -51,19 +51,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:id="@+id/button_medicine"
-            android:src="@drawable/confirm"
-            android:fontFamily="casual"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:text="Medicine"
-            android:layout_weight="1"
-            android:background="@drawable/confirm"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
+
 
         <Button
             android:layout_width="0dp"
@@ -174,20 +162,7 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/drago_home"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:id="@+id/button_feed"
-        android:src="@drawable/confirm"
-        android:fontFamily="casual"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        android:text="Feed Me"
-        android:background="@drawable/confirm"
-        android:layout_weight="1"
-        android:layout_marginTop="13dp"
-        android:layout_below="@+id/pet_image_home"
-        android:layout_centerHorizontal="true" />
+
 
     <ImageView
         android:layout_width="50dp"

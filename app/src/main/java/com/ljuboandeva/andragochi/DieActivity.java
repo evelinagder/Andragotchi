@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.ljuboandeva.andragochi.model.players.User;
 
-public class DieActivity extends AppCompatActivity {
+public class DieActivity extends MusicActivity {
     Button restartB;
     Button exitB;
     User user;

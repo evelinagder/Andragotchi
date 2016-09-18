@@ -14,7 +14,7 @@ import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends MusicActivity {
 
     Button button_logout;
     Button changeName;

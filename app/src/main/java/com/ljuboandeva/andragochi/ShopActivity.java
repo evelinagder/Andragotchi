@@ -18,7 +18,7 @@ import com.ljuboandeva.andragochi.shop_view.ToysFragment_Shop;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShopActivity extends AppCompatActivity {
+public class ShopActivity extends MusicActivity {
     private static Toolbar toolbar;
     private static ViewPager viewPager;
     private static TabLayout tabLayout;

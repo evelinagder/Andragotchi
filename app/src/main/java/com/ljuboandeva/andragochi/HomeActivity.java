@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,21 +21,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ljuboandeva.andragochi.fragments_inventory.FoodFragment;
 import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 import com.ljuboandeva.andragochi.takingCare.CareFragment;
 
-public class HomeActivity extends AppCompatActivity implements FoodFragment.OnFragmentInteractionListener {
+public class HomeActivity extends MusicActivity  {
     public static final int DECREASE_VALUE=5;
     public static final int BONUS_MONEY=10;
 
     User user;
     Pet pet;
-    Button feed;
     Button clean;
-    Button medicine;
     Button shop;
     ImageButton inventory;
     ImageButton settings;
@@ -53,9 +51,7 @@ public class HomeActivity extends AppCompatActivity implements FoodFragment.OnFr
         setContentView(R.layout.activity_home);
         user = (User) getIntent().getExtras().get("loggedUser");
         pet = user.getPet();
-        feed = (Button) findViewById(R.id.button_feed);
         clean = (Button) findViewById(R.id.button_clean);
-        medicine = (Button) findViewById(R.id.button_medicine);
         shop = (Button) findViewById(R.id.button_shop);
         inventory = (ImageButton) findViewById(R.id.button_inventory);
         settings = (ImageButton) findViewById(R.id.button_settings);
@@ -121,6 +117,7 @@ public class HomeActivity extends AppCompatActivity implements FoodFragment.OnFr
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, InventoryActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
+                intent.putExtra("caller", "home");
                 startActivity(intent);
             }
         });
@@ -131,20 +128,12 @@ public class HomeActivity extends AppCompatActivity implements FoodFragment.OnFr
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
+                intent.putExtra("caller", "home");
                 startActivity(intent);
                 finish();
             }
         });
-        feed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(HomeActivity.this, CareActivity.class);
-                intent.putExtra("type", "FOOD");
-                startActivity(intent);
 
-
-            }
-        });
         clean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,15 +141,7 @@ public class HomeActivity extends AppCompatActivity implements FoodFragment.OnFr
                 //TODO cleanliness.setText.. remove poop
             }
         });
-        medicine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(HomeActivity.this, CareActivity.class);
-                intent.putExtra("type", "MEDICINE");
-                startActivity(intent);
 
-            }
-        });
     }
 
     @Override
@@ -176,8 +157,8 @@ public class HomeActivity extends AppCompatActivity implements FoodFragment.OnFr
     }
     @Override
     protected void onPause() {
-        unregisterReceiver(UpdateAlarmReceiver);
         super.onPause();
+        unregisterReceiver(UpdateAlarmReceiver);
     }
 
     private BroadcastReceiver UpdateAlarmReceiver = new BroadcastReceiver() {
@@ -210,8 +191,5 @@ public class HomeActivity extends AppCompatActivity implements FoodFragment.OnFr
     };
 
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }
 }

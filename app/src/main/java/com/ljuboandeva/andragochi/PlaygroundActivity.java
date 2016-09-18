@@ -13,7 +13,7 @@ import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class PlaygroundActivity extends AppCompatActivity {
+public class PlaygroundActivity extends MusicActivity {
 
     String outChoice;
     Button home;

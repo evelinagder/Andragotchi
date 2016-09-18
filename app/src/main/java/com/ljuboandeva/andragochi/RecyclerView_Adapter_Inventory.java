@@ -3,7 +3,9 @@ package com.ljuboandeva.andragochi;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.ljuboandeva.andragochi.model.players.User;
@@ -19,13 +21,15 @@ import java.util.ArrayList;
  */
 public class RecyclerView_Adapter_Inventory extends RecyclerView.Adapter<BuyableViewHolder> {
     private ArrayList<Buyable> arrayList;
-    private Context context;
+    private InventoryActivity activity;
     private User user;
 
-    public RecyclerView_Adapter_Inventory(Context context, ArrayList<Buyable> arrayList) {
-        this.context = context;
+    public RecyclerView_Adapter_Inventory(InventoryActivity activity, ArrayList<Buyable> arrayList) {
+        this.activity = activity;
         this.arrayList = arrayList;
-        this.user= UsersManager.getInstance((Activity) context).getUser(((User) ((Activity) context).getIntent().getExtras().get("loggedUser")).getUsername());
+        String username=activity.getSharedPreferences("Andragochi", Context.MODE_PRIVATE).getString("currentUser", null);
+        Log.e("USER",username);
+        this.user=UsersManager.getInstance(activity).getUser(username);
     }
 
     @Override
@@ -37,12 +41,20 @@ public class RecyclerView_Adapter_Inventory extends RecyclerView.Adapter<Buyable
     @Override
     public void onBindViewHolder(BuyableViewHolder holder, final int position) {
         final BuyableViewHolder mainHolder = holder;
-        Buyable b = arrayList.get(position);
+         Buyable b = arrayList.get(position);
         mainHolder.title.setText(b.getType());
+        mainHolder.count.setText(b.getCount());
         mainHolder.bonus.setText(Integer.toString(b.getBonus()));
         if(b instanceof Food){mainHolder.bonusType.setText("Calories");}
         else if (b instanceof Toy){mainHolder.bonusType.setText("Fun");}
         else mainHolder.bonusType.setText("Health");
+
+        mainHolder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            activity.itemSelected(arrayList.get(position).getType());
+            }
+        });
     }
 
 

@@ -48,6 +48,7 @@ public class InventoryActivity extends MusicActivity {
         RecyclerView_Adapter_Inventory adapter = new RecyclerView_Adapter_Inventory(InventoryActivity.this, arrayList);
         recyclerView.setAdapter(adapter);
 
+
     }
     public void itemSelected(String name) {
         if (pet.getFill() >= 100) {
@@ -93,5 +94,5 @@ public class InventoryActivity extends MusicActivity {
             startActivity(intent);
 
         }
-    }
+
 }

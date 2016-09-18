@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.ljuboandeva.andragochi.takingCare.CareFragment;
 
-public class CareActivity extends AppCompatActivity {
+public class CareActivity extends MusicActivity {
 
     String type;
 

@@ -68,7 +68,11 @@
         <activity
             android:name=".InventoryActivity"
             android:screenOrientation="portrait" />
+        <activity
+        android:name=".MusicActivity"
+        android:screenOrientation="portrait" />
         <activity android:name=".DieActivity" />
+
         <activity android:name=".CareActivity"></activity>
     </application>
 

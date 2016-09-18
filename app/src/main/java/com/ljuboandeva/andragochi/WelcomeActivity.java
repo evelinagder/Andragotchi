@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends MusicActivity {
 
     ImageButton signIn;
     User user;

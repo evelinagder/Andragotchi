@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ExitActivity extends AppCompatActivity {
+public class ExitActivity extends MusicActivity {
     Button yesB;
     Button noB;
 

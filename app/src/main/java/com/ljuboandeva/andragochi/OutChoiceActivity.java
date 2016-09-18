@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class OutChoiceActivity extends AppCompatActivity {
+public class OutChoiceActivity extends MusicActivity {
 
     Button button_park;
     Button button_sandbox;

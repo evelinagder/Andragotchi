@@ -29,7 +29,6 @@ public class ShopActivity extends MusicActivity {
         setContentView(R.layout.activity_shop);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         toolbar.setTitle("SHOP");
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);

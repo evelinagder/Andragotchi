@@ -129,4 +129,8 @@ public class User implements Serializable{
         }
         return items;
     }
-    }
+
+    public void removeFood(int position){foods.get(position).decreaseCount(); }
+    public void removeToy(int position){toys.get(position).decreaseCount(); }
+    public void removeMedicine(int position){medicines.get(position).decreaseCount(); }
+}

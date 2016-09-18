@@ -71,8 +71,8 @@ public class HomeActivity extends MusicActivity  {
         petImage = (ImageView) findViewById(R.id.pet_image_home);
 
 
-         int alarmType =AlarmManager.ELAPSED_REALTIME_WAKEUP;
-        long timeOrLengthofWait = 300000;
+        int alarmType = AlarmManager.ELAPSED_REALTIME_WAKEUP;
+        long timeOrLengthofWait = 60000;
         int requestCode= (int) System.currentTimeMillis();
         Intent myIntent = new Intent("ALARM");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(HomeActivity.this, requestCode, myIntent, 0);
@@ -114,6 +114,7 @@ public class HomeActivity extends MusicActivity  {
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, ShopActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
+                intent.putExtra("from","home");
                 startActivity(intent);
             }
         });
@@ -124,7 +125,7 @@ public class HomeActivity extends MusicActivity  {
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, InventoryActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
-                intent.putExtra("caller", "home");
+                intent.putExtra("from", "home");
                 startActivity(intent);
             }
         });
@@ -135,7 +136,7 @@ public class HomeActivity extends MusicActivity  {
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
-                intent.putExtra("caller", "home");
+                intent.putExtra("from", "home");
                 startActivity(intent);
                 finish();
             }
@@ -172,9 +173,7 @@ public class HomeActivity extends MusicActivity  {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-
-            Log.e("myTag", "pet happiness-5");
-            if(pet.getHappiness()<=0 || pet.getCleanliness()<=0 || pet.getFill()<=0 || pet.getHealth()<=0){
+            if(pet.getHealth()<=0){
                 Intent intentD = new Intent(HomeActivity.this, DieActivity.class);
                 intentD.putExtra("loggedUser",user);
                 startActivity(intentD);
@@ -188,9 +187,12 @@ public class HomeActivity extends MusicActivity  {
             if(random==0){
               pet.setHealth(pet.getHealth()-DECREASE_HEALTH);
             }
-            if(pet.getHappiness()<30 && pet.getFill() < 30 && pet.getHealth() < 30 && pet.getCleanliness()<30) {
+            if(pet.getHappiness()<30 || pet.getFill() < 30 || pet.getHealth() < 30 || pet.getCleanliness()<30) {
                 pet.setHealth(pet.getHealth() - DECREASE_VALUE);
             }
+            if(pet.getHealth()<0)pet.setHealth(0);
+            if(pet.getHappiness()<0)pet.setHappiness(0);
+            if(pet.getFill()<0)pet.setFill(0);
             happiness.setText(String.valueOf(pet.getHappiness()));
             cleanliness.setText(String.valueOf(pet.getCleanliness()));
             fill.setText(String.valueOf(pet.getFill()));
@@ -204,11 +206,6 @@ public class HomeActivity extends MusicActivity  {
                 Toast.makeText(HomeActivity.this,"You received the Small bonus!",Toast.LENGTH_SHORT).show();
             }
             UsersManager.getInstance(HomeActivity.this).setUserPet(HomeActivity.this,user,pet);
-
-
         }
     };
-
-
-
 }

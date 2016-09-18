@@ -22,7 +22,6 @@ public class PlaygroundActivity extends MusicActivity {
     String outChoice;
     Button home;
     Button shop;
-    Button play;
     ImageButton inventory;
     ImageButton settings;
     User user;
@@ -38,7 +37,6 @@ public class PlaygroundActivity extends MusicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playground);
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.layout_playground);
-        play = (Button)findViewById(R.id.button_play) ;
         home = (Button) findViewById(R.id.button_home);
         user=(User) getIntent().getExtras().get("loggedUser");
         pet=user.getPet();
@@ -84,6 +82,8 @@ public class PlaygroundActivity extends MusicActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(PlaygroundActivity.this, ShopActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(PlaygroundActivity.this).getUser(user.getUsername()));
+                intent.putExtra("outChoice",outChoice);
+                intent.putExtra("from","play");
                 startActivity(intent);
             }
         });
@@ -93,6 +93,8 @@ public class PlaygroundActivity extends MusicActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(PlaygroundActivity.this, InventoryActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(PlaygroundActivity.this).getUser(user.getUsername()));
+                intent.putExtra("outChoice",outChoice);
+                intent.putExtra("from","play");
                 startActivity(intent);
             }
         });
@@ -102,60 +104,12 @@ public class PlaygroundActivity extends MusicActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(PlaygroundActivity.this, SettingsActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(PlaygroundActivity.this).getUser(user.getUsername()));
+                intent.putExtra("outChoice",outChoice);
+                intent.putExtra("from","play");
                 startActivity(intent);
             }
         });
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ArrayList <Toy>toys=user.getToys();
-                int counter=0;
-                switch (outChoice){
 
-                    case "park":
-                       for(int i =0;i<toys.size();i++) {
-                           if (toys.get(i).getToyType().equals(Toy.Type.BALL)) {
-                               pet.setHappiness(pet.getHappiness() + toys.get(i).getBonus());
-                               toys.remove(i);
-                               happiness.setText(pet.getHappiness()+"");
-                               counter++;
-                           } if(i==toys.size() &&counter==0){
-                               Toast.makeText(PlaygroundActivity.this, "I don`t have a toy for this place!", Toast.LENGTH_SHORT).show();
-                           }
-                           counter=0;   
-}                    
-                        break;
-                    case "pool":
-                        for(int i =0;i<toys.size();i++) {
-                            if (toys.get(i).getToyType().equals(Toy.Type.GIRDLE)) {
-                                pet.setHappiness(pet.getHappiness() + toys.get(i).getBonus());
-                                toys.remove(i);
-                                happiness.setText(pet.getHappiness()+"");
-                                counter++;
-                            } if(i>=toys.size() &&counter==0){
-                                counter=0;
-                                Toast.makeText(PlaygroundActivity.this, "I don`t have a toy for this place!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        break;
-                    case "sandbox":
-                        for(int i =0;i<toys.size();i++) {
-                            if (toys.get(i).getToyType().equals(Toy.Type.SHOVEL)) {
-                                pet.setHappiness(pet.getHappiness() + toys.get(i).getBonus());
-                                toys.remove(i);
-                                happiness.setText(pet.getHappiness()+"");
-                                counter++;
-                            } if(i>=toys.size() &&counter==0){
-                                counter=0;
-                                Toast.makeText(PlaygroundActivity.this, "I don`t have a toy for this place!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        break;
-                }
-            }
-        });
     }
 
     @Override

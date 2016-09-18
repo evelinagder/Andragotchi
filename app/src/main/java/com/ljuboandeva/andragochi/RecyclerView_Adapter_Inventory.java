@@ -52,7 +52,7 @@ public class RecyclerView_Adapter_Inventory extends RecyclerView.Adapter<Buyable
         mainHolder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            activity.itemSelected(arrayList.get(position).getType());
+            activity.itemSelected(arrayList.get(position).getType(),position);
             }
         });
     }

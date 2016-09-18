@@ -58,7 +58,6 @@
         android:id="@+id/imageView5"
         android:background="@drawable/heart"
         android:layout_alignTop="@+id/imageView8"
-        android:layout_toEndOf="@+id/button_feed"
         android:layout_alignStart="@+id/imageView6" />
 
     <ImageView
@@ -86,22 +85,6 @@
         android:layout_above="@+id/textView_play"
         android:layout_toStartOf="@+id/imageView4" />
 
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="140dp"
-        android:id="@+id/button_play"
-        android:src="@drawable/confirm"
-        android:fontFamily="casual"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        android:text="PLAY"
-        android:background="@drawable/confirm"
-        android:layout_weight="1"
-        android:layout_below="@+id/imageView4"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -193,7 +176,6 @@
         android:id="@+id/textView9"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/imageView4"/>
-
 
 
 </RelativeLayout>

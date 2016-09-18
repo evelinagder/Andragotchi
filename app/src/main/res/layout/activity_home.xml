@@ -75,16 +75,18 @@
         android:fontFamily="casual"
         android:textSize="35sp"
         android:id="@+id/textView_health"
+        android:textColor="@color/blue"
         android:layout_below="@+id/imageView5"
         android:layout_alignEnd="@+id/imageView6" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/textView_play"
         android:fontFamily="casual"
         android:textSize="35sp"
-        android:id="@+id/textView_play"
-        android:layout_below="@+id/imageView8"/>
+        android:layout_below="@+id/imageView8"
+        android:textColor="@color/blue"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -93,6 +95,7 @@
         android:textSize="35sp"
         android:id="@+id/textView_clean"
         android:layout_below="@+id/imageView6"
+        android:textColor="@color/blue"
         android:layout_alignLeft="@+id/imageView7"/>
 
     <TextView
@@ -102,6 +105,7 @@
         android:textSize="35sp"
         android:id="@+id/textView_food"
         android:layout_below="@+id/imageView6"
+        android:textColor="@color/blue"
         android:layout_alignEnd="@+id/imageView6"/>
 
     <TextView
@@ -110,6 +114,7 @@
         android:fontFamily="casual"
         android:textSize="60sp"
         android:id="@+id/textView_name"
+        android:textColor="@color/blue"
         android:layout_above="@+id/pet_image_home"
         android:layout_centerHorizontal="true" />
 
@@ -175,13 +180,6 @@
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/imageView7"
-        android:background="@drawable/broom"
-        android:layout_below="@+id/textView_play" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
         android:id="@+id/imageView8"
         android:background="@drawable/play"
         android:layout_marginTop="8dp"
@@ -195,6 +193,13 @@
         android:background="@drawable/food"
         android:layout_alignTop="@+id/imageView7"
         android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView7"
+        android:background="@drawable/broom"
+        android:layout_below="@+id/textView_play"/>
 
 
 </RelativeLayout>

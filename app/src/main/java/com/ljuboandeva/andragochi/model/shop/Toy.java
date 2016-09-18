@@ -37,6 +37,7 @@ public class Toy extends Buyable{
     }
 
     public String getType(){ return this.toyType.toString(); }
+    public Type getToyType(){ return this.toyType;}
 
     @Override
     public int getBonus() { return fun; }

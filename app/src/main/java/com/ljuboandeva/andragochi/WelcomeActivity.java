@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ public class WelcomeActivity extends MusicActivity {
             public void onClick(View view) {
                 if(WelcomeActivity.this.getSharedPreferences("Andragochi",Context.MODE_PRIVATE).getString("currentUser", null)!=null) {
                     user = getCurrentUser(WelcomeActivity.this);
+                    Log.e("USER", user.getUsername());
                 }
                 maintainLogin(WelcomeActivity.this);
             }

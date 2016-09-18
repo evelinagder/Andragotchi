@@ -2,11 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ljuboandeva.andragochi">
 
-    <receiver android:name="receivers.UpdateAlarmReceiver">
-        <intent-filter>
-            <action android:name="ALARM" />
-        </intent-filter>
-    </receiver>
+
 
     <application
         android:allowBackup="true"
@@ -42,9 +38,8 @@
         <activity
             android:name=".HomeActivity"
             android:screenOrientation="portrait">
-            <receiver
-                android:name=".UpdateAlarmReceiver"
-                android:enabled="true">
+
+            <receiver android:name="receivers.UpdateAlarmReceiver">
                 <intent-filter>
                     <action android:name="ALARM" />
                 </intent-filter>
@@ -70,6 +65,7 @@
             android:screenOrientation="portrait" />
         <activity
         android:name=".MusicActivity"
+
         android:screenOrientation="portrait" />
         <activity android:name=".DieActivity" />
 

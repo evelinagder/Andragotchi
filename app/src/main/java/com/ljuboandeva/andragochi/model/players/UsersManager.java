@@ -38,7 +38,7 @@ public class UsersManager {
             for (int i = 0; i < arr.length(); i++) {
                 JSONObject obj = arr.getJSONObject(i);
                 User user = new User(obj.getString("username"), obj.getString("password"), obj.getString("email"));
-                user.setDifficultyLevel(obj.getString("difficulty"));
+                user.setDifficultyLevel(obj.getInt("difficulty"));
                 user.setMoney(obj.getInt("money"));
                 Pet pet = new Pet(obj.getString("petType"), obj.getString("petName"));
                 pet.setAge(obj.getInt("petAge"));
@@ -94,7 +94,7 @@ public class UsersManager {
         saveUsers(activity);
     }
 
-    public void setUserDifficulty(Activity activity, User user, String difficultyChoice) {
+    public void setUserDifficulty(Activity activity, User user, int difficultyChoice) {
         user.setDifficultyLevel(difficultyChoice);
         User tempUser = user;
         users.remove(user);

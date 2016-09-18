@@ -29,16 +29,16 @@ public class DifficultyActivity extends MusicActivity {
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String difficultyChoice=null;
+                int difficultyChoice=0;
                 switch (view.getId()){
                     case R.id.button_easy:
-                        difficultyChoice="easy";
+                        difficultyChoice=6;
                         break;
                     case R.id.button_medium:
-                        difficultyChoice="medium";
+                        difficultyChoice=5;
                         break;
                     case R.id.button_hard:
-                        difficultyChoice="hard";
+                        difficultyChoice=4;
                         break;
                 }
                 UsersManager.getInstance(DifficultyActivity.this).setUserDifficulty(DifficultyActivity.this,user,difficultyChoice);

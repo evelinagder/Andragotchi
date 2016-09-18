@@ -15,14 +15,14 @@ import java.util.List;
  * Created by Evelina on 8/25/2016.
  */
 public class User implements Serializable{
-        private static final int START_MONEY=100;
+        private static final int START_MONEY=500;
         private final String username;
         private int age;
         private String password;
         private String email;
         private String name;
         private int money;
-        private String difficultyLevel;
+        private int difficultyLevel;
         Pet pet;
 
     private ArrayList<Food> foods;
@@ -73,10 +73,10 @@ public class User implements Serializable{
             //TODO
         }
 
-    public void setDifficultyLevel(String difficultyLevel){
+    public void setDifficultyLevel(int difficultyLevel){
         this.difficultyLevel=difficultyLevel;
     }
-    public String getDifficultyLevel(){ return this.difficultyLevel; }
+    public int getDifficultyLevel(){ return this.difficultyLevel; }
     public Pet getPet() {
         return this.pet;
     }

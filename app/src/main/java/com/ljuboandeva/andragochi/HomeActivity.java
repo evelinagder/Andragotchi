@@ -20,15 +20,22 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 import com.ljuboandeva.andragochi.takingCare.CareFragment;
 
+import java.util.Random;
+
 public class HomeActivity extends MusicActivity  {
     public static final int DECREASE_VALUE=5;
-    public static final int BONUS_MONEY=10;
+    public static final int DECREASE_FUN=15;
+    public static final int DECREASE_FILL=10;
+    public static final int DECREASE_HEALTH=40;
+    public static final int BIG_BONUS_MONEY=6;
+    public static final int SMALL_BONUS_MONEY=4;
 
     User user;
     Pet pet;
@@ -65,7 +72,7 @@ public class HomeActivity extends MusicActivity  {
 
 
          int alarmType =AlarmManager.ELAPSED_REALTIME_WAKEUP;
-        long timeOrLengthofWait = AlarmManager.INTERVAL_HOUR;
+        long timeOrLengthofWait = 300000;
         int requestCode= (int) System.currentTimeMillis();
         Intent myIntent = new Intent("ALARM");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(HomeActivity.this, requestCode, myIntent, 0);
@@ -167,22 +174,34 @@ public class HomeActivity extends MusicActivity  {
         public void onReceive(Context context, Intent intent) {
 
             Log.e("myTag", "pet happiness-5");
-            if(pet.getHappiness()==0 || pet.getCleanliness()==0 || pet.getFill()==0 || pet.getHealth()==0){
+            if(pet.getHappiness()<=0 || pet.getCleanliness()<=0 || pet.getFill()<=0 || pet.getHealth()<=0){
                 Intent intentD = new Intent(HomeActivity.this, DieActivity.class);
                 intentD.putExtra("loggedUser",user);
                 startActivity(intentD);
 
             }
-            pet.setHappiness(pet.getHappiness()-DECREASE_VALUE);
+            pet.setHappiness(pet.getHappiness()-DECREASE_FUN);
             pet.setCleanliness(pet.getCleanliness()-DECREASE_VALUE);
-            pet.setHealth(pet.getHealth()-DECREASE_VALUE);
-            pet.setFill(pet.getFill()-DECREASE_VALUE);
+            pet.setFill(pet.getFill()-DECREASE_FILL);
+            Random r= new Random();
+            int random = r.nextInt(24);
+            if(random==0){
+              pet.setHealth(pet.getHealth()-DECREASE_HEALTH);
+            }
+            if(pet.getHappiness()<30 && pet.getFill() < 30 && pet.getHealth() < 30 && pet.getCleanliness()<30) {
+                pet.setHealth(pet.getHealth() - DECREASE_VALUE);
+            }
             happiness.setText(String.valueOf(pet.getHappiness()));
             cleanliness.setText(String.valueOf(pet.getCleanliness()));
             fill.setText(String.valueOf(pet.getFill()));
             health.setText(String.valueOf(pet.getHealth()));
-            if(pet.getHappiness()>=50){
-                user.setMoney(user.getMoney()+BONUS_MONEY);
+            if(pet.getHappiness()>30||pet.getFill()>30||pet.getHealth()>30||pet.getCleanliness()>30){
+                user.setMoney(user.getMoney()+BIG_BONUS_MONEY*user.getDifficultyLevel());
+                Toast.makeText(HomeActivity.this,"You received the Big bonus!",Toast.LENGTH_SHORT).show();
+            }
+            else{
+                user.setMoney(user.getMoney()+SMALL_BONUS_MONEY*user.getDifficultyLevel());
+                Toast.makeText(HomeActivity.this,"You received the Small bonus!",Toast.LENGTH_SHORT).show();
             }
             UsersManager.getInstance(HomeActivity.this).setUserPet(HomeActivity.this,user,pet);
 

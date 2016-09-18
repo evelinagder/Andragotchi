@@ -54,6 +54,7 @@ public class ShopActivity extends MusicActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+
     }
 
 
@@ -97,5 +98,11 @@ public class ShopActivity extends MusicActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
     }
 }

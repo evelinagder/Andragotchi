@@ -91,7 +91,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="140dp"
-        android:id="@+id/button_feed"
+        android:id="@+id/button_play"
         android:src="@drawable/confirm"
         android:fontFamily="casual"
         android:textAlignment="center"
@@ -130,7 +130,7 @@
         android:textSize="35sp"
         android:text="100"
         android:id="@+id/textView_clean"
-        android:layout_above="@+id/button_feed"
+        android:layout_above="@+id/button_play"
         android:layout_toStartOf="@+id/imageView4" />
 
     <TextView
@@ -140,7 +140,7 @@
         android:textSize="35sp"
         android:text="100"
         android:id="@+id/textView_food"
-        android:layout_above="@+id/button_feed"
+        android:layout_above="@+id/button_play"
         android:layout_toEndOf="@+id/imageView4" />
 
     <LinearLayout

@@ -58,9 +58,9 @@ public class CareRecyclerAdapter extends RecyclerView.Adapter<CareRecyclerAdapte
         mainHolder.name.setText(item.getType());
         mainHolder.count.setText(Integer.toString(item.getCount()));
         mainHolder.calories.setText(Integer.toString(item.getBonus()));
-//        if(item instanceof Food){mainHolder.bonusType.setText("Calories");}
-//        else if (item instanceof Toy){mainHolder.bonusType.setText("Fun");}
-//        else mainHolder.bonusType.setText("Health");
+        if(item instanceof Food){mainHolder.bonusType.setText("Calories");}
+        else if (item instanceof Toy){mainHolder.bonusType.setText("Fun");}
+        else mainHolder.bonusType.setText("Health");
 
 
 
@@ -102,7 +102,7 @@ public class CareRecyclerAdapter extends RecyclerView.Adapter<CareRecyclerAdapte
             name = (TextView) itemView.findViewById(R.id.textView_type);
             count = (TextView) itemView.findViewById(R.id.textView_count);
             calories = (TextView) itemView.findViewById(R.id.textView_calories);
-//            bonusType=(TextView) itemView.findViewById(R.id.bonus_TV);
+           bonusType=(TextView) itemView.findViewById(R.id.bonus_TV);
             use = (Button) itemView.findViewById(R.id.B_use);
 
         }

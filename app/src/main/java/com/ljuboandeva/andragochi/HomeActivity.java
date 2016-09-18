@@ -19,12 +19,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.ljuboandeva.andragochi.fragments_inventory.FoodFragment;
 import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 import com.ljuboandeva.andragochi.takingCare.CareFragment;
 
-public class HomeActivity extends MusicActivity {
+public class HomeActivity extends AppCompatActivity implements FoodFragment.OnFragmentInteractionListener {
     public static final int DECREASE_VALUE=5;
     public static final int BONUS_MONEY=10;
 
@@ -68,7 +70,7 @@ public class HomeActivity extends MusicActivity {
 
          int alarmType =AlarmManager.ELAPSED_REALTIME_WAKEUP;
         long timeOrLengthofWait = AlarmManager.INTERVAL_HOUR;
-        final int requestCode= (int) System.currentTimeMillis();
+        int requestCode= (int) System.currentTimeMillis();
         Intent myIntent = new Intent("ALARM");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(HomeActivity.this, requestCode, myIntent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -109,8 +111,6 @@ public class HomeActivity extends MusicActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, ShopActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("caller", "home");
                 startActivity(intent);
             }
         });
@@ -121,8 +121,6 @@ public class HomeActivity extends MusicActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, InventoryActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("caller", "home");
                 startActivity(intent);
             }
         });
@@ -133,7 +131,6 @@ public class HomeActivity extends MusicActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
-                intent.putExtra("caller", "home");
                 startActivity(intent);
                 finish();
             }
@@ -212,4 +209,9 @@ public class HomeActivity extends MusicActivity {
         }
     };
 
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }

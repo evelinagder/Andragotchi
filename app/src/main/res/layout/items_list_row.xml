@@ -20,7 +20,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="10sp"
+                android:textSize="15sp"
                 android:text="Type"
                 android:id="@+id/type_TV" />
 
@@ -29,15 +29,17 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:text="count"
-                android:textSize="10sp"/>
+                android:text="Count"
+                android:id="@+id/textView_count"
+                android:textSize="15sp"/>
+
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:textSize="10sp"
+                android:textSize="15sp"
                 android:id="@+id/bonus_TV" />
 
             <TextView
@@ -49,17 +51,16 @@
 
 
         </LinearLayout>
-
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_gravity="center"
         android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        card_view:cardBackgroundColor="@android:color/transparent"
-        card_view:cardElevation="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+      card_view:cardBackgroundColor="@android:color/transparent"
+        card_view:cardElevation="0dp">
+
 
 
         <LinearLayout
@@ -74,26 +75,29 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:id="@+id/textView_type"
-                android:textSize="30sp"/>
+                android:textSize="20sp"/>
+
+
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:id="@+id/textView_count"
-                android:textSize="30sp"/>
+                android:textSize="20sp"/>
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:id="@+id/textView_calories"/>
-
+                android:id="@+id/textView_calories"
+                android:textSize="20sp"/>
             <Button
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:textSize="30sp"
                 android:layout_weight="1"
+                android:layout_height="90dp"
                 android:fontFamily="casual"
                 android:background="@drawable/confirm"
                 android:id="@+id/B_use"

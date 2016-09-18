@@ -1,11 +1,7 @@
 package com.ljuboandeva.andragochi;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.media.MediaPlayer;
-import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +11,7 @@ import android.widget.Toast;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class WelcomeActivity extends MusicActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     ImageButton signIn;
     User user;

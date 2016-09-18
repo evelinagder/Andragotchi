@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class LoginActivity extends MusicActivity {
+public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_REG_USER = 10;
     Button login;
     Button register;

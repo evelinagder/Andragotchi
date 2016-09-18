@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class DifficultyActivity extends MusicActivity {
+public class DifficultyActivity extends AppCompatActivity {
 
 
     Button easy;

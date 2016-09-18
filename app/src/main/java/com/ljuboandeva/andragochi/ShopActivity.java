@@ -1,8 +1,5 @@
 package com.ljuboandeva.andragochi;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,8 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import com.ljuboandeva.andragochi.model.players.User;
-import com.ljuboandeva.andragochi.model.players.UsersManager;
 import com.ljuboandeva.andragochi.model.shop.Shop;
 import com.ljuboandeva.andragochi.shop_view.FoodFragment_Shop;
 import com.ljuboandeva.andragochi.shop_view.MedsFragment_Shop;
@@ -23,10 +18,7 @@ import com.ljuboandeva.andragochi.shop_view.ToysFragment_Shop;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.data;
-
-public class ShopActivity extends MusicActivity {
-
+public class ShopActivity extends AppCompatActivity {
     private static Toolbar toolbar;
     private static ViewPager viewPager;
     private static TabLayout tabLayout;
@@ -105,21 +97,5 @@ public class ShopActivity extends MusicActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        Intent intent;
-        if(getIntent().getStringExtra("caller").equalsIgnoreCase("home")) {
-            intent = new Intent(ShopActivity.this, HomeActivity.class);
-        } else {
-            intent = new Intent(ShopActivity.this, PlaygroundActivity.class);
-            intent.putExtra("outChoice", getIntent().getStringExtra("outChoice"));
-        }
-        User user=(User) getIntent().getExtras().get("loggedUser");
-        intent.putExtra("loggedUser", UsersManager.getInstance(ShopActivity.this).getUser(user.getUsername()));
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
     }
 }

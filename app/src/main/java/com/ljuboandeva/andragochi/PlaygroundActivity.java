@@ -13,7 +13,7 @@ import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class PlaygroundActivity extends MusicActivity {
+public class PlaygroundActivity extends AppCompatActivity {
 
     String outChoice;
     Button home;
@@ -78,9 +78,6 @@ public class PlaygroundActivity extends MusicActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(PlaygroundActivity.this, ShopActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(PlaygroundActivity.this).getUser(user.getUsername()));
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("caller", "play");
-                intent.putExtra("outChoice", outChoice);
                 startActivity(intent);
             }
         });
@@ -90,9 +87,6 @@ public class PlaygroundActivity extends MusicActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(PlaygroundActivity.this, InventoryActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(PlaygroundActivity.this).getUser(user.getUsername()));
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("caller", "play");
-                intent.putExtra("outChoice", outChoice);
                 startActivity(intent);
             }
         });
@@ -102,8 +96,6 @@ public class PlaygroundActivity extends MusicActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(PlaygroundActivity.this, SettingsActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(PlaygroundActivity.this).getUser(user.getUsername()));
-                intent.putExtra("outChoice", outChoice);
-                intent.putExtra("caller", "play");
                 startActivity(intent);
             }
         });
@@ -117,5 +109,4 @@ public class PlaygroundActivity extends MusicActivity {
         fill.setText(String.valueOf(pet.getFill()));
         health.setText(String.valueOf(pet.getHealth()));
     }
-
 }

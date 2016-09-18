@@ -1,7 +1,5 @@
 package com.ljuboandeva.andragochi;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,7 +13,7 @@ import com.ljuboandeva.andragochi.shop_view.RecyclerView_Adapter_Food;
 
 import java.util.ArrayList;
 
-public class InventoryActivity extends MusicActivity {
+public class InventoryActivity extends AppCompatActivity {
 
     private User user;
     private static RecyclerView recyclerView;
@@ -35,21 +33,5 @@ public class InventoryActivity extends MusicActivity {
         arrayList.addAll(user.getMeds());
         RecyclerView_Adapter_Inventory adapter = new RecyclerView_Adapter_Inventory(InventoryActivity.this, arrayList);
         recyclerView.setAdapter(adapter);
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        Intent intent;
-        if(getIntent().getStringExtra("caller").equalsIgnoreCase("home")) {
-            intent = new Intent(InventoryActivity.this, HomeActivity.class);
-        } else {
-            intent = new Intent(InventoryActivity.this, PlaygroundActivity.class);
-            intent.putExtra("outChoice", getIntent().getStringExtra("outChoice"));
-        }
-        User user=(User) getIntent().getExtras().get("loggedUser");
-        intent.putExtra("loggedUser", UsersManager.getInstance(InventoryActivity.this).getUser(user.getUsername()));
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
     }
 }

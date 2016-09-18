@@ -19,6 +19,43 @@
         android:paddingTop="@dimen/text_top_padding"
         android:background="@color/colorPrimary"/>
 
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:background="@color/colorPrimary">-->
+
+
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:textSize="25sp"-->
+            <!--android:text="Item"-->
+            <!--android:id="@+id/type_TV" />-->
+
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="0.5"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Count"-->
+            <!--android:textSize="25sp"/>-->
+
+
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="0.5"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Bonus"-->
+            <!--android:textSize="25sp"/>-->
+
+
+
+    <!--</LinearLayout>-->
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView_inventory"
         android:layout_width="match_parent"

@@ -41,10 +41,10 @@ public class RecyclerView_Adapter_Inventory extends RecyclerView.Adapter<Buyable
     @Override
     public void onBindViewHolder(BuyableViewHolder holder, final int position) {
         final BuyableViewHolder mainHolder = holder;
-         Buyable b = arrayList.get(position);
+        Buyable b = arrayList.get(position);
         mainHolder.title.setText(b.getType());
-        mainHolder.count.setText(b.getCount());
-        mainHolder.bonus.setText(Integer.toString(b.getBonus()));
+        mainHolder.count.setText(String.valueOf(b.getCount()));
+        mainHolder.bonus.setText(String.valueOf(b.getBonus()));
         if(b instanceof Food){mainHolder.bonusType.setText("Calories");}
         else if (b instanceof Toy){mainHolder.bonusType.setText("Fun");}
         else mainHolder.bonusType.setText("Health");

@@ -94,5 +94,5 @@ public class InventoryActivity extends MusicActivity {
             startActivity(intent);
 
         }
-
+    }
 }

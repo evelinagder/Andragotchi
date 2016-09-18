@@ -51,41 +51,80 @@ public class InventoryActivity extends MusicActivity {
 
     }
     public void itemSelected(String name) {
-        if (pet.getFill() >= 100) {
-            Toast.makeText(InventoryActivity.this, "Your pet is not hungry!", Toast.LENGTH_LONG).show();
-            Intent int1 = new Intent(InventoryActivity.this, HomeActivity.class);
-            int1.putExtra("loggedUser", user);
-            startActivity(int1);
-        } else {
+
             switch (name) {
                 case "SKULL":
-                    pet.setFill(pet.getFill() + SKULL_CAL);
-
+                    if (pet.getFill() >= 100) {
+                        Toast.makeText(InventoryActivity.this, "Your pet is not hungry!", Toast.LENGTH_LONG).show();
+                        Intent int1 = new Intent(InventoryActivity.this, HomeActivity.class);
+                        int1.putExtra("loggedUser", user);
+                        startActivity(int1);}
+                    else {
+                        pet.setFill(pet.getFill() + SKULL_CAL);
+                    }
                     break;
                 case "FLESH":
-                    pet.setFill(pet.getFill() + FLESH_CAL);
-                    break;
+                    if (pet.getFill() >= 100) {
+                        Toast.makeText(InventoryActivity.this, "Your pet is not hungry!", Toast.LENGTH_LONG).show();
+                        Intent int2 = new Intent(InventoryActivity.this, HomeActivity.class);
+                        int2.putExtra("loggedUser", user);
+                        startActivity(int2);
+                    }
+                    else {
+                        pet.setFill(pet.getFill() + FLESH_CAL);
+                        break;
+                    }
                 case "BONE":
-                    pet.setFill(pet.getFill() + BONE_CAL);
-                    break;
-
-            }
-
-            if (pet.getHealth() >= 100) {
-                Toast.makeText(InventoryActivity.this, "Your pet is not sick!", Toast.LENGTH_LONG).show();
-                Intent int1 = new Intent(InventoryActivity.this, HomeActivity.class);
-                int1.putExtra("loggedUser", user);
-                startActivity(int1);
-            } else {
-                switch (name) {
+                    if (pet.getFill() >= 100) {
+                        Toast.makeText(InventoryActivity.this, "Your pet is not hungry!", Toast.LENGTH_LONG).show();
+                        Intent int3 = new Intent(InventoryActivity.this, HomeActivity.class);
+                        int3.putExtra("loggedUser", user);
+                        startActivity(int3);
+                    }
+                    else {
+                        pet.setFill(pet.getFill() + BONE_CAL);
+                        break;
+                    }
 
                     case "TABLET":
-                        pet.setHealth(pet.getHealth() + TABLET_H);
-                        break;
+                        if (pet.getHealth() >= 100) {
+                            Toast.makeText(InventoryActivity.this, "Your pet is not sick!", Toast.LENGTH_LONG).show();
+                            Intent int1 = new Intent(InventoryActivity.this, HomeActivity.class);
+                            int1.putExtra("loggedUser", user);
+                            startActivity(int1);
+                        }
+                        else {
+                            pet.setHealth(pet.getHealth() + TABLET_H);
+                            break;
+                        }
                     case "NEEDLE":
-                        pet.setHealth(pet.getHealth() + NEEDLE_H);
-                        break;
-                }
+                        if (pet.getHealth() >= 100) {
+                            Toast.makeText(InventoryActivity.this, "Your pet is not sick!", Toast.LENGTH_LONG).show();
+                            Intent int1 = new Intent(InventoryActivity.this, HomeActivity.class);
+                            int1.putExtra("loggedUser", user);
+                            startActivity(int1);
+                        }else {
+                            pet.setHealth(pet.getHealth() + NEEDLE_H);
+                            break;
+                        }
+                            case "BALL":
+                                Toast.makeText(InventoryActivity.this, "Toys are allowed only Outside!", Toast.LENGTH_LONG).show();
+                                Intent int1 = new Intent(InventoryActivity.this, HomeActivity.class);
+                                int1.putExtra("loggedUser", user);
+                                startActivity(int1);
+                                break;
+                            case "GIRDLE":
+                                Toast.makeText(InventoryActivity.this, "Toys are allowed only Outside!", Toast.LENGTH_LONG).show();
+                                Intent int2 = new Intent(InventoryActivity.this, HomeActivity.class);
+                                int2.putExtra("loggedUser", user);
+                                startActivity(int2);
+                                break;
+                            case "SHOVEL":
+                                Toast.makeText(InventoryActivity.this, "Toys are allowed only Outside!", Toast.LENGTH_LONG).show();
+                                Intent int3 = new Intent(InventoryActivity.this, HomeActivity.class);
+                                int3.putExtra("loggedUser", user);
+                                startActivity(int3);
+                                break;
             }
             UsersManager.getInstance(InventoryActivity.this).setUserPet(InventoryActivity.this, user, pet);
             Log.e("USER", user.getUsername() + " " + pet.getName());
@@ -93,6 +132,6 @@ public class InventoryActivity extends MusicActivity {
             intent.putExtra("loggedUser", user);
             startActivity(intent);
 
-        }
+
     }
 }

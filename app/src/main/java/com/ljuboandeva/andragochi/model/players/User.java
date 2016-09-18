@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Evelina on 8/25/2016.
  */
 public class User implements Serializable{
-        private static final int START_MONEY=100;
+        private static final int START_MONEY=500;
         private final String username;
         private int age;
         private String password;

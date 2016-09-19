@@ -145,8 +145,11 @@ public class HomeActivity extends MusicActivity  {
         clean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //TODO cleanliness.setText.. remove poop
+                if(pet.getCleanliness()<100){ pet.setCleanliness(100); }
+                else { Toast.makeText(HomeActivity.this, "I'm clean already!", Toast.LENGTH_SHORT).show();}
+                UsersManager.getInstance(HomeActivity.this).setUserPet(HomeActivity.this, user, pet);
+                cleanliness.setText(String.valueOf(pet.getCleanliness()));
+                //TODO remove shit if shown
             }
         });
 
@@ -193,6 +196,7 @@ public class HomeActivity extends MusicActivity  {
             if(pet.getHealth()<0)pet.setHealth(0);
             if(pet.getHappiness()<0)pet.setHappiness(0);
             if(pet.getFill()<0)pet.setFill(0);
+            if(pet.getCleanliness()<0)pet.setCleanliness(0);
             happiness.setText(String.valueOf(pet.getHappiness()));
             cleanliness.setText(String.valueOf(pet.getCleanliness()));
             fill.setText(String.valueOf(pet.getFill()));

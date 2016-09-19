@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class PlaygroundActivity extends MusicActivity {
     TextView fill;
     TextView health;
     TextView cleanliness;
+    ImageView petImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class PlaygroundActivity extends MusicActivity {
         fill= (TextView)findViewById(R.id.textView_food) ;
         cleanliness=(TextView)findViewById(R.id.textView_clean);
         health= (TextView)findViewById(R.id.textView_healthp);
-
+        petImage = (ImageView) findViewById(R.id.pet_image_play);
         petName.setText(user.getPet().getName());
 
         outChoice = getIntent().getStringExtra("outChoice");
@@ -64,7 +66,17 @@ public class PlaygroundActivity extends MusicActivity {
                 break;
         }
 
-
+        switch (pet.getType()) {
+            case "Drago":
+                petImage.setBackgroundResource(R.drawable.drago_play);
+                break;
+            case "Rhina":
+                petImage.setBackgroundResource(R.drawable.rhina_play);
+                break;
+            case "Rex":
+                petImage.setBackgroundResource(R.drawable.rex_play);
+                break;
+        }
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override

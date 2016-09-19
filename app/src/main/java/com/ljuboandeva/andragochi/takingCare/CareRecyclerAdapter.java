@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-import com.ljuboandeva.andragochi.CareActivity;
 import com.ljuboandeva.andragochi.R;
 import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;

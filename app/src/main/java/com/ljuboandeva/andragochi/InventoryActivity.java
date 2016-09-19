@@ -17,7 +17,7 @@ import com.ljuboandeva.andragochi.shop_view.RecyclerView_Adapter_Food;
 
 import java.util.ArrayList;
 
-public class InventoryActivity extends MusicActivity {
+public class InventoryActivity extends AppCompatActivity {
     public final static int SKULL_CAL=25;
     public final static int FLESH_CAL=15;
     public final static int BONE_CAL=5;
@@ -31,11 +31,13 @@ public class InventoryActivity extends MusicActivity {
     private static RecyclerView recyclerView;
     ArrayList<Buyable> arrayList;
     Pet pet;
+    boolean continueMusic;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        continueMusic=true;
         setContentView(R.layout.activity_inventory);
         user = (User) getIntent().getExtras().get("loggedUser");
         arrayList = new ArrayList<>();
@@ -162,4 +164,18 @@ public class InventoryActivity extends MusicActivity {
             intent.putExtra("loggedUser", user);
             startActivity(intent);
     }
+    public void onPause()
+    {
+        super.onPause();
+        if(!continueMusic)
+            MusicManager.pause();
+    }
+    public void onResume()
+    {
+        super.onResume();
+
+        continueMusic=false;
+        MusicManager.start(this,R.raw.music);
+    }
+
 }

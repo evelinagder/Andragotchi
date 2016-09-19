@@ -38,10 +38,10 @@
         <activity
             android:name=".HomeActivity"
             android:screenOrientation="portrait">
-
-            <receiver android:name="receivers.UpdateAlarmReceiver">
+            <receiver android:name=".UpdateBroadcastReceiver">
                 <intent-filter>
-                    <action android:name="ALARM" />
+                    <action android:name="ALARM"
+                        />
                 </intent-filter>
             </receiver>
         </activity>
@@ -63,13 +63,9 @@
         <activity
             android:name=".InventoryActivity"
             android:screenOrientation="portrait" />
-        <activity
-        android:name=".MusicActivity"
-
-        android:screenOrientation="portrait" />
         <activity android:name=".DieActivity" />
 
-        <activity android:name=".CareActivity"></activity>
+
     </application>
 
 </manifest>

@@ -18,7 +18,7 @@ import com.ljuboandeva.andragochi.model.shop.Toy;
 
 import java.util.ArrayList;
 
-public class PlaygroundActivity extends MusicActivity {
+public class PlaygroundActivity extends AppCompatActivity {
 
     String outChoice;
     Button home;
@@ -33,10 +33,12 @@ public class PlaygroundActivity extends MusicActivity {
     TextView health;
     TextView cleanliness;
     ImageView petImage;
+    boolean continueMusic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        continueMusic=true;
         setContentView(R.layout.activity_playground);
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.layout_playground);
         home = (Button) findViewById(R.id.button_home);
@@ -131,5 +133,15 @@ public class PlaygroundActivity extends MusicActivity {
         cleanliness.setText(String.valueOf(pet.getCleanliness()));
         fill.setText(String.valueOf(pet.getFill()));
         health.setText(String.valueOf(pet.getHealth()));
+        continueMusic=false;
+        MusicManager.start(this,R.raw.music);
+
     }
+    public void onPause()
+    {
+        super.onPause();
+        if(!continueMusic)
+            MusicManager.pause();
+    }
+
 }

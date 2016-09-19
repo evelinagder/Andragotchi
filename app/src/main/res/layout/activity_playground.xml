@@ -11,7 +11,7 @@
     <ImageView
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:id="@+id/imageView4"
+        android:id="@+id/imageView_drago"
         android:background="@drawable/drago_home"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
@@ -55,35 +55,37 @@
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/imageView5"
+        android:id="@+id/imageView_heart"
         android:background="@drawable/heart"
-        android:layout_alignTop="@+id/imageView8"
-        android:layout_alignStart="@+id/imageView6" />
+        android:layout_alignTop="@+id/imageView_ball"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/imageView_food" />
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/imageView6"
+        android:id="@+id/imageView_food"
         android:background="@drawable/food"
         android:layout_below="@+id/textView_play"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/imageView4" />
+        />
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/imageView7"
+        android:id="@+id/imageView_clean"
         android:background="@drawable/broom"
-        android:layout_above="@+id/textView_clean"
-        android:layout_alignEnd="@+id/textView_play" />
+        android:layout_below="@+id/textView_play"
+        android:layout_alignParentStart="true"
+         />
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/imageView8"
+        android:id="@+id/imageView_ball"
         android:background="@drawable/play"
         android:layout_above="@+id/textView_play"
-        android:layout_toStartOf="@+id/imageView4" />
+        android:layout_alignParentStart="true"/>
 
 
     <TextView
@@ -93,8 +95,8 @@
         android:textSize="35sp"
         android:text="100"
         android:id="@+id/textView_healthp"
-        android:layout_below="@+id/imageView5"
-        android:layout_alignEnd="@+id/imageView6" />
+        android:layout_below="@+id/imageView_heart"
+        android:layout_alignEnd="@+id/imageView_food" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -113,8 +115,8 @@
         android:textSize="35sp"
         android:text="100"
         android:id="@+id/textView_clean"
-        android:layout_above="@+id/button_play"
-        android:layout_toStartOf="@+id/imageView4" />
+        android:layout_below="@+id/imageView_clean"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -123,8 +125,9 @@
         android:textSize="35sp"
         android:text="100"
         android:id="@+id/textView_food"
-        android:layout_above="@+id/button_play"
-        android:layout_toEndOf="@+id/imageView4" />
+        android:layout_below="@+id/imageView_food"
+        android:layout_alignParentEnd="true"
+         />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -175,7 +178,7 @@
         android:text="Drago"
         android:id="@+id/textView9"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/imageView4"/>
+        android:layout_above="@+id/imageView_drago"/>
 
 
 </RelativeLayout>

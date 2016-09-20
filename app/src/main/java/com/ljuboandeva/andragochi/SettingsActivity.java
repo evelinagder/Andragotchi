@@ -35,7 +35,9 @@ public class SettingsActivity extends MusicActivity {
         button_logout = (Button) findViewById(R.id.button_logout);
         musicSwitch = (Switch)findViewById(R.id.switchMusic);
 
-        musicSwitch.setChecked(true);
+        if(MusicManager.stopMusic==0) {
+            musicSwitch.setChecked(true);
+        }
 
         musicSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

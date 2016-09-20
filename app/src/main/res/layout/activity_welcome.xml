@@ -8,11 +8,14 @@
     tools:context=".WelcomeActivity">
 
 
-    <ImageButton
-        android:layout_width="@dimen/big_button_width"
-        android:layout_height="@dimen/big_button_height"
-        android:background="@drawable/sign_in"
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:src="@drawable/confirm"
+        android:fontFamily="casual"
         android:id="@+id/button_sign"
+        android:background="@drawable/confirm"
+        android:text="Start"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true" />
 

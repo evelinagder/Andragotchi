@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -14,7 +15,7 @@ import com.ljuboandeva.andragochi.model.players.UsersManager;
 
 public class WelcomeActivity extends MusicActivity {
 
-    ImageButton signIn;
+    Button signIn;
     User user;
 
 
@@ -22,7 +23,7 @@ public class WelcomeActivity extends MusicActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        signIn=(ImageButton)findViewById(R.id.button_sign);
+        signIn=(Button)findViewById(R.id.button_sign);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

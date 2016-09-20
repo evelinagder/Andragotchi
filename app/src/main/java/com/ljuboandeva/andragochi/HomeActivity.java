@@ -81,7 +81,7 @@ public class HomeActivity extends MusicActivity  {
         money = (TextView) findViewById(R.id.textView_money);
 
         int alarmType = AlarmManager.ELAPSED_REALTIME_WAKEUP;
-        long timeOrLengthofWait = 60000;
+        long timeOrLengthofWait = 300000;
         int requestCode = (int) System.currentTimeMillis();
         Intent myIntent = new Intent("ALARM");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(HomeActivity.this, requestCode, myIntent, 0);
@@ -304,11 +304,14 @@ public class HomeActivity extends MusicActivity  {
             shit.setVisibility(View.VISIBLE);
             if(pet.getHappiness()>30 && pet.getFill()>30 && pet.getHealth()>30 && pet.getCleanliness()>30){
                 user.setMoney(user.getMoney()+BIG_BONUS_MONEY*user.getDifficultyLevel());
+                money.setText(String.valueOf(user.getMoney()));
                 Toast.makeText(HomeActivity.this,"You received the Big bonus!",Toast.LENGTH_SHORT).show();
             }
             else{
                 user.setMoney(user.getMoney()+SMALL_BONUS_MONEY*user.getDifficultyLevel());
+                money.setText(String.valueOf(user.getMoney()));
                 Toast.makeText(HomeActivity.this,"You received the Small bonus!",Toast.LENGTH_SHORT).show();
+
             }
             UsersManager.getInstance(HomeActivity.this).setUserPet(HomeActivity.this,user,pet);
         }

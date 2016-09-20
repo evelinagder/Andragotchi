@@ -46,6 +46,7 @@ public class RecyclerView_Adapter_Food extends RecyclerView.Adapter<FoodViewHold
                 if(user.enoughMoney(f.getPrice())){
                     Toast.makeText(v.getRootView().getContext(),"Food bought",Toast.LENGTH_SHORT).show();
                     UsersManager.getInstance(activity).buyFood(activity,user,user.getMoney()-f.getPrice(),position);
+
                 }
                 else {
                     Toast.makeText(v.getRootView().getContext(),"Not enough money!",Toast.LENGTH_SHORT).show();

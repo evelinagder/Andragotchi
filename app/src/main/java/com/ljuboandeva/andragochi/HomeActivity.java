@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -36,6 +38,7 @@ public class HomeActivity extends MusicActivity  {
     public static final int DECREASE_HEALTH=40;
     public static final int BIG_BONUS_MONEY=6;
     public static final int SMALL_BONUS_MONEY=4;
+    private static final int REQUEST_CODE_HOME = 2;
 
     User user;
     Pet pet;
@@ -50,7 +53,7 @@ public class HomeActivity extends MusicActivity  {
     TextView fill;
     TextView cleanliness;
     ImageView petImage;
-
+    WebView itemAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +72,6 @@ public class HomeActivity extends MusicActivity  {
         fill = (TextView) findViewById(R.id.textView_food);
         cleanliness = (TextView) findViewById(R.id.textView_clean);
         petImage = (ImageView) findViewById(R.id.pet_image_home);
-
 
         int alarmType = AlarmManager.ELAPSED_REALTIME_WAKEUP;
         long timeOrLengthofWait = 60000;
@@ -126,7 +128,7 @@ public class HomeActivity extends MusicActivity  {
                 Intent intent = new Intent(HomeActivity.this, InventoryActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
                 intent.putExtra("from", "home");
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_CODE_HOME);
             }
         });
 
@@ -138,7 +140,6 @@ public class HomeActivity extends MusicActivity  {
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
                 intent.putExtra("from", "home");
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -156,10 +157,69 @@ public class HomeActivity extends MusicActivity  {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(requestCode==REQUEST_CODE_HOME && resultCode==RESULT_OK){
+            final String result = data.getData().toString();
+            itemAnimation = (WebView) findViewById(R.id.item_animation);
+            new AsyncTask<Void, Void, Void>() {
+
+                @Override
+                protected Void doInBackground(Void... params) {
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                }
+
+                @Override
+                protected void onPreExecute() {
+                    itemAnimation.setBackgroundColor(0x00000000);
+                    itemAnimation.setVisibility(View.VISIBLE);
+                    switch (result) {
+                        case "NEEDLE":
+                            itemAnimation.loadUrl("file:///android_asset/vaccine.gif");
+                            break;
+                        case "TABLET":
+                            itemAnimation.loadUrl("file:///android_asset/pill.gif");
+                            break;
+                        case "BONE":
+                            itemAnimation.loadUrl("file:///android_asset/bone.gif");
+                            break;
+                        case "SKULL":
+                            itemAnimation.loadUrl("file:///android_asset/skull.gif");
+                            break;
+                        case "FLESH":
+                            itemAnimation.loadUrl("file:///android_asset/flesh.gif");
+                            break;
+                    }
+                }
+
+                @Override
+                protected void onPostExecute(Void Void) {
+                    itemAnimation.setVisibility(View.INVISIBLE);
+                    itemAnimation.loadUrl("file://android_asset/transp.gif");
+                    User usr = (User) getIntent().getExtras().get("loggedUser");
+                    user = UsersManager.getInstance(HomeActivity.this).getUser(usr.getUsername());
+                    pet = user.getPet();
+                    petName.setText(pet.getName());
+                    happiness.setText(String.valueOf(pet.getHappiness()));
+                    cleanliness.setText(String.valueOf(pet.getCleanliness()));
+                    fill.setText(String.valueOf(pet.getFill()));
+                    health.setText(String.valueOf(pet.getHealth()));
+                }
+            }.execute();
+        }
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         registerReceiver(UpdateAlarmReceiver, new IntentFilter("ALARM"));
         Log.e("myTag", "Resume and register Reciever");
+
         petName.setText(pet.getName());
         happiness.setText(String.valueOf(pet.getHappiness()));
         cleanliness.setText(String.valueOf(pet.getCleanliness()));

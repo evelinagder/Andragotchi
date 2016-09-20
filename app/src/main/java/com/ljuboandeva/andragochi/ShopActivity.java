@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import com.ljuboandeva.andragochi.model.players.User;
+import com.ljuboandeva.andragochi.model.players.UsersManager;
 import com.ljuboandeva.andragochi.model.shop.Shop;
 import com.ljuboandeva.andragochi.shop_view.FoodFragment_Shop;
 import com.ljuboandeva.andragochi.shop_view.MedsFragment_Shop;
@@ -102,6 +104,5 @@ public class ShopActivity extends MusicActivity {
     @Override
     protected void onStop() {
         super.onStop();
-
     }
 }

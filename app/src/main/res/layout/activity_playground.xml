@@ -175,10 +175,16 @@
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:textSize="35sp"
-        android:text="Drago"
         android:id="@+id/textView9"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/imageView_drago"/>
+        android:layout_above="@+id/pet_image_play"/>
+
+    <WebView
+        android:id="@+id/toy_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

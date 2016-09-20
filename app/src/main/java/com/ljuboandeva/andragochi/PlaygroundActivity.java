@@ -1,24 +1,24 @@
 package com.ljuboandeva.andragochi;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
-import com.ljuboandeva.andragochi.model.shop.Toy;
-
-import java.util.ArrayList;
 
 public class PlaygroundActivity extends MusicActivity {
+
+    public static final int REQUEST_CODE_PLAYGROUND=1;
 
     String outChoice;
     Button home;
@@ -33,6 +33,7 @@ public class PlaygroundActivity extends MusicActivity {
     TextView health;
     TextView cleanliness;
     ImageView petImage;
+    WebView toyPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +52,9 @@ public class PlaygroundActivity extends MusicActivity {
         cleanliness=(TextView)findViewById(R.id.textView_clean);
         health= (TextView)findViewById(R.id.textView_healthp);
         petImage = (ImageView) findViewById(R.id.pet_image_play);
-        petName.setText(user.getPet().getName());
+        toyPlay = (WebView) findViewById(R.id.toy_play);
 
+        petName.setText(user.getPet().getName());
         outChoice = getIntent().getStringExtra("outChoice");
         switch (outChoice){
             case "park":
@@ -107,7 +109,7 @@ public class PlaygroundActivity extends MusicActivity {
                 intent.putExtra("loggedUser", UsersManager.getInstance(PlaygroundActivity.this).getUser(user.getUsername()));
                 intent.putExtra("outChoice",outChoice);
                 intent.putExtra("from","play");
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_CODE_PLAYGROUND);
             }
         });
 
@@ -122,6 +124,56 @@ public class PlaygroundActivity extends MusicActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(requestCode==REQUEST_CODE_PLAYGROUND && resultCode==RESULT_OK){
+            final String result = data.getData().toString();
+            new AsyncTask<Void, Void, Void>() {
+
+                @Override
+                protected Void doInBackground(Void... params) {
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                }
+
+                @Override
+                protected void onPreExecute() {
+                    toyPlay.setVisibility(View.VISIBLE);
+                    toyPlay.setBackgroundColor(0x00000000);
+                    switch (result) {
+                        case "SHOVEL":
+                            toyPlay.loadUrl("file:///android_asset/shovel.gif");
+                            break;
+                        case "GIRDLE":
+                            toyPlay.loadUrl("file:///android_asset/girdle.gif");
+                            break;
+                        case "BALL":
+                            toyPlay.loadUrl("file:///android_asset/ball.gif");
+                    }
+                }
+
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    toyPlay.setVisibility(View.INVISIBLE);
+                    toyPlay.loadUrl("file://android_asset/transp.gif");
+                    User usr = (User) getIntent().getExtras().get("loggedUser");
+                    user = UsersManager.getInstance(PlaygroundActivity.this).getUser(usr.getUsername());
+                    pet = user.getPet();
+                    petName.setText(pet.getName());
+                    happiness.setText(String.valueOf(pet.getHappiness()));
+                    cleanliness.setText(String.valueOf(pet.getCleanliness()));
+                    fill.setText(String.valueOf(pet.getFill()));
+                    health.setText(String.valueOf(pet.getHealth()));
+                }
+            }.execute();
+        }
     }
 
     @Override

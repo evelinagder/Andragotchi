@@ -142,7 +142,7 @@ public class UsersManager {
         return users.get(username).getPet();
     }
 
-    public void saveUsers(Activity activity) {
+    private void saveUsers(Activity activity) {
         SharedPreferences prefs = activity.getSharedPreferences("Andragochi", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         String key = "registeredUsers";

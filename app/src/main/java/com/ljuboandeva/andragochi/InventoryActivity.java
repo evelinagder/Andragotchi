@@ -1,6 +1,7 @@
 package com.ljuboandeva.andragochi;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -150,7 +151,7 @@ public class InventoryActivity extends MusicActivity {
             if(pet.getHealth()>100)pet.setHealth(100);
             if(pet.getHappiness()>100)pet.setHappiness(100);
             if(pet.getFill()>100)pet.setFill(100);
-            UsersManager.getInstance(InventoryActivity.this).setUserPet(InventoryActivity.this, user, pet);
+            UsersManager.getInstance(InventoryActivity.this).setUserPet(InventoryActivity.this,user,pet);
             Intent intent;
             if(getIntent().getStringExtra("from").equalsIgnoreCase("home")) {
                 intent = new Intent(InventoryActivity.this, HomeActivity.class);
@@ -159,7 +160,9 @@ public class InventoryActivity extends MusicActivity {
                 intent = new Intent(InventoryActivity.this, PlaygroundActivity.class);
                 intent.putExtra("outChoice",getIntent().getStringExtra("outChoice"));
             }
-            intent.putExtra("loggedUser", user);
-            startActivity(intent);
+            intent.putExtra("loggedUser", user);this.setResult(position);
+            intent.setData(Uri.parse(name));
+            this.setResult(RESULT_OK,intent);
+            finish();
     }
 }

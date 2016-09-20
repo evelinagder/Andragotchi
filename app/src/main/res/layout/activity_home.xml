@@ -48,25 +48,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout2"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
 
 
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:id="@+id/button_clean"
-            android:src="@drawable/confirm"
-            android:fontFamily="casual"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:text="Clean"
-            android:layout_weight="1"
-            android:background="@drawable/confirm"
-            android:layout_alignParentEnd="true"
-            android:layout_above="@+id/button_medicine"
-            android:layout_alignParentLeft="true" />
     </LinearLayout>
 
     <TextView
@@ -141,10 +127,17 @@
             android:background="@android:color/transparent"
             android:src="@drawable/inventory"/>
 
-        <ImageView
+        <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="50"/>
+            android:id="@+id/button_clean"
+            android:src="@drawable/confirm"
+            android:fontFamily="casual"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:text="Clean"
+            android:layout_weight="50"
+            android:background="@drawable/confirm" />
 
         <ImageButton
             android:layout_width="0dp"
@@ -201,5 +194,11 @@
         android:background="@drawable/broom"
         android:layout_below="@+id/textView_play"/>
 
+    <WebView
+        android:id="@+id/item_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

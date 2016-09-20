@@ -9,20 +9,18 @@ import android.widget.EditText;
 
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends MusicActivity {
     EditText usernameR;
     EditText passR;
     EditText confirmPassR;
     EditText emailR;
     Button registerR;
-    boolean continueMusic;
     public static final int RESULT_REG_SUCCESSFUL = 10;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        continueMusic=true;
         setContentView(R.layout.activity_register);
         usernameR = (EditText) findViewById(R.id.editText_usernameR);
         passR = (EditText) findViewById(R.id.editText_passwordR);
@@ -93,19 +91,6 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
-    public void onPause()
-    {
-        super.onPause();
-        if(!continueMusic)
-            MusicManager.pause();
-    }
-    public void onResume()
-    {
-        super.onResume();
-
-        continueMusic=false;
-        MusicManager.start(this,R.raw.music);
     }
 
 

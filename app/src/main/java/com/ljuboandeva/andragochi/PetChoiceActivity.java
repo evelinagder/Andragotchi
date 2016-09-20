@@ -13,7 +13,7 @@ import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class PetChoiceActivity extends AppCompatActivity {
+public class PetChoiceActivity extends MusicActivity {
 
     Button confirmPet;
     EditText namePet;
@@ -22,7 +22,7 @@ public class PetChoiceActivity extends AppCompatActivity {
     String petType;
     ImageView petPic;
     int counter=0;
-    boolean continueMusic;
+
 
     User user;
 
@@ -30,7 +30,6 @@ public class PetChoiceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        continueMusic=true;
         setContentView(R.layout.activity_pet_choice);
 
         namePet = (EditText) findViewById(R.id.editText_NamePet);
@@ -95,18 +94,6 @@ public class PetChoiceActivity extends AppCompatActivity {
                 petPic.setImageResource(R.drawable.rex_home);break;
         }
     }
-    public void onPause()
-    {
-        super.onPause();
-        if(!continueMusic)
-            MusicManager.pause();
-    }
-    public void onResume()
-    {
-        super.onResume();
 
-        continueMusic=false;
-        MusicManager.start(this,R.raw.music);
-    }
 
 }

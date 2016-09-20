@@ -9,18 +9,17 @@ import android.widget.Button;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class OutChoiceActivity extends AppCompatActivity {
+public class OutChoiceActivity extends MusicActivity {
 
     Button button_park;
     Button button_sandbox;
     Button button_pool;
-    boolean continueMusic;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        continueMusic=true;
         setContentView(R.layout.activity_out_choice);
 
         button_park = (Button) findViewById(R.id.button_park);
@@ -54,19 +53,6 @@ public class OutChoiceActivity extends AppCompatActivity {
         button_pool.setOnClickListener(outChoiceListener);
         button_sandbox.setOnClickListener(outChoiceListener);
         button_park.setOnClickListener(outChoiceListener);
-    }
-    public void onPause()
-    {
-        super.onPause();
-        if(!continueMusic)
-            MusicManager.pause();
-    }
-    public void onResume()
-    {
-        super.onResume();
-
-        continueMusic=false;
-        MusicManager.start(this,R.raw.music);
     }
 
 }

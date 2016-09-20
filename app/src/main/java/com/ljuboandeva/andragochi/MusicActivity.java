@@ -5,32 +5,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class MusicActivity extends AppCompatActivity {
+    boolean continueMusic;
 
-    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        continueMusic = true;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_music);
-        mediaPlayer = MediaPlayer.create(MusicActivity.this,R.raw.music);
+        setContentView(R.layout.activity_music2);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mediaPlayer.start();
-    }
-
-    @Override
-    protected void onPause() {
-        mediaPlayer.stop();
+    public void onPause() {
         super.onPause();
+        if (!continueMusic)
+            MusicManager.pause();
     }
 
-    @Override
-    protected void onDestroy() {
-        mediaPlayer.release();
-        mediaPlayer=null;
-        super.onDestroy();
+    public void onResume() {
+        super.onResume();
+
+        continueMusic = false;
+        MusicManager.start(this, R.raw.music);
     }
 }

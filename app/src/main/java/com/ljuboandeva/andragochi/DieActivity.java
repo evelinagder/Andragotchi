@@ -8,16 +8,15 @@ import android.widget.Button;
 
 import com.ljuboandeva.andragochi.model.players.User;
 
-public class DieActivity extends AppCompatActivity {
+public class DieActivity extends MusicActivity {
     Button restartB;
     Button exitB;
     User user;
-    boolean continueMusic;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        continueMusic=true;
         setContentView(R.layout.activity_die);
         restartB= (Button)findViewById(R.id.B_restart);
         exitB=(Button)findViewById(R.id.B_exit);
@@ -41,19 +40,6 @@ public class DieActivity extends AppCompatActivity {
 
             }
         });
-    }
-    public void onPause()
-    {
-        super.onPause();
-        if(!continueMusic)
-            MusicManager.pause();
-    }
-    public void onResume()
-    {
-        super.onResume();
-
-        continueMusic=false;
-        MusicManager.start(this,R.raw.music);
     }
 
 }

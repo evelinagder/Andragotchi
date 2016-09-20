@@ -20,16 +20,14 @@ import com.ljuboandeva.andragochi.shop_view.ToysFragment_Shop;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShopActivity extends AppCompatActivity {
+public class ShopActivity extends MusicActivity {
     private static Toolbar toolbar;
     private static ViewPager viewPager;
     private static TabLayout tabLayout;
-    boolean continueMusic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        continueMusic=true;
         setContentView(R.layout.activity_shop);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -107,18 +105,6 @@ public class ShopActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
     }
-    public void onPause()
-    {
-        super.onPause();
-        if(!continueMusic)
-            MusicManager.pause();
-    }
-    public void onResume()
-    {
-        super.onResume();
 
-        continueMusic=false;
-        MusicManager.start(this,R.raw.music);
-    }
 
 }

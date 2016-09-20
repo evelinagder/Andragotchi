@@ -27,11 +27,11 @@ import android.widget.Toast;
 import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
-import com.ljuboandeva.andragochi.takingCare.CareFragment;
+
 
 import java.util.Random;
 
-public class HomeActivity extends AppCompatActivity  {
+public class HomeActivity extends MusicActivity  {
     public static final int DECREASE_VALUE=5;
     public static final int DECREASE_FUN=15;
     public static final int DECREASE_FILL=10;
@@ -54,7 +54,6 @@ public class HomeActivity extends AppCompatActivity  {
     TextView cleanliness;
     ImageView petImage;
     WebView itemAnimation;
-    boolean continueMusic;
     ImageView shit;
     WebView broom;
 
@@ -62,7 +61,6 @@ public class HomeActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        continueMusic = true;
         setContentView(R.layout.activity_home);
         user = (User) getIntent().getExtras().get("loggedUser");
         pet = user.getPet();
@@ -249,10 +247,8 @@ public class HomeActivity extends AppCompatActivity  {
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
-        continueMusic=false;
-        MusicManager.start(this,R.raw.music);
         registerReceiver(UpdateAlarmReceiver, new IntentFilter("ALARM"));
         Log.e("myTag", "Resume and register Reciever");
 
@@ -265,11 +261,10 @@ public class HomeActivity extends AppCompatActivity  {
         else {shit.setVisibility(View.INVISIBLE);}
     }
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         unregisterReceiver(UpdateAlarmReceiver);
-        if(!continueMusic)
-            MusicManager.pause();
+
     }
 
 

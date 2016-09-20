@@ -9,11 +9,11 @@ import android.util.Log;
  */
 
 public class MusicManager {
-    static final int MUSIC_PREVIOUS = -1;
     private static final String TAG = "MusicManager";
     static MediaPlayer mp;
     private static int currentMusic = -1;
-    private static int previousMusic = -1;
+    public static int stopMusic =0;
+
 
 
     public static void start(Context context, int music) {
@@ -25,20 +25,9 @@ public class MusicManager {
 // already playing some music and not forced to change
             return;
         }
-
-        if (music == MUSIC_PREVIOUS) {
-            Log.d(TAG, "Using previous music [" + previousMusic + "]");
-            music = previousMusic;
-        }
         if (currentMusic == music) {
 // already playing this music
             return;
-        }
-        if (currentMusic != -1) {
-            previousMusic = currentMusic;
-            Log.d(TAG, "Previous music was [" + previousMusic + "]");
-// playing some other music, pause it and change
-            pause();
         }
         currentMusic = music;
         Log.d(TAG, "Current music is now [" + currentMusic + "]");
@@ -69,15 +58,8 @@ public class MusicManager {
             }
         }
 
-// previousMusic should always be something valid
-        if (currentMusic != -1) {
-            {
-                previousMusic = currentMusic;
-                Log.d(TAG, "Previous music was [" + previousMusic + "]");
-            }
-            currentMusic = -1;
-            Log.d(TAG, "Current music is now [" + currentMusic + "]");
-        }
+        currentMusic = -1;
+        Log.d(TAG, "Current music is now [" + currentMusic + "]");
     }
 
     public static void release() {
@@ -93,12 +75,7 @@ public class MusicManager {
             Log.e(TAG, e.getMessage(), e);
         }
 
-        if (currentMusic != -1) {
-            previousMusic = currentMusic;
-            Log.d(TAG, "Previous music was [" + previousMusic + "]");
-        }
         currentMusic = -1;
         Log.d(TAG, "Current music is now [" + currentMusic + "]");
     }
 }
-

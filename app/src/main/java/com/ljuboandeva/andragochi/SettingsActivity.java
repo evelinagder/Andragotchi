@@ -7,30 +7,50 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends MusicActivity {
 
     Button button_logout;
     Button changeName;
     EditText nameET;
+    Switch musicSwitch;
     User user;
-    boolean continueMusic;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        continueMusic=true;
         setContentView(R.layout.activity_settings);
         user=(User) getIntent().getExtras().get("loggedUser");
         changeName = (Button) findViewById(R.id.button_changeName);
         nameET = (EditText) findViewById(R.id.name_settings);
         button_logout = (Button) findViewById(R.id.button_logout);
+        musicSwitch = (Switch)findViewById(R.id.switchMusic);
+
+        musicSwitch.setChecked(true);
+
+        musicSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    MusicManager.start(SettingsActivity.this, R.raw.music);
+                    MusicManager.stopMusic=0;
+                }
+                else{
+                    if(!continueMusic){
+                        MusicManager.pause();
+                        MusicManager.stopMusic=1;
+                    }
+                }
+            }
+        });
 
         changeName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,19 +91,6 @@ public class SettingsActivity extends AppCompatActivity {
         intent.putExtra("loggedUser", user);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-    }
-    public void onPause()
-    {
-        super.onPause();
-        if(!continueMusic)
-            MusicManager.pause();
-    }
-    public void onResume()
-    {
-        super.onResume();
-
-        continueMusic=false;
-        MusicManager.start(this,R.raw.music);
     }
 
 }

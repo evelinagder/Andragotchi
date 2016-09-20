@@ -17,7 +17,7 @@ import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class PlaygroundActivity extends AppCompatActivity {
+public class PlaygroundActivity extends MusicActivity {
 
     public static final int REQUEST_CODE_PLAYGROUND=1;
 
@@ -35,12 +35,11 @@ public class PlaygroundActivity extends AppCompatActivity {
     TextView cleanliness;
     ImageView petImage;
     WebView toyPlay;
-    boolean continueMusic;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        continueMusic=true;
         setContentView(R.layout.activity_playground);
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.layout_playground);
         home = (Button) findViewById(R.id.button_home);
@@ -180,21 +179,15 @@ public class PlaygroundActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         happiness.setText(String.valueOf(pet.getHappiness()));
         cleanliness.setText(String.valueOf(pet.getCleanliness()));
         fill.setText(String.valueOf(pet.getFill()));
         health.setText(String.valueOf(pet.getHealth()));
-        continueMusic=false;
-        MusicManager.start(this,R.raw.music);
+
 
     }
-    public void onPause()
-    {
-        super.onPause();
-        if(!continueMusic)
-            MusicManager.pause();
-    }
+
 
 }

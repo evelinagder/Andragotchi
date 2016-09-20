@@ -9,19 +9,17 @@ import android.widget.Button;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class DifficultyActivity extends AppCompatActivity {
+public class DifficultyActivity extends MusicActivity {
 
 
     Button easy;
     Button medium;
     Button hard;
     User user;
-    boolean continueMusic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        continueMusic=true;
         setContentView(R.layout.activity_dfficulty);
         easy=(Button)findViewById(R.id.button_easy);
         medium= (Button)findViewById(R.id.button_medium);
@@ -56,21 +54,6 @@ public class DifficultyActivity extends AppCompatActivity {
         medium.setOnClickListener(onClickListener);
         hard.setOnClickListener(onClickListener);
     }
-    public void onPause()
-    {
-        super.onPause();
-        if(!continueMusic)
-            MusicManager.pause();
-    }
-    public void onResume()
-    {
-        super.onResume();
-
-        continueMusic=false;
-        MusicManager.start(this,R.raw.music);
-    }
-
-
 
 
 }

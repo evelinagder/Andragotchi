@@ -6,13 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ExitActivity extends MusicActivity {
+public class ExitActivity extends AppCompatActivity {
     Button yesB;
     Button noB;
+    boolean continueMusic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        continueMusic=true;
         setContentView(R.layout.activity_exit);
         yesB= (Button)findViewById(R.id.button_yes);
         noB=(Button)findViewById(R.id.button_No);
@@ -29,4 +31,19 @@ public class ExitActivity extends MusicActivity {
 
 
     }
+    public void onPause()
+    {
+        super.onPause();
+        if(!continueMusic)
+            MusicManager.pause();
+    }
+    public void onResume()
+    {
+        super.onResume();
+
+        continueMusic=false;
+        MusicManager.start(this,R.raw.music);
+    }
+
+
 }

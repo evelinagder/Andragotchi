@@ -12,18 +12,20 @@ import android.widget.Toast;
 
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class LoginActivity extends MusicActivity {
+public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_REG_USER = 10;
     Button login;
     Button register;
     EditText username;
     EditText password;
+    boolean continueMusic;
 
     // E if user exists- intent to homepage
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        continueMusic=true;
         setContentView(R.layout.activity_login);
         login = (Button) findViewById(R.id.button_loginL);
         register = (Button) findViewById(R.id.button_registerL);
@@ -98,5 +100,19 @@ public class LoginActivity extends MusicActivity {
                 }
             }
         }
+    public void onPause()
+    {
+        super.onPause();
+        if(!continueMusic)
+            MusicManager.pause();
+    }
+    public void onResume()
+    {
+        super.onResume();
+
+        continueMusic=false;
+        MusicManager.start(this,R.raw.music);
+    }
+
 
 }

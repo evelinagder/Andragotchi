@@ -10,13 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ljuboandeva.andragochi.CareActivity;
 import com.ljuboandeva.andragochi.R;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
-import com.ljuboandeva.andragochi.model.shop.Buyable;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -14,16 +14,18 @@ import com.ljuboandeva.andragochi.model.pet.Pet;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class SettingsActivity extends MusicActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     Button button_logout;
     Button changeName;
     EditText nameET;
     User user;
+    boolean continueMusic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        continueMusic=true;
         setContentView(R.layout.activity_settings);
         user=(User) getIntent().getExtras().get("loggedUser");
         changeName = (Button) findViewById(R.id.button_changeName);
@@ -70,4 +72,18 @@ public class SettingsActivity extends MusicActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+    public void onPause()
+    {
+        super.onPause();
+        if(!continueMusic)
+            MusicManager.pause();
+    }
+    public void onResume()
+    {
+        super.onResume();
+
+        continueMusic=false;
+        MusicManager.start(this,R.raw.music);
+    }
+
 }

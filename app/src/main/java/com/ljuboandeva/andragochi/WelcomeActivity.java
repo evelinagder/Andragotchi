@@ -12,15 +12,17 @@ import android.widget.Toast;
 import com.ljuboandeva.andragochi.model.players.User;
 import com.ljuboandeva.andragochi.model.players.UsersManager;
 
-public class WelcomeActivity extends MusicActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     ImageButton signIn;
     User user;
+    boolean continueMusic;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        continueMusic=true;
         setContentView(R.layout.activity_welcome);
         signIn=(ImageButton)findViewById(R.id.button_sign);
         signIn.setOnClickListener(new View.OnClickListener() {
@@ -62,4 +64,19 @@ public class WelcomeActivity extends MusicActivity {
         User user=UsersManager.getInstance(WelcomeActivity.this).getUser(username);
         return user;
     }
+    public void onPause()
+    {
+        super.onPause();
+        if(!continueMusic)
+            MusicManager.pause();
+    }
+    public void onResume()
+    {
+        super.onResume();
+
+        continueMusic=false;
+        MusicManager.start(this,R.raw.music);
+    }
+
+
 }

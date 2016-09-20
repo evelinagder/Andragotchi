@@ -31,7 +31,7 @@ import com.ljuboandeva.andragochi.takingCare.CareFragment;
 
 import java.util.Random;
 
-public class HomeActivity extends MusicActivity  {
+public class HomeActivity extends AppCompatActivity  {
     public static final int DECREASE_VALUE=5;
     public static final int DECREASE_FUN=15;
     public static final int DECREASE_FILL=10;
@@ -54,10 +54,13 @@ public class HomeActivity extends MusicActivity  {
     TextView cleanliness;
     ImageView petImage;
     WebView itemAnimation;
+    boolean continueMusic;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        continueMusic=true;
         setContentView(R.layout.activity_home);
         user = (User) getIntent().getExtras().get("loggedUser");
         pet = user.getPet();
@@ -217,6 +220,9 @@ public class HomeActivity extends MusicActivity  {
     @Override
     protected void onResume() {
         super.onResume();
+        //
+        continueMusic=false;
+        MusicManager.start(this,R.raw.music);
         registerReceiver(UpdateAlarmReceiver, new IntentFilter("ALARM"));
         Log.e("myTag", "Resume and register Reciever");
 
@@ -230,7 +236,10 @@ public class HomeActivity extends MusicActivity  {
     protected void onPause() {
         super.onPause();
         unregisterReceiver(UpdateAlarmReceiver);
+        if(!continueMusic)
+            MusicManager.pause();
     }
+
 
     private BroadcastReceiver UpdateAlarmReceiver = new BroadcastReceiver() {
 
@@ -261,7 +270,7 @@ public class HomeActivity extends MusicActivity  {
             cleanliness.setText(String.valueOf(pet.getCleanliness()));
             fill.setText(String.valueOf(pet.getFill()));
             health.setText(String.valueOf(pet.getHealth()));
-            if(pet.getHappiness()>30||pet.getFill()>30||pet.getHealth()>30||pet.getCleanliness()>30){
+            if(pet.getHappiness()>30 && pet.getFill()>30 && pet.getHealth()>30 && pet.getCleanliness()>30){
                 user.setMoney(user.getMoney()+BIG_BONUS_MONEY*user.getDifficultyLevel());
                 Toast.makeText(HomeActivity.this,"You received the Big bonus!",Toast.LENGTH_SHORT).show();
             }

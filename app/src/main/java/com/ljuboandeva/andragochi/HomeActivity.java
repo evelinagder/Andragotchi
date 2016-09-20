@@ -56,6 +56,7 @@ public class HomeActivity extends MusicActivity  {
     WebView itemAnimation;
     ImageView shit;
     WebView broom;
+    TextView money;
 
 
     @Override
@@ -77,6 +78,7 @@ public class HomeActivity extends MusicActivity  {
         petImage = (ImageView) findViewById(R.id.pet_image_home);
         shit = (ImageView) findViewById(R.id.shit);
         broom = (WebView) findViewById(R.id.broom);
+        money = (TextView) findViewById(R.id.textView_money);
 
         int alarmType = AlarmManager.ELAPSED_REALTIME_WAKEUP;
         long timeOrLengthofWait = 60000;
@@ -241,6 +243,7 @@ public class HomeActivity extends MusicActivity  {
                     cleanliness.setText(String.valueOf(pet.getCleanliness()));
                     fill.setText(String.valueOf(pet.getFill()));
                     health.setText(String.valueOf(pet.getHealth()));
+                    money.setText(String.valueOf(user.getMoney()));
                 }
             }.execute();
         }
@@ -257,6 +260,7 @@ public class HomeActivity extends MusicActivity  {
         cleanliness.setText(String.valueOf(pet.getCleanliness()));
         fill.setText(String.valueOf(pet.getFill()));
         health.setText(String.valueOf(pet.getHealth()));
+        money.setText(String.valueOf(user.getMoney()));
         if(pet.isShit()){ shit.setVisibility(View.VISIBLE); }
         else {shit.setVisibility(View.INVISIBLE);}
     }

@@ -11,42 +11,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/linearLayout">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:id="@+id/button_shop"
-            android:src="@drawable/confirm"
-            android:fontFamily="casual"
-            android:textAlignment="center"
-            android:textSize="40sp"
-            android:text="Shop"
-            android:background="@drawable/confirm"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_weight="1"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:id="@+id/button_go_out"
-            android:src="@drawable/confirm"
-            android:fontFamily="casual"
-            android:textAlignment="center"
-            android:textSize="40sp"
-            android:text="Go Out"
-            android:background="@drawable/confirm"
-            android:layout_alignParentEnd="true"
-            android:layout_above="@+id/button_shop"
-            android:layout_alignParentLeft="true"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/linearLayout2"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
@@ -98,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
-        android:textSize="60sp"
+        android:textSize="50sp"
         android:id="@+id/textView_name"
         android:textColor="@color/blue"
         android:layout_above="@+id/pet_image_home"
@@ -218,5 +182,62 @@
 
         android:layout_alignBottom="@id/shit"
         android:visibility="invisible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:id="@+id/button_shop"
+            android:src="@drawable/confirm"
+            android:fontFamily="casual"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:text="Shop"
+            android:background="@drawable/confirm"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="2"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView2"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/coins" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="casual"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:id="@+id/textView_money"
+            android:textColor="@color/blue"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:id="@+id/button_go_out"
+            android:src="@drawable/confirm"
+            android:fontFamily="casual"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:text="Go Out"
+            android:background="@drawable/confirm"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/button_shop"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="2"/>
+    </LinearLayout>
 
 </RelativeLayout>

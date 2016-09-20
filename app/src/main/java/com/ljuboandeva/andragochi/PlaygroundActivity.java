@@ -35,7 +35,7 @@ public class PlaygroundActivity extends MusicActivity {
     TextView cleanliness;
     ImageView petImage;
     WebView toyPlay;
-
+    TextView money;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class PlaygroundActivity extends MusicActivity {
         health= (TextView)findViewById(R.id.textView_healthp);
         petImage = (ImageView) findViewById(R.id.pet_image_play);
         toyPlay = (WebView) findViewById(R.id.toy_play);
+        money = (TextView) findViewById(R.id.textView_money_playground);
 
         petName.setText(user.getPet().getName());
         outChoice = getIntent().getStringExtra("outChoice");
@@ -173,6 +174,7 @@ public class PlaygroundActivity extends MusicActivity {
                     cleanliness.setText(String.valueOf(pet.getCleanliness()));
                     fill.setText(String.valueOf(pet.getFill()));
                     health.setText(String.valueOf(pet.getHealth()));
+                    money.setText(String.valueOf(user.getMoney()));
                 }
             }.execute();
         }
@@ -185,8 +187,7 @@ public class PlaygroundActivity extends MusicActivity {
         cleanliness.setText(String.valueOf(pet.getCleanliness()));
         fill.setText(String.valueOf(pet.getFill()));
         health.setText(String.valueOf(pet.getHealth()));
-
-
+        money.setText(String.valueOf(user.getMoney()));
     }
 
 

@@ -21,11 +21,12 @@ public class DieActivity extends MusicActivity {
         restartB= (Button)findViewById(R.id.B_restart);
         exitB=(Button)findViewById(R.id.B_exit);
         user=(User) getIntent().getExtras().get("loggedUser");
+        final User temp =new User(user.getUsername(),user.getPassword(),user.getEmail());
         restartB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(DieActivity.this, PetChoiceActivity.class);
-                intent. putExtra("loggedUser",user);
+                intent. putExtra("loggedUser",temp);
                 startActivity(intent);
 
             }

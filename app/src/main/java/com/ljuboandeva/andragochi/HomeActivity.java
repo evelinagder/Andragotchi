@@ -55,12 +55,14 @@ public class HomeActivity extends AppCompatActivity  {
     ImageView petImage;
     WebView itemAnimation;
     boolean continueMusic;
+    ImageView shit;
+    WebView broom;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        continueMusic=true;
+        continueMusic = true;
         setContentView(R.layout.activity_home);
         user = (User) getIntent().getExtras().get("loggedUser");
         pet = user.getPet();
@@ -75,10 +77,12 @@ public class HomeActivity extends AppCompatActivity  {
         fill = (TextView) findViewById(R.id.textView_food);
         cleanliness = (TextView) findViewById(R.id.textView_clean);
         petImage = (ImageView) findViewById(R.id.pet_image_home);
+        shit = (ImageView) findViewById(R.id.shit);
+        broom = (WebView) findViewById(R.id.broom);
 
         int alarmType = AlarmManager.ELAPSED_REALTIME_WAKEUP;
         long timeOrLengthofWait = 60000;
-        int requestCode= (int) System.currentTimeMillis();
+        int requestCode = (int) System.currentTimeMillis();
         Intent myIntent = new Intent("ALARM");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(HomeActivity.this, requestCode, myIntent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -119,7 +123,7 @@ public class HomeActivity extends AppCompatActivity  {
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, ShopActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
-                intent.putExtra("from","home");
+                intent.putExtra("from", "home");
                 startActivity(intent);
             }
         });
@@ -131,7 +135,7 @@ public class HomeActivity extends AppCompatActivity  {
                 Intent intent = new Intent(HomeActivity.this, InventoryActivity.class);
                 intent.putExtra("loggedUser", UsersManager.getInstance(HomeActivity.this).getUser(user.getUsername()));
                 intent.putExtra("from", "home");
-                startActivityForResult(intent,REQUEST_CODE_HOME);
+                startActivityForResult(intent, REQUEST_CODE_HOME);
             }
         });
 
@@ -149,15 +153,42 @@ public class HomeActivity extends AppCompatActivity  {
         clean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(pet.getCleanliness()<100){ pet.setCleanliness(100); }
-                else { Toast.makeText(HomeActivity.this, "I'm clean already!", Toast.LENGTH_SHORT).show();}
-                UsersManager.getInstance(HomeActivity.this).setUserPet(HomeActivity.this, user, pet);
-                cleanliness.setText(String.valueOf(pet.getCleanliness()));
-                //TODO remove shit if shown
+                if (pet.getCleanliness() == 100) {
+                    Toast.makeText(HomeActivity.this, "I'm clean already!", Toast.LENGTH_SHORT).show();
+                } else {
+                    pet.setCleanliness(100);
+                    UsersManager.getInstance(HomeActivity.this).setUserPet(HomeActivity.this, user, pet);
+
+                    AsyncTask<Void, Void, Void> clean = new AsyncTask<Void, Void, Void>() {
+                        @Override
+                        protected Void doInBackground(Void... params) {
+                            try {
+                                Thread.sleep(3000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            return null;
+                        }
+
+                        @Override
+                        protected void onPreExecute() {
+                            broom.setBackgroundColor(0x00000000);
+                            broom.loadUrl("file:///android_asset/cleaning.gif");
+                            broom.setVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        protected void onPostExecute(Void aVoid) {
+                            cleanliness.setText(String.valueOf(pet.getCleanliness()));
+                            shit.setVisibility(View.INVISIBLE);
+                            broom.setVisibility(View.INVISIBLE);
+                        }
+                    }.execute();
+                }
             }
         });
-
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -220,7 +251,6 @@ public class HomeActivity extends AppCompatActivity  {
     @Override
     protected void onResume() {
         super.onResume();
-        //
         continueMusic=false;
         MusicManager.start(this,R.raw.music);
         registerReceiver(UpdateAlarmReceiver, new IntentFilter("ALARM"));
@@ -231,6 +261,8 @@ public class HomeActivity extends AppCompatActivity  {
         cleanliness.setText(String.valueOf(pet.getCleanliness()));
         fill.setText(String.valueOf(pet.getFill()));
         health.setText(String.valueOf(pet.getHealth()));
+        if(pet.isShit()){ shit.setVisibility(View.VISIBLE); }
+        else {shit.setVisibility(View.INVISIBLE);}
     }
     @Override
     protected void onPause() {
@@ -270,6 +302,7 @@ public class HomeActivity extends AppCompatActivity  {
             cleanliness.setText(String.valueOf(pet.getCleanliness()));
             fill.setText(String.valueOf(pet.getFill()));
             health.setText(String.valueOf(pet.getHealth()));
+            shit.setVisibility(View.VISIBLE);
             if(pet.getHappiness()>30 && pet.getFill()>30 && pet.getHealth()>30 && pet.getCleanliness()>30){
                 user.setMoney(user.getMoney()+BIG_BONUS_MONEY*user.getDifficultyLevel());
                 Toast.makeText(HomeActivity.this,"You received the Big bonus!",Toast.LENGTH_SHORT).show();

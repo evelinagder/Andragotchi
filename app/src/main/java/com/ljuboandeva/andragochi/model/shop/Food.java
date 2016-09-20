@@ -13,7 +13,7 @@ public class Food extends Buyable{
     private int price;
     private int count;
 
-    public  Food(Type foodType, int calories, int price,int count){
+    public  Food(Type foodType, int price, int calories,int count){
         this.foodType=foodType;
         this.calories=calories;
         this.price=price;

@@ -46,6 +46,7 @@ public class UsersManager {
                 pet.setCleanliness(obj.getInt("petCleanliness"));
                 pet.setHappiness(obj.getInt("petHappiness"));
                 pet.setFill(obj.getInt("petFill"));
+                pet.setShit(obj.getBoolean("shit"));
                 for (int j = 0; i < user.getFoods().size(); i++) {
                     user.getFoods().get(i).setCount(obj.getInt("food" + j));
                 }
@@ -173,6 +174,7 @@ public class UsersManager {
                     jobj.put("petCleanliness", u.getPet().getCleanliness());
                     jobj.put("petHappiness", u.getPet().getHappiness());
                     jobj.put("petFill", u.getPet().getFill());
+                    jobj.put("shit",u.getPet().isShit());
                 }
                 jsonUsers.put(jobj);
             }

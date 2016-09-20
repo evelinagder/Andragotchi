@@ -13,11 +13,6 @@ import java.io.Serializable;
 public class Pet implements Serializable {
 
     private static final int START_AGE=0;
-    private static final int MIN_FILL=0;
-    private static final int MIN_HEALTH=0;
-    private static final int MIN_HAPPINESS=0;
-    private static final int MIN_CLEANLINESS=0;
-
     private static final int MAX_HEALTH=100;
     private static final int MAX_HAPPINESS=100;
     private static final int MAX_FILL=100;
@@ -29,10 +24,7 @@ public class Pet implements Serializable {
     private int happiness;
     private int fill;
     private int cleanliness;
-    private ImageView imageHome;
-    private WebView petPicEat;
-    private WebView petPicHappy;
-    private WebView petPicUnhappy;
+    private boolean shit;
 
     public Pet(String type, String name){
 
@@ -43,9 +35,12 @@ public class Pet implements Serializable {
         this.fill=MAX_FILL;
         this.cleanliness=MAX_CLEANLINESS;
         this.name=name;
+        shit=false;
     }
 
+    public boolean isShit () {return shit;}
 
+    public void setShit (boolean shit) {this.shit = shit;}
 
     public void setType(String type) {
         this.type = type;
